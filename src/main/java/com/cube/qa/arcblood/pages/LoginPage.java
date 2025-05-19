@@ -2,14 +2,9 @@ package com.cube.qa.arcblood.pages;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Arrays;
 import java.util.List;
-
-import java.time.Duration;
 
 
 public class LoginPage extends BasePage {
@@ -18,6 +13,8 @@ public class LoginPage extends BasePage {
     private final List<By> usernameFieldLocators;
     private final List<By> passwordFieldLocators;
     private final List<By> loginButtonLocators;
+    private final List<By> biometricNotNow;
+    private final List<By> bookAnotherLikeThis;
 
     public LoginPage(AppiumDriver driver, String platform) {
         super(driver); // Pass driver to BasePage
@@ -36,6 +33,13 @@ public class LoginPage extends BasePage {
             loginButtonLocators = Arrays.asList(
                     By.xpath("//XCUIElementTypeButton[@name=\"CONTINUE\"]")
             );
+            biometricNotNow = Arrays.asList(
+                    By.xpath("//XCUIElementTypeButton[@name=\"Not now\"]")
+            );
+            bookAnotherLikeThis = Arrays.asList(
+                    By.xpath("//XCUIElementTypeButton[@name=\"BOOK ANOTHER LIKE THIS\"]")
+            );
+
         } else { // TODO: Android locators here
             welcomeLoginLocators = Arrays.asList(
                     By.id("com.cube.arc.blood:id/log_in"),
@@ -49,6 +53,12 @@ public class LoginPage extends BasePage {
             );
             loginButtonLocators = Arrays.asList(
                     By.id("com.cube.arc.blood:id/continue_button")
+            );
+            biometricNotNow = Arrays.asList(
+                    By.id("com.cube.arc.blood:id/not_now")
+            );
+            bookAnotherLikeThis = Arrays.asList(
+                    By.xpath("//android.widget.Button[@text='BOOK ANOTHER LIKE THIS']")
             );
         }
     }
@@ -76,6 +86,14 @@ public class LoginPage extends BasePage {
 
     public void tapLoginButton() {
         waitForVisibility(loginButtonLocators).click();
+    }
+
+    public void skipBiometricSetUp() {
+        waitForVisibility(biometricNotNow).click();
+    }
+
+    public boolean isBookAnotherLikeThisVisible() {
+        return waitForVisibility(bookAnotherLikeThis).isDisplayed();
     }
 }
 

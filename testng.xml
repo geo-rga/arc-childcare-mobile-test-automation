@@ -8,6 +8,7 @@
     <!-- TODO: Update fullReset to "true" to run each test from a fresh install-->
     <test name="iOS Tests">
         <parameter name="platform" value="ios"/>
+        <parameter name="env" value="staging"/>
         <parameter name="build" value="src/test/resources/apps/ios/ios_blood_2244.ipa"/>
         <parameter name="udid" value="00008101-000E49EA1081401E"/>
         <parameter name="fullReset" value="true"/>

@@ -5,16 +5,19 @@ public class TestConfig {
     private String buildPath;
     private String udid;
     private boolean fullReset;
+    private String env;
 
-    public TestConfig(String platform, String buildPath, String udid, boolean fullReset) {
+    public TestConfig(String platform, String buildPath, String udid, boolean fullReset, String env) {
         this.platform = platform;
         this.buildPath = buildPath;
         this.udid = udid;
         this.fullReset = fullReset;
+        this.env = env;
     }
 
     public String getPlatform() { return platform; }
     public String getBuildPath() { return buildPath; }
     public String getUdid() { return udid; }
     public boolean isFullReset() { return fullReset; }
+    public String getEnv() { return env; }
 }

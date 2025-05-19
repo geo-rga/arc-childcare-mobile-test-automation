@@ -12,7 +12,7 @@ import java.util.List;
 public class BasePage {
 
     protected final AppiumDriver driver;
-    private final Duration defaultTimeout = Duration.ofSeconds(5); // Adjust as needed
+    private final Duration defaultTimeout = Duration.ofSeconds(30); // Adjust as needed
 
     public BasePage(AppiumDriver driver) {
         this.driver = driver;

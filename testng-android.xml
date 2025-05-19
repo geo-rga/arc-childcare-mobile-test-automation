@@ -6,7 +6,9 @@
     <test name="Android Tests">
         <parameter name="platform" value="android"/>
         <parameter name="build" value="src/test/resources/apps/android/android_staging_2003.apk"/>
-        <parameter name="udid" value="33071FDH2007QH"/>
+
+        <!-- TODO: To get the Android device udid, run the following in the terminal: adb devices -->
+        <parameter name="udid" value="R5CR821BC4N"/>
         <parameter name="fullReset" value="true"/>
 
         <!-- TODO: Add test files to be ran here -->

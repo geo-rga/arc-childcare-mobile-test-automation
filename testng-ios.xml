@@ -6,7 +6,9 @@
     <test name="iOS Tests">
         <parameter name="platform" value="ios"/>
         <parameter name="build" value="src/test/resources/apps/ios/ios_blood_2244.ipa"/>
-        <parameter name="udid" value="00008101-000E49EA1081401E"/>
+
+        <!-- TODO: To get the iOS device udid, run the following in the terminal: xcrun xctrace list devices-->
+        <parameter name="udid" value="00008020-001354403E98002E"/>
         <parameter name="fullReset" value="true"/>
 
         <!-- TODO: Add test files to be ran here -->

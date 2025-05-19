@@ -1,0 +1,20 @@
+[
+  {
+    "username": "QWERTYTEST",
+    "password": "Redcross1",
+    "hasDonations": false,
+    "healthCharts": {
+      "hasBloodPressure": true,
+      "hasHemoglobin": true
+    }
+  },
+  {
+    "username": "SSKEYS24",
+    "password": "Redcross1",
+    "hasDonations": true,
+    "healthCharts": {
+      "hasBloodPressure": false,
+      "hasHemoglobin": false
+    }
+  }
+]

@@ -5,6 +5,7 @@
     <!-- TODO: Update fullReset to "true" to run each test from a fresh install-->
     <test name="iOS Tests">
         <parameter name="platform" value="ios"/>
+        <parameter name="env" value="staging"/>
         <parameter name="build" value="src/test/resources/apps/ios/ios_blood_2244.ipa"/>
 
         <!-- TODO: To get the iOS device udid, run the following in the terminal: xcrun xctrace list devices-->

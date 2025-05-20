@@ -15,7 +15,7 @@
     <suiteXmlFile>testng.xml</suiteXmlFile>
   </properties>
 
-  <!-- Centralized version control for all managed dependencies -->
+  <!-- Centralized version control for all of the managed dependencies -->
   <dependencyManagement>
     <dependencies>
       <!-- Selenium 4.11.0 (existing) -->

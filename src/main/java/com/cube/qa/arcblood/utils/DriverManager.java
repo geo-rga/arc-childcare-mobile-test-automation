@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 
 public class DriverManager {
 
-    public static AppiumDriver createDriver(String platform, String buildPath, String udid, boolean fullReset ) {
+    public static AppiumDriver createDriver(String platform, String buildPath, String udid, boolean fullReset, boolean isSimulator, String deviceName, String platformVersion ) {
         DesiredCapabilities caps = new DesiredCapabilities();
 
         try {
@@ -22,6 +22,11 @@ public class DriverManager {
                 caps.setCapability("platformName", "Android");
                 caps.setCapability("deviceName", "Android Device");
                 caps.setCapability("automationName", "UiAutomator2");
+
+                if (isSimulator) {
+                    caps.setCapability("isSimulator", true);
+                }
+
                 caps.setCapability("udid", udid);
 
                 caps.setCapability("fullReset", fullReset);
@@ -44,7 +49,16 @@ public class DriverManager {
                 caps.setCapability("platformName", "iOS");
                 caps.setCapability("deviceName", "iPhone");
                 caps.setCapability("automationName", "XCUITest");
-                caps.setCapability("udid", udid);  // Add support for real iOS device too
+
+                if (isSimulator) {
+                    caps.setCapability("isSimulator", true);
+                    caps.setCapability("deviceName", deviceName);
+                    caps.setCapability("platformVersion", platformVersion);
+                    // Omit udid if running on a simulator
+                } else {
+                    caps.setCapability("deviceName", deviceName);
+                    caps.setCapability("udid", udid);
+                }  // Add support for real iOS device too
 
                 caps.setCapability("fullReset", fullReset);
                 caps.setCapability("noReset", !fullReset);

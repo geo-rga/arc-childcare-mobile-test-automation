@@ -26,18 +26,22 @@ public class BaseTest {
         System.out.println(prefix + " " + message);
     }
 
-    @Parameters({"platform", "build", "udid", "fullReset", "env"})
+    @Parameters({"platform", "build", "buildNumber", "deviceName", "udid", "fullReset", "env", "isSimulator", "platformVersion"})
     @BeforeMethod
     public void setUp(ITestContext ctx,
                       @Optional("android") String platformFromXml,
                       @Optional("") String buildFromXml,
+                      @Optional("") String buildNumberFromXml,
+                      @Optional("") String deviceNameFromXml,
                       @Optional("") String udidFromXml,
                       @Optional("false") String fullResetFromXml,
-                      @Optional("staging") String envFromXml, // ✅ Default to "staging" if not provided
+                      @Optional("staging") String envFromXml,
+                      @Optional("false") String isSimulatorFromXml,
+                      @Optional("") String platformVersionFromXml,
                       Method method) {
 
         // Load config
-        config = ConfigLoader.load(platformFromXml, buildFromXml, udidFromXml, fullResetFromXml, envFromXml);
+        config = ConfigLoader.load(platformFromXml, buildFromXml, udidFromXml, fullResetFromXml, envFromXml, isSimulatorFromXml, deviceNameFromXml, platformVersionFromXml);
 
         // ✅ Inject environment into UserDataLoader for environment-specific data lookup
         UserDataLoader.setEnvironment(config.getEnv());
@@ -46,7 +50,10 @@ public class BaseTest {
                 config.getPlatform(),
                 config.getBuildPath(),
                 config.getUdid(),
-                config.isFullReset()
+                config.isFullReset(),
+                config.isSimulator(),
+                config.getDeviceName(),
+                config.getPlatformVersion()
         );
 
         // register driver for the Extent listener to capture screenshots

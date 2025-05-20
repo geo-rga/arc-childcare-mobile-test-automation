@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class LoginPage extends BasePage {
 
     private final List<By> welcomeLoginLocators;
@@ -17,7 +16,7 @@ public class LoginPage extends BasePage {
     private final List<By> bookAnotherLikeThis;
 
     public LoginPage(AppiumDriver driver, String platform) {
-        super(driver); // Pass driver to BasePage
+        super(driver);
 
         if (platform.equalsIgnoreCase("ios")) {
             welcomeLoginLocators = Arrays.asList(
@@ -28,7 +27,7 @@ public class LoginPage extends BasePage {
                     By.xpath("//XCUIElementTypeTextField[@name=\"Username field\"]")
             );
             passwordFieldLocators = Arrays.asList(
-                    By.xpath("//XCUIElementTypeTextField[@name=\"Password field\"]")
+                    By.xpath("//XCUIElementTypeSecureTextField[@name=\"Password field\"]")
             );
             loginButtonLocators = Arrays.asList(
                     By.xpath("//XCUIElementTypeButton[@name=\"CONTINUE\"]")
@@ -96,4 +95,3 @@ public class LoginPage extends BasePage {
         return waitForVisibility(bookAnotherLikeThis).isDisplayed();
     }
 }
-

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.lang.reflect.Field;
 import java.time.Duration;
 import java.util.List;
 
@@ -18,6 +19,11 @@ public class BasePage {
         this.driver = driver;
     }
 
+    /**
+     * Tries each locator; if none succeed within timeout, throws AssertionError
+     * whose message is the *field name* of the locator list, e.g.
+     *   "biometricNotNow not displayed"
+     */
     protected WebElement waitForVisibility(List<By> locators) {
         for (By locator : locators) {
             try {
@@ -25,10 +31,31 @@ public class BasePage {
                 return new WebDriverWait(driver, defaultTimeout)
                         .until(ExpectedConditions.visibilityOfElementLocated(locator));
             } catch (Exception e) {
-                System.out.println("❌ Locator failed: " + locator + " - " + e.getMessage());
+                System.out.println("❌ Locator failed: " + locator + " – " + e.getMessage());
             }
         }
-        throw new RuntimeException("No visible element found from locator list.");
+        // nothing matched → fail as an assertion
+        String fieldName = findFieldNameFor(locators);
+        throw new AssertionError(fieldName + " not displayed");
+    }
+
+    /**
+     * Reflectively finds which field in the page subclass holds this exact
+     * locator list, so we can name it in the AssertionError.
+     */
+    private String findFieldNameFor(List<By> locators) {
+        Class<?> cls = this.getClass();
+        for (Field f : cls.getDeclaredFields()) {
+            if (List.class.isAssignableFrom(f.getType())) {
+                f.setAccessible(true);
+                try {
+                    if (f.get(this) == locators) {
+                        return f.getName();
+                    }
+                } catch (IllegalAccessException ignored) { }
+            }
+        }
+        return "element";
     }
 
     protected WebElement waitForPresence(List<By> locators) {

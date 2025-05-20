@@ -9,7 +9,7 @@ import com.cube.qa.arcblood.testdata.loader.UserDataLoader; // ✅ Add this impo
 
 import io.appium.java_client.AppiumDriver;
 import org.testng.annotations.*;
-
+import org.testng.ITestContext; // added for Extent listener
 import java.lang.reflect.Method;
 
 public class BaseTest {
@@ -28,7 +28,8 @@ public class BaseTest {
 
     @Parameters({"platform", "build", "udid", "fullReset", "env"})
     @BeforeMethod
-    public void setUp(@Optional("android") String platformFromXml,
+    public void setUp(ITestContext ctx,
+                      @Optional("android") String platformFromXml,
                       @Optional("") String buildFromXml,
                       @Optional("") String udidFromXml,
                       @Optional("false") String fullResetFromXml,
@@ -47,6 +48,9 @@ public class BaseTest {
                 config.getUdid(),
                 config.isFullReset()
         );
+
+        // register driver for the Extent listener to capture screenshots
+        ctx.setAttribute("driver", driver);
 
         // TODO: Initialize page objects that will be used in most tests (e.g. log in or key flows)
         loginPage = new LoginPage(driver, config.getPlatform());

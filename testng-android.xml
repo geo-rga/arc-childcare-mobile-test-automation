@@ -5,8 +5,13 @@
     <!-- TODO: Update fullReset to "true" to run each test from a fresh install-->
     <test name="Android Tests">
         <parameter name="platform" value="android"/>
+
+        <!-- TODO: Add correct environment when testing locally-->
         <parameter name="env" value="staging"/>
+
+        <!-- TODO: Add path to app file and the build number when testing locally-->
         <parameter name="build" value="src/test/resources/apps/android/android_staging_2003.apk"/>
+        <parameter name="buildNumber" value="2003"/>
 
         <!-- TODO: To get the Android device udid, run the following in the terminal: adb devices -->
         <parameter name="udid" value="33071FDH2007QH"/>

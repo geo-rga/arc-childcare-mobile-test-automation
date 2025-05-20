@@ -62,7 +62,6 @@
     </dependencies>
   </dependencyManagement>
 
-
   <dependencies>
     <!-- Appium Java client -->
     <dependency>
@@ -99,6 +98,13 @@
       <artifactId>selenium-java</artifactId>
       <version>4.11.0</version>
     </dependency>
+
+    <!-- ExtentReports HTML reporter -->
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>5.0.9</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -120,6 +126,13 @@
           <suiteXmlFiles>
             <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
           </suiteXmlFiles>
+          <properties>
+            <!-- tell TestNG to load our listener -->
+            <property>
+              <name>listener</name>
+              <value>com.cube.qa.arcblood.utils.ExtentTestNGListener</value>
+            </property>
+          </properties>
         </configuration>
       </plugin>
     </plugins>

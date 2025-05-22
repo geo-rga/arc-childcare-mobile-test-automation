@@ -21,24 +21,24 @@ public class WelcomePage extends BasePage {
         if (platform.equalsIgnoreCase("ios")) {
             // TODO: Capture iOS objects
             appTitle = List.of(
-                    By.name("LOG IN"),
-                    By.xpath("//XCUIElementTypeButton[@name=\"LOG IN\"]")
+
+
             );
             storyText = List.of(
-                    By.name("LOG IN"),
-                    By.xpath("//XCUIElementTypeButton[@name=\"LOG IN\"]")
+
+
             );
             scheduleNewAppointmentButton = List.of(
-                    By.id("com.cube.arc.blood:id/story_text")
+
             );
             createAccountButton = List.of(
-                    By.id("com.cube.arc.blood:id/story_text")
+
             );
             logInButton = List.of(
-                    By.id("com.cube.arc.blood:id/story_text")
+
             );
             helpButton = List.of(
-                    By.id("com.cube.arc.blood:id/story_text")
+
             );
         } else {
             appTitle = List.of(

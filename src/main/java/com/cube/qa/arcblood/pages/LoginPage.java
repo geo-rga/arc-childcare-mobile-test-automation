@@ -3,7 +3,6 @@ package com.cube.qa.arcblood.pages;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class LoginPage extends BasePage {
@@ -19,79 +18,77 @@ public class LoginPage extends BasePage {
         super(driver);
 
         if (platform.equalsIgnoreCase("ios")) {
-            welcomeLoginLocators = Arrays.asList(
+            welcomeLoginLocators = List.of(
                     By.name("LOG IN"),
                     By.xpath("//XCUIElementTypeButton[@name=\"LOG IN\"]")
             );
-            usernameFieldLocators = Arrays.asList(
+            usernameFieldLocators = List.of(
                     By.xpath("//XCUIElementTypeTextField[@name=\"Username field\"]")
             );
-            passwordFieldLocators = Arrays.asList(
+            passwordFieldLocators = List.of(
                     By.xpath("//XCUIElementTypeSecureTextField[@name=\"Password field\"]")
             );
-            loginButtonLocators = Arrays.asList(
+            loginButtonLocators = List.of(
                     By.xpath("//XCUIElementTypeButton[@name=\"CONTINUE\"]")
             );
-            biometricNotNow = Arrays.asList(
+            biometricNotNow = List.of(
                     By.xpath("//XCUIElementTypeButton[@name=\"Not now\"]")
             );
-            bookAnotherLikeThis = Arrays.asList(
+            bookAnotherLikeThis = List.of(
                     By.xpath("//XCUIElementTypeButton[@name=\"BOOK ANOTHER LIKE THIS\"]")
             );
-
-        } else { // TODO: Android locators here
-            welcomeLoginLocators = Arrays.asList(
+        } else {
+            welcomeLoginLocators = List.of(
                     By.id("com.cube.arc.blood:id/log_in"),
                     By.xpath("//android.widget.Button[@text='LOG IN']")
             );
-            usernameFieldLocators = Arrays.asList(
+            usernameFieldLocators = List.of(
                     By.id("com.cube.arc.blood:id/username")
             );
-            passwordFieldLocators = Arrays.asList(
+            passwordFieldLocators = List.of(
                     By.id("com.cube.arc.blood:id/password")
             );
-            loginButtonLocators = Arrays.asList(
+            loginButtonLocators = List.of(
                     By.id("com.cube.arc.blood:id/continue_button")
             );
-            biometricNotNow = Arrays.asList(
+            biometricNotNow = List.of(
                     By.id("com.cube.arc.blood:id/not_now")
             );
-            bookAnotherLikeThis = Arrays.asList(
+            bookAnotherLikeThis = List.of(
                     By.xpath("//android.widget.Button[@text='BOOK ANOTHER LIKE THIS']")
             );
         }
     }
 
     public void startLogInFlow() {
-        waitForVisibility(welcomeLoginLocators).click();
+        tap(welcomeLoginLocators);
     }
 
     public boolean isWelcomeLoginButtonVisible() {
-        return waitForVisibility(welcomeLoginLocators).isDisplayed();
+        return isVisible(welcomeLoginLocators);
     }
 
-    // Username
     public void enterUsername(String username) {
-        waitForVisibility(usernameFieldLocators).sendKeys(username);
+        enterText(usernameFieldLocators, username);
     }
 
     public boolean isUsernameFieldVisible() {
-        return waitForVisibility(usernameFieldLocators).isDisplayed();
+        return isVisible(usernameFieldLocators);
     }
 
     public void enterPassword(String password) {
-        waitForVisibility(passwordFieldLocators).sendKeys(password);
+        enterText(passwordFieldLocators, password);
     }
 
     public void tapLoginButton() {
-        waitForVisibility(loginButtonLocators).click();
+        tap(loginButtonLocators);
     }
 
     public void skipBiometricSetUp() {
-        waitForVisibility(biometricNotNow).click();
+        tap(biometricNotNow);
     }
 
     public boolean isBookAnotherLikeThisVisible() {
-        return waitForVisibility(bookAnotherLikeThis).isDisplayed();
+        return isVisible(bookAnotherLikeThis);
     }
 }

@@ -5,6 +5,7 @@ import com.cube.qa.arcblood.config.TestConfig;
 
 // TODO: Import your page objects here for pages that will be used in most tests (e.g. log in or key flows)
 import com.cube.qa.arcblood.pages.LoginPage;
+import com.cube.qa.arcblood.pages.WelcomePage;
 import com.cube.qa.arcblood.testdata.loader.UserDataLoader; // ✅ Add this import
 
 import io.appium.java_client.AppiumDriver;
@@ -19,6 +20,7 @@ public class BaseTest {
 
     // TODO: Add your page objects here for pages that will be used in most tests (e.g. log in or key flows)
     protected LoginPage loginPage;
+    protected WelcomePage welcomePage;
 
     protected void log(String message) {
         String prefix = "[" + config.getPlatform().toUpperCase() +
@@ -61,6 +63,7 @@ public class BaseTest {
 
         // TODO: Initialize page objects that will be used in most tests (e.g. log in or key flows)
         loginPage = new LoginPage(driver, config.getPlatform());
+        welcomePage = new WelcomePage(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());

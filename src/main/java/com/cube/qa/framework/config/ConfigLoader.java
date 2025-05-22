@@ -1,4 +1,4 @@
-package com.cube.qa.arcblood.config;
+package com.cube.qa.framework.config;
 
 public class ConfigLoader {
     public static TestConfig load(String platformFromXml, String buildFromXml, String udidFromXml,

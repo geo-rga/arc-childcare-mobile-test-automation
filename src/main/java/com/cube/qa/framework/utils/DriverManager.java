@@ -1,4 +1,4 @@
-package com.cube.qa.arcblood.utils;
+package com.cube.qa.framework.utils;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;

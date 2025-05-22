@@ -1,4 +1,4 @@
-package com.cube.qa.arcblood.testdata.model;
+package com.cube.qa.framework.testdata.model;
 
 public class HealthCharts {
     public boolean hasBloodPressure;

@@ -167,7 +167,7 @@
           <properties>
             <property>
               <name>listener</name>
-              <value>com.cube.qa.arcblood.utils.ExtentTestNGListener</value>
+              <value>com.cube.qa.framework.utils.ExtentTestNGListener</value>
             </property>
           </properties>
         </configuration>

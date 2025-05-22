@@ -1,6 +1,6 @@
-package com.cube.qa.arcblood.testdata.loader;
+package com.cube.qa.framework.testdata.loader;
 
-import com.cube.qa.arcblood.testdata.model.User;
+import com.cube.qa.framework.testdata.model.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

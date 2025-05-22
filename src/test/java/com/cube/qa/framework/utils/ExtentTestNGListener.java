@@ -1,5 +1,5 @@
-// src/test/java/com/cube/qa/arcblood/utils/ExtentTestNGListener.java
-package com.cube.qa.arcblood.utils;
+// src/test/java/com/cube/qa/framework/utils/ExtentTestNGListener.java
+package com.cube.qa.framework.utils;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;

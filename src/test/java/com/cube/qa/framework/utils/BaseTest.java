@@ -1,12 +1,12 @@
-package com.cube.qa.arcblood.utils;
+package com.cube.qa.framework.utils;
 
-import com.cube.qa.arcblood.config.ConfigLoader;
-import com.cube.qa.arcblood.config.TestConfig;
+import com.cube.qa.framework.config.ConfigLoader;
+import com.cube.qa.framework.config.TestConfig;
 
 // TODO: Import your page objects here for pages that will be used in most tests (e.g. log in or key flows)
-import com.cube.qa.arcblood.pages.LoginPage;
-import com.cube.qa.arcblood.pages.WelcomePage;
-import com.cube.qa.arcblood.testdata.loader.UserDataLoader; // ✅ Add this import
+import com.cube.qa.framework.pages.LoginPage;
+import com.cube.qa.framework.pages.WelcomePage;
+import com.cube.qa.framework.testdata.loader.UserDataLoader; // ✅ Add this import
 
 import io.appium.java_client.AppiumDriver;
 import org.testng.annotations.*;

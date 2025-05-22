@@ -22,6 +22,9 @@ appium.log
 *.tmp
 *.trace
 
+# Ignore all JSON files in prod testdata
+src/test/resources/testdata/prod/*.json
+
 # IntelliJ IDEA
 .idea/
 *.iml

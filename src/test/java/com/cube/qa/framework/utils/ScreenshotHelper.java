@@ -1,5 +1,5 @@
-// src/main/java/com/cube/qa/arcblood/utils/ScreenshotHelper.java
-package com.cube.qa.arcblood.utils;
+// src/main/java/com/cube/qa/framework/utils/ScreenshotHelper.java
+package com.cube.qa.framework.utils;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.OutputType;

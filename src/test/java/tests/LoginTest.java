@@ -1,8 +1,8 @@
 package tests;
 
-import com.cube.qa.arcblood.testdata.loader.UserDataLoader;
-import com.cube.qa.arcblood.testdata.model.User;
-import com.cube.qa.arcblood.utils.BaseTest;
+import com.cube.qa.framework.testdata.loader.UserDataLoader;
+import com.cube.qa.framework.testdata.model.User;
+import com.cube.qa.framework.utils.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

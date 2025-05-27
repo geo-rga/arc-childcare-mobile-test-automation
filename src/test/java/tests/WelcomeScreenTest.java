@@ -8,10 +8,10 @@ public class WelcomeScreenTest extends BaseTest {
     @Test
     public void validateDisplayOfWelcomeScreen() {
         welcomePage.isAppTitleVisible();
-        welcomePage.isScheduleNewAppointmentButtonVisible();
+        welcomePage.isScheduleAppointmentButtonVisible();
         welcomePage.isCreateAccountButtonVisible();
         welcomePage.isLogInButtonVisible();
-        welcomePage.isHelpButtonVisible();
+        welcomePage.isHelpLinkVisible();
     }
 
 

@@ -4,8 +4,10 @@ import com.cube.qa.framework.config.ConfigLoader;
 import com.cube.qa.framework.config.TestConfig;
 
 // TODO: Import your page objects here for pages that will be used in most tests (e.g. log in or key flows)
-import com.cube.qa.framework.pages.LoginPage;
-import com.cube.qa.framework.pages.WelcomePage;
+import com.cube.qa.framework.pages.onboarding.BiometricPermissionsPage;
+import com.cube.qa.framework.pages.onboarding.LoginPage;
+import com.cube.qa.framework.pages.onboarding.WelcomePage;
+import com.cube.qa.framework.pages.profileTab.MenuItems;
 import com.cube.qa.framework.testdata.loader.UserDataLoader; // ✅ Add this import
 
 import io.appium.java_client.AppiumDriver;
@@ -21,6 +23,8 @@ public class BaseTest {
     // TODO: Add your page objects here for pages that will be used in most tests (e.g. log in or key flows)
     protected LoginPage loginPage;
     protected WelcomePage welcomePage;
+    protected BiometricPermissionsPage biometricPermissionsPage;
+    protected MenuItems menuItems;
 
     protected void log(String message) {
         String prefix = "[" + config.getPlatform().toUpperCase() +
@@ -64,6 +68,8 @@ public class BaseTest {
         // TODO: Initialize page objects that will be used in most tests (e.g. log in or key flows)
         loginPage = new LoginPage(driver, config.getPlatform());
         welcomePage = new WelcomePage(driver, config.getPlatform());
+        biometricPermissionsPage = new BiometricPermissionsPage(driver, config.getPlatform());
+        menuItems = new MenuItems(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());

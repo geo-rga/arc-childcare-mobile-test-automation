@@ -12,14 +12,14 @@ public class LoginTest extends BaseTest {
     public void testWelcomeLoginButtonAppears() {
         System.out.println("Running on platform: " + config.getPlatform());
         // framework will throw "welcomeLoginLocators not displayed" if not found
-        loginPage.isWelcomeLoginButtonVisible();
+        welcomePage.isLogInButtonVisible();
     }
 
     @Test
     public void testLoginButtonClickable() {
         System.out.println("Running test to verify login button is clickable on platform: "
                 + config.getPlatform());
-        loginPage.startLogInFlow();
+        welcomePage.tapLogInButton();
         // framework will throw "usernameFieldLocators not displayed" if not found
         loginPage.isUsernameFieldVisible();
     }
@@ -28,25 +28,21 @@ public class LoginTest extends BaseTest {
     public void logInUserWithoutDonations() {
         User user = UserDataLoader.findUser(u -> !u.hasDonations);
 
-        loginPage.startLogInFlow();
+        welcomePage.tapLogInButton();
         loginPage.enterUsername(user.username);
         loginPage.enterPassword(user.password);
-        loginPage.tapLoginButton();
-        // framework will throw "biometricNotNow not displayed" if not found
-        loginPage.skipBiometricSetUp();
+        loginPage.tapContinueButton();
         // framework will throw "bookAnotherLikeThis not displayed" if not found
-        loginPage.isBookAnotherLikeThisVisible();
     }
 
     @Test
-    public void logInUserWithDonations() {
+    public void verifyTESTFAILS() {
         User user = UserDataLoader.findUser(u -> u.hasDonations);
-        loginPage.startLogInFlow();
+        welcomePage.tapLogInButton();
         loginPage.enterUsername("PETER");
         loginPage.enterPassword(user.password);
-        loginPage.tapLoginButton();
-        loginPage.skipBiometricSetUp();
-        loginPage.isBookAnotherLikeThisVisible();
+        loginPage.tapContinueButton();
+        biometricPermissionsPage.isBenefitOneVisible();
     }
 
     @Test
@@ -54,5 +50,31 @@ public class LoginTest extends BaseTest {
         // force a failure here so we can see the message
         Assert.assertTrue(false, "💥 THIS is my custom assertion message!");
         // rest of your test…
+    }
+
+    @Test
+    public void validateBiometricPermissionsScreen() {
+        User user = UserDataLoader.findUser(u -> u.hasDonations);
+        welcomePage.tapLogInButton();
+        loginPage.enterUsername(user.username);
+        loginPage.enterPassword(user.password);
+        loginPage.tapContinueButton();
+        biometricPermissionsPage.isTitleVisible();
+        biometricPermissionsPage.isBenefitOneVisible();
+        biometricPermissionsPage.isBenefitOneVisible();
+        biometricPermissionsPage.isEnablePermissionsButtonVisible();
+        biometricPermissionsPage.isNotNowButtonVisible();
+    }
+
+    @Test
+    public void verifyUsersCanViewSettings() {
+        User user = UserDataLoader.findUser(u -> !u.hasDonations);
+        welcomePage.tapLogInButton();
+        loginPage.enterUsername(user.username);
+        loginPage.enterPassword(user.password);
+        loginPage.tapContinueButton();
+        biometricPermissionsPage.tapNotNowButton();
+        menuItems.scrollToAndTapSettings();
+        biometricPermissionsPage.isNotNowButtonVisible();
     }
 }

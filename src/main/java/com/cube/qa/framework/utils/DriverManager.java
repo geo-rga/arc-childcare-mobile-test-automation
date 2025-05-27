@@ -16,7 +16,7 @@ public class DriverManager {
         DesiredCapabilities caps = new DesiredCapabilities();
 
         try {
-            URL appiumServerUrl = new URL("http://127.0.0.1:4723/wd/hub");
+            URL appiumServerUrl = new URL("http://127.0.0.1:4723");
 
             if (platform.equalsIgnoreCase("android")) {
                 caps.setCapability("platformName", "Android");
@@ -62,7 +62,7 @@ public class DriverManager {
 
                 caps.setCapability("fullReset", fullReset);
                 caps.setCapability("noReset", !fullReset);
-                caps.setCapability("autoAcceptAlerts", true); // TODO: Set this in testng.xml
+                caps.setCapability("autoAcceptAlerts", false); // TODO: Set this in testng.xml
 
                 String fullAppPath = Paths.get(System.getProperty("user.dir"), buildPath).normalize().toString();
                 caps.setCapability("app", fullAppPath);

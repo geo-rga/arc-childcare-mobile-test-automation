@@ -5,10 +5,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.JavascriptExecutor;
+import io.appium.java_client.AppiumBy;
+
 
 import java.lang.reflect.Field;
 import java.time.Duration;
 import java.util.List;
+import java.util.Map;
 
 public class BasePage {
 
@@ -115,33 +119,83 @@ public class BasePage {
         return waitForTextToBePresent(locators, expectedText); // throws RuntimeException if not found
     }
 
-    /**
-     * getText() Retrieves the visible text from the element.
-     */
     protected String getText(List<By> locators) {
         return waitForVisibility(locators).getText();
     }
 
-    /**
-     * clear() Clears any existing text from an editable field.
-     */
     protected void clear(List<By> locators) {
         waitForVisibility(locators).clear();
     }
 
-    /**
-     * isChecked()	Checks if a checkbox or toggle is currently checked.
-     */
     protected boolean isChecked(List<By> locators) {
         return waitForVisibility(locators).isSelected();
     }
 
-    /**
-     * isUnchecked() Checks if a checkbox or toggle is currently unchecked.
-     */
     protected boolean isUnchecked(List<By> locators) {
         return !waitForVisibility(locators).isSelected();
     }
+
+    // === Scrolling method ===
+
+    protected void scrollToElement(By locator, String direction) {
+        int maxScrolls = 5;
+        int attempts = 0;
+        String platform = driver.getCapabilities().getPlatformName().toString().toLowerCase();
+
+        // ✅ Prime iOS scroll view with a soft swipe to avoid tap interference
+        if (platform.equals("ios")) {
+            try {
+                ((JavascriptExecutor) driver).executeScript("mobile: swipe", Map.of("direction", "down"));
+            } catch (Exception ignored) {
+                System.out.println("⚠ Initial soft swipe failed to run");
+            }
+        }
+
+        while (attempts < maxScrolls) {
+            try {
+                WebElement element = driver.findElement(locator);
+                if (element.isDisplayed()) return;
+            } catch (Exception ignored) {}
+
+            if (platform.equals("android")) {
+                String text = extractText(locator);
+                String uiScroll = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView("
+                        + "new UiSelector().textContains(\"" + text + "\"))";
+
+                try {
+                    driver.findElement(AppiumBy.androidUIAutomator(uiScroll));
+                } catch (Exception scrollFail) {
+                    System.out.println("❌ Android scroll failed: " + scrollFail.getMessage());
+                }
+
+            } else if (platform.equals("ios")) {
+                try {
+                    ((io.appium.java_client.ios.IOSDriver) driver).executeScript("mobile: scroll", Map.of(
+                            "direction", direction,
+                            "predicateString", "name CONTAINS '" + extractText(locator) + "'"
+                    ));
+                } catch (Exception scrollFail) {
+                    System.out.println("⚠ iOS scroll failed: " + scrollFail.getMessage());
+                }
+            }
+
+            attempts++;
+        }
+
+        throw new RuntimeException("❌ Failed to scroll to element after " + maxScrolls + " attempts: " + locator);
+    }
+
+
+
+    private String extractText(By locator) {
+        String raw = locator.toString();
+        int index = raw.indexOf(":");
+        if (index != -1 && index + 1 < raw.length()) {
+            return raw.substring(index + 1).trim().replaceAll("[^a-zA-Z0-9\\s]", "");
+        }
+        return "";
+    }
+
 
     // === Reflection for better error output ===
 

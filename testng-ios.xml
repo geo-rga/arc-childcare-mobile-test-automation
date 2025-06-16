@@ -20,10 +20,18 @@
         <parameter name="env" value="staging"/>
         <parameter name="isSimulator" value="false"/>
 
-        <!-- TODO: Add test files to be ran here -->
+        <!-- TODO: Select the tests to be ran here -->
+        <groups>
+            <run>
+                <include name="building"/>
+<!--                <include name="smoke"/>-->
+<!--                <include name="regression"/>-->
+            </run>
+        </groups>
         <classes>
-            <class name="tests.LoginTest"/>
-            <class name="tests.WelcomeScreenTest"/>
+<!--            <class name="tests.LoginTest"/>-->
+<!--            <class name="tests.WelcomeScreenTest"/>-->
+            <class name="tests.CreateAccountTest"/>
         </classes>
     </test>
 </suite>

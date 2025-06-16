@@ -74,7 +74,7 @@ public class LoginTest extends BaseTest {
         loginPage.enterPassword(user.password);
         loginPage.tapContinueButton();
         biometricPermissionsPage.tapNotNowButton();
-        menuItems.scrollToAndTapSettings();
+        profileTabMenuItems.scrollToAndTapSettings();
         biometricPermissionsPage.isNotNowButtonVisible();
     }
 }

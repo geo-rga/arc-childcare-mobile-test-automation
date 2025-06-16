@@ -185,7 +185,25 @@ public class BasePage {
         throw new RuntimeException("❌ Failed to scroll to element after " + maxScrolls + " attempts: " + locator);
     }
 
+    /**
+     * isDynamicTextVisible()
+     * Checks whether a dynamically generated string is visible on screen
+     * without requiring predefined locators.
+     */
+    public boolean isDynamicTextVisible(String text) {
+        String platform = driver.getCapabilities().getPlatformName().toString().toLowerCase();
+        By dynamicLocator;
 
+        if (platform.equals("android")) {
+            dynamicLocator = By.xpath("//*[contains(@text, '" + text + "')]");
+        } else if (platform.equals("ios")) {
+            dynamicLocator = By.xpath("//XCUIElementTypeStaticText[contains(@name, '" + text + "') or contains(@label, '" + text + "') or contains(@value, '" + text + "')]");
+        } else {
+            throw new RuntimeException("Unsupported platform: " + platform);
+        }
+
+        return isVisible(List.of(dynamicLocator));
+    }
 
     private String extractText(By locator) {
         String raw = locator.toString();

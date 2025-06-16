@@ -4,10 +4,10 @@ import com.cube.qa.framework.config.ConfigLoader;
 import com.cube.qa.framework.config.TestConfig;
 
 // TODO: Import your page objects here for pages that will be used in most tests (e.g. log in or key flows)
-import com.cube.qa.framework.pages.onboarding.BiometricPermissionsPage;
-import com.cube.qa.framework.pages.onboarding.LoginPage;
-import com.cube.qa.framework.pages.onboarding.WelcomePage;
-import com.cube.qa.framework.pages.profileTab.MenuItems;
+import com.cube.qa.framework.pages.deviceHelpers.AndroidHelpersPage;
+import com.cube.qa.framework.pages.deviceHelpers.IOSHelpersPage;
+import com.cube.qa.framework.pages.onboarding.*;
+import com.cube.qa.framework.pages.profileTab.ProfileTabMenuItems;
 import com.cube.qa.framework.testdata.loader.UserDataLoader; // ✅ Add this import
 
 import io.appium.java_client.AppiumDriver;
@@ -20,11 +20,26 @@ public class BaseTest {
     protected AppiumDriver driver;
     protected TestConfig config;
 
+    protected AndroidHelpersPage androidHelpersPage;
+    protected IOSHelpersPage iosHelpersPage;
+
     // TODO: Add your page objects here for pages that will be used in most tests (e.g. log in or key flows)
-    protected LoginPage loginPage;
+    // Onboarding
     protected WelcomePage welcomePage;
+    protected LoginPage loginPage;
     protected BiometricPermissionsPage biometricPermissionsPage;
-    protected MenuItems menuItems;
+
+    protected CreateAccountEmailPage createAccountEmailPage;
+    protected CreateAccountNamePage createAccountNamePage;
+    protected CreateAccountDobPage createAccountDobPage;
+    protected CreateAccountZipCodePage createAccountZipCodePage;
+    protected CreateAccountUsernamePage createAccountUsernamePage;
+    protected CreateAccountPasswordPage createAccountPasswordPage;
+    protected CreateAccountDoYouHaveADonorIdPage createAccountDoYouHaveADonorIdPage;
+    protected CreateAccountWhatsYourDonorIdPage createAccountWhatsYourDonorIdPage;
+
+    // Profile Tab
+    protected ProfileTabMenuItems profileTabMenuItems;
 
     protected void log(String message) {
         String prefix = "[" + config.getPlatform().toUpperCase() +
@@ -32,8 +47,52 @@ public class BaseTest {
         System.out.println(prefix + " " + message);
     }
 
+    protected boolean isAndroid() {
+        return config.getPlatform().equalsIgnoreCase("android");
+    }
+
+    protected boolean isIOS() {
+        return config.getPlatform().equalsIgnoreCase("ios");
+    }
+
+    // TODO: Add Repeated App Flow Functions in here
+    public void createAccountFlow(String email) {
+        createAccountZipCodePage.tapContinueButton();
+    }
+
+    public void acceptPermissions() {
+        try {
+            Thread.sleep(1000); // 1-second delay
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt(); // Restore the interrupt status
+            System.out.println("⚠️ Interrupted during sleep: " + e.getMessage());
+        }
+
+        if(isIOS()) {
+            iosHelpersPage.acceptIOSAlert();
+        } else {
+            androidHelpersPage.acceptAndroidPermission();
+        }
+    }
+
+    public void dismissPermissions() {
+        try {
+            Thread.sleep(1000); // 1-second delay
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt(); // Restore the interrupt status
+            System.out.println("⚠️ Interrupted during sleep: " + e.getMessage());
+        }
+
+        if(isIOS()) {
+            iosHelpersPage.dismissIOSAlert();
+        } else {
+            androidHelpersPage.dismissAndroidPermission();
+        }
+    }
+
+
     @Parameters({"platform", "build", "buildNumber", "deviceName", "udid", "fullReset", "env", "isSimulator", "platformVersion"})
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp(ITestContext ctx,
                       @Optional("android") String platformFromXml,
                       @Optional("") String buildFromXml,
@@ -65,17 +124,32 @@ public class BaseTest {
         // register driver for the Extent listener to capture screenshots
         ctx.setAttribute("driver", driver);
 
+        androidHelpersPage = new AndroidHelpersPage(driver);
+        iosHelpersPage = new IOSHelpersPage(driver);
+
         // TODO: Initialize page objects that will be used in most tests (e.g. log in or key flows)
-        loginPage = new LoginPage(driver, config.getPlatform());
+        // Onboarding
         welcomePage = new WelcomePage(driver, config.getPlatform());
+        loginPage = new LoginPage(driver, config.getPlatform());
         biometricPermissionsPage = new BiometricPermissionsPage(driver, config.getPlatform());
-        menuItems = new MenuItems(driver, config.getPlatform());
+
+        createAccountEmailPage = new CreateAccountEmailPage(driver, config.getPlatform());
+        createAccountNamePage = new CreateAccountNamePage(driver, config.getPlatform());
+        createAccountDobPage = new CreateAccountDobPage(driver, config.getPlatform());
+        createAccountZipCodePage = new CreateAccountZipCodePage(driver, config.getPlatform());
+        createAccountUsernamePage = new CreateAccountUsernamePage(driver, config.getPlatform());
+        createAccountPasswordPage = new CreateAccountPasswordPage(driver, config.getPlatform());
+        createAccountDoYouHaveADonorIdPage = new CreateAccountDoYouHaveADonorIdPage(driver, config.getPlatform());
+        createAccountWhatsYourDonorIdPage = new CreateAccountWhatsYourDonorIdPage(driver, config.getPlatform());
+
+        // Profile Tab
+        profileTabMenuItems = new ProfileTabMenuItems(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         if (driver != null) {
             driver.quit();

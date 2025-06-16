@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import io.appium.java_client.AppiumDriver;
 import java.util.List;
 
-public class MenuItems extends BasePage {
+public class ProfileTabMenuItems extends BasePage {
 
     private List<By> scheduleAppointmentLocators;
     private List<By> scheduleAppointmentDescriptionLocators;
@@ -30,7 +30,7 @@ public class MenuItems extends BasePage {
     private List<By> settingsLocators;
     private List<By> settingsDescriptionLocators;
 
-    public MenuItems(AppiumDriver driver, String platform) {
+    public ProfileTabMenuItems(AppiumDriver driver, String platform) {
         super(driver);
 
         if (platform.equalsIgnoreCase("ios")) {

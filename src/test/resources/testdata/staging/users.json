@@ -12,6 +12,12 @@
     "username": "SSKEYS24",
     "password": "Redcross1",
     "hasDonations": true,
+    "eligibility": {
+      "blood": "now",
+      "powerRed": "now",
+      "platelets": "now",
+      "abPlasma": "now"
+    },
     "healthCharts": {
       "hasBloodPressure": false,
       "hasHemoglobin": false

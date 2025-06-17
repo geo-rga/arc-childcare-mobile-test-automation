@@ -12,7 +12,7 @@
 
         <!-- TODO: To get the Android device udid, run the following in the terminal: adb devices -->
         <parameter name="deviceName" value=""/>
-        <parameter name="udid" value="R5CR821BC4N"/>
+        <parameter name="udid" value="33071FDH2007QH"/>
         <parameter name="fullReset" value="true"/>
 
         <!-- TODO: Add correct environment when testing locally-->
@@ -24,13 +24,14 @@
         <!-- TODO: Select the tests to be ran here -->
         <groups>
             <run>
-                <include name="building"/>
+                <include name="smoke"/>
             </run>
         </groups>
         <classes>
             <class name="tests.LoginTest"/>
             <class name="tests.WelcomeScreenTest"/>
             <class name="tests.CreateAccountTest"/>
+            <class name="tests.ScheduleAppointmentTest"/>
         </classes>
     </test>
 </suite>

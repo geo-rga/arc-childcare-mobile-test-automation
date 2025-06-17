@@ -8,51 +8,35 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    @Test
-    public void testWelcomeLoginButtonAppears() {
-        System.out.println("Running on platform: " + config.getPlatform());
-        // framework will throw "welcomeLoginLocators not displayed" if not found
-        welcomePage.isLogInButtonVisible();
-    }
-
-    @Test
-    public void testLoginButtonClickable() {
-        System.out.println("Running test to verify login button is clickable on platform: "
-                + config.getPlatform());
-        welcomePage.tapLogInButton();
-        // framework will throw "usernameFieldLocators not displayed" if not found
-        loginPage.isUsernameFieldVisible();
-    }
-
-    @Test
-    public void logInUserWithoutDonations() {
-        User user = UserDataLoader.findUser(u -> !u.hasDonations);
-
-        welcomePage.tapLogInButton();
-        loginPage.enterUsername(user.username);
-        loginPage.enterPassword(user.password);
-        loginPage.tapContinueButton();
-        // framework will throw "bookAnotherLikeThis not displayed" if not found
-    }
-
-    @Test
-    public void verifyTESTFAILS() {
+    @Test(groups = {"login", "smoke"})
+    public void verifyUsersCanLogIntoApp() {
         User user = UserDataLoader.findUser(u -> u.hasDonations);
+        loginToApp(user.username, user.password);
+    }
+
+    @Test(groups = {"login"})
+    public void verifyUsersCanAttemptToLogInAgain() {
         welcomePage.tapLogInButton();
-        loginPage.enterUsername("PETER");
-        loginPage.enterPassword(user.password);
+        loginPage.enterUsername("invalidUser");
+        loginPage.enterPassword("invalidPassword!");
         loginPage.tapContinueButton();
-        biometricPermissionsPage.isBenefitOneVisible();
+        loginPage.tapTryAgainButton();
+        loginPage.isTryAgainNotVisible();
     }
 
-    @Test
-    public void testFailMessage() {
-        // force a failure here so we can see the message
-        Assert.assertTrue(false, "💥 THIS is my custom assertion message!");
-        // rest of your test…
+    @Test(groups = {"login"})
+    public void verifyUsersSeeErrorWhenEnteringIncorrectDetails() {
+        welcomePage.tapLogInButton();
+        loginPage.enterUsername("invalidUser");
+        loginPage.enterPassword("invalidPassword!");
+        loginPage.tapContinueButton();
+        loginPage.isInvalidLoginTitleVisible();
+        loginPage.isInvalidLoginMessageVisible();
+        loginPage.isTryAgainButtonVisible();
+        loginPage.isHelpButtonVisible();
     }
 
-    @Test
+    @Test(groups = {"biometrics"})
     public void validateBiometricPermissionsScreen() {
         User user = UserDataLoader.findUser(u -> u.hasDonations);
         welcomePage.tapLogInButton();
@@ -66,15 +50,4 @@ public class LoginTest extends BaseTest {
         biometricPermissionsPage.isNotNowButtonVisible();
     }
 
-    @Test
-    public void verifyUsersCanViewSettings() {
-        User user = UserDataLoader.findUser(u -> !u.hasDonations);
-        welcomePage.tapLogInButton();
-        loginPage.enterUsername(user.username);
-        loginPage.enterPassword(user.password);
-        loginPage.tapContinueButton();
-        biometricPermissionsPage.tapNotNowButton();
-        profileTabMenuItems.scrollToAndTapSettings();
-        biometricPermissionsPage.isNotNowButtonVisible();
-    }
 }

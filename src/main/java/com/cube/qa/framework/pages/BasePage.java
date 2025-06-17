@@ -8,6 +8,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
 import io.appium.java_client.AppiumBy;
 
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 
 import java.lang.reflect.Field;
 import java.time.Duration;
@@ -98,7 +101,11 @@ public class BasePage {
     // === Abstracted interaction methods ===
 
     protected void tap(List<By> locators) {
-        waitToBeClickable(locators).click();
+        WebElement element = waitToBeClickable(locators);
+        try {
+            Thread.sleep(300); // Slight pause to ensure visibility before tap
+        } catch (InterruptedException ignored) {}
+        element.click();
     }
 
     protected void enterText(List<By> locators, String text) {
@@ -230,5 +237,15 @@ public class BasePage {
             }
         }
         return "element";
+    }
+
+    // Wait function for slow to load elements
+    protected void waitForSeconds(int seconds) {
+        try {
+            System.out.println("⏳ Waiting for " + seconds + " seconds");
+            Thread.sleep(seconds * 1000L);
+        } catch (InterruptedException ignored) {
+            System.out.println("⚠ Interrupted during wait");
+        }
     }
 }

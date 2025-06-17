@@ -242,40 +242,15 @@ public class CreateAccountTest extends BaseTest {
         createAccountDoYouHaveADonorIdPage.tapNoDonorIdButton();
         biometricPermissionsPage.tapNotNowButton();
 
-        // Accept notifications
-        iosHelpersPage.acceptIOSAlert();
-
-        try {
-            Thread.sleep(2000); // Wait 2 seconds to allow the next alert to appear
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (isIOS()) {
+            dismissPermissions();
+            dismissPermissions();
+        } else {
+            acceptPermissions();
+            acceptPermissions();
         }
-
-        // Accept location permissions
-        iosHelpersPage.acceptIOSAlert();
 
         profileTabMenuItems.isDynamicTextVisible(generatedEmail);
     }
-
-    @Test(groups = {"building"})
-    public void permissionsAccept() {
-        User user = UserDataLoader.findUser(u -> u.hasDonations);
-
-        // Preconditions
-        welcomePage.tapLogInButton();
-
-        loginPage.enterUsername(user.username);
-        loginPage.enterPassword(user.password);
-        loginPage.tapContinueButton();
-
-        biometricPermissionsPage.tapNotNowButton();
-
-        dismissPermissions();
-        dismissPermissions();
-
-        loginPage.enterUsername(user.username);
-    }
-
-
 
 }

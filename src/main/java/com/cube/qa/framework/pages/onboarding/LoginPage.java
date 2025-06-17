@@ -149,6 +149,7 @@ public class LoginPage extends BasePage {
     public boolean isTryAgainButtonVisible() {
         return isVisible(tryAgainButtonLocators);
     }
+    public boolean isTryAgainNotVisible() { return isInvisible(tryAgainButtonLocators); }
     public void tapTryAgainButton() {
         tap(tryAgainButtonLocators);
     }

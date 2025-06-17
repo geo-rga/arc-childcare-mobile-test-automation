@@ -23,15 +23,14 @@
         <!-- TODO: Select the tests to be ran here -->
         <groups>
             <run>
-                <include name="building"/>
-<!--                <include name="smoke"/>-->
-<!--                <include name="regression"/>-->
+                <include name="wip"/>
             </run>
         </groups>
         <classes>
-<!--            <class name="tests.LoginTest"/>-->
-<!--            <class name="tests.WelcomeScreenTest"/>-->
+            <class name="tests.LoginTest"/>
+            <class name="tests.WelcomeScreenTest"/>
             <class name="tests.CreateAccountTest"/>
+            <class name="tests.ScheduleAppointmentTest"/>
         </classes>
     </test>
 </suite>

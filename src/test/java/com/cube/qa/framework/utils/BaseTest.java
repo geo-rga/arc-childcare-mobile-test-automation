@@ -4,10 +4,12 @@ import com.cube.qa.framework.config.ConfigLoader;
 import com.cube.qa.framework.config.TestConfig;
 
 // TODO: Import your page objects here for pages that will be used in most tests (e.g. log in or key flows)
+import com.cube.qa.framework.pages.DonationTypePage;
 import com.cube.qa.framework.pages.deviceHelpers.AndroidHelpersPage;
 import com.cube.qa.framework.pages.deviceHelpers.IOSHelpersPage;
 import com.cube.qa.framework.pages.onboarding.*;
 import com.cube.qa.framework.pages.profileTab.ProfileTabMenuItems;
+import com.cube.qa.framework.pages.scheduling.*;
 import com.cube.qa.framework.testdata.loader.UserDataLoader; // ✅ Add this import
 
 import io.appium.java_client.AppiumDriver;
@@ -38,6 +40,17 @@ public class BaseTest {
     protected CreateAccountDoYouHaveADonorIdPage createAccountDoYouHaveADonorIdPage;
     protected CreateAccountWhatsYourDonorIdPage createAccountWhatsYourDonorIdPage;
 
+    // Schedule Appointments
+    protected SmartSchedulingPage smartSchedulingPage;
+    protected DonationTypePage donationTypePage;
+    protected DayPage dayPage;
+    protected TimePage timePage;
+    protected LocationPage locationPage;
+    protected DriveResultsPage driveResultsPage;
+    protected ConfirmAppointmentPage confirmAppointmentPage;
+    protected AppointmentConfirmedPage appointmentConfirmedPage;
+    protected BookingErrorPage bookingErrorPage;
+
     // Profile Tab
     protected ProfileTabMenuItems profileTabMenuItems;
 
@@ -58,6 +71,24 @@ public class BaseTest {
     // TODO: Add Repeated App Flow Functions in here
     public void createAccountFlow(String email) {
         createAccountZipCodePage.tapContinueButton();
+    }
+
+    // Log in to app and dismiss permissions
+    public void loginToApp(String username, String password) {
+        welcomePage.tapLogInButton();
+        loginPage.enterUsername(username);
+        loginPage.enterPassword(password);
+        loginPage.tapContinueButton();
+        biometricPermissionsPage.tapNotNowButton();
+
+        if (isIOS()) {
+            dismissPermissions();
+            dismissPermissions();
+        } else {
+            acceptPermissions();
+            acceptPermissions();
+        }
+
     }
 
     public void acceptPermissions() {
@@ -141,6 +172,17 @@ public class BaseTest {
         createAccountPasswordPage = new CreateAccountPasswordPage(driver, config.getPlatform());
         createAccountDoYouHaveADonorIdPage = new CreateAccountDoYouHaveADonorIdPage(driver, config.getPlatform());
         createAccountWhatsYourDonorIdPage = new CreateAccountWhatsYourDonorIdPage(driver, config.getPlatform());
+
+        // Schedule Appointments
+        smartSchedulingPage = new SmartSchedulingPage(driver, config.getPlatform());
+        donationTypePage = new DonationTypePage(driver, config.getPlatform());
+        dayPage = new DayPage(driver, config.getPlatform());
+        timePage = new TimePage(driver, config.getPlatform());
+        locationPage = new LocationPage(driver, config.getPlatform());
+        driveResultsPage = new DriveResultsPage(driver, config.getPlatform());
+        confirmAppointmentPage = new ConfirmAppointmentPage(driver, config.getPlatform());
+        appointmentConfirmedPage = new AppointmentConfirmedPage(driver, config.getPlatform());
+        bookingErrorPage = new BookingErrorPage(driver, config.getPlatform());
 
         // Profile Tab
         profileTabMenuItems = new ProfileTabMenuItems(driver, config.getPlatform());

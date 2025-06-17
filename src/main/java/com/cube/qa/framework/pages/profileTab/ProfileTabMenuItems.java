@@ -82,6 +82,19 @@ public class ProfileTabMenuItems extends BasePage {
         }
     }
 
+    // Scroll and Tap Functions
+    public void scrollToAndTapScheduleAppointment() { scrollToElement(scheduleAppointmentLocators.get(0), "down"); tapScheduleAppointment(); }
+    public void scrollToAndTapDonorCard() { scrollToElement(donorCardLocators.get(0), "down"); tapDonorCard(); }
+    public void scrollToAndTapBloodJourney() { scrollToElement(bloodJourneyLocators.get(0), "down"); tapBloodJourney(); }
+    public void scrollToAndTapDonationHistory() { scrollToElement(donationHistoryLocators.get(0), "down"); tapDonationHistory(); }
+    public void scrollToAndTapHealthCharts() { scrollToElement(healthChartsLocators.get(0), "down"); tapHealthCharts(); }
+    public void scrollToAndTapManageAppointments() { scrollToElement(manageAppointmentsLocators.get(0), "down"); tapManageAppointments(); }
+    public void scrollToAndTapNotes() { scrollToElement(notesLocators.get(0), "down"); tapNotes(); }
+    public void scrollToAndTapAboutDonatingBlood() { scrollToElement(aboutDonatingBloodLocators.get(0), "down"); tapAboutDonatingBlood(); }
+    public void scrollToAndTapCaptureTheMoment() { scrollToElement(captureTheMomentLocators.get(0), "down"); tapCaptureTheMoment(); }
+    public void scrollToAndTapContactUs() { scrollToElement(contactUsLocators.get(0), "down"); tapContactUs(); }
+    public void scrollToAndTapSettings() { scrollToElement(settingsLocators.get(0), "down"); tapSettings(); }
+
     // Tap and Visibility Functions
     public boolean isScheduleAppointmentVisible() { return isVisible(scheduleAppointmentLocators); }
     public void tapScheduleAppointment() { tap(scheduleAppointmentLocators); }
@@ -126,8 +139,4 @@ public class ProfileTabMenuItems extends BasePage {
     public boolean isSettingsVisible() { return isVisible(settingsLocators); }
     public void tapSettings() { tap(settingsLocators); }
     public boolean isSettingsDescriptionVisible() { return isVisible(settingsDescriptionLocators); }
-    public void scrollToAndTapSettings(){
-        scrollToElement(settingsLocators.get(0), "down");
-        tapSettings();
-    }
 }

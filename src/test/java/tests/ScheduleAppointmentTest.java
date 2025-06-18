@@ -81,23 +81,4 @@ public class ScheduleAppointmentTest extends BaseTest {
         appointmentConfirmedPage.isDynamicTextVisible("AB Plasma");
         appointmentConfirmedPage.tapDoneButton();
     }
-
-    @Test(groups = {"scheduling"})
-    public void scrollToTest() {
-        User user = UserDataLoader.findUser(u -> u.eligibility.abPlasma.equals("now"));
-        loginToApp(user.username, user.password);
-
-        profileTabMenuItems.tapScheduleAppointment();
-        smartSchedulingPage.tapStartOver();
-        donationTypePage.tapAbPlasmaTitle();
-        dayPage.tapNext14Days();
-        timePage.tapAfternoonOption();
-        locationPage.tapHomeZipCode();
-        driveResultsPage.tapSeeTimesButton();
-        driveResultsPage.tapGiveABPlasmaButton();
-        confirmAppointmentPage.tapConfirmButton();
-        appointmentConfirmedPage.isThankYouMessageVisible();
-        appointmentConfirmedPage.isDynamicTextVisible("AB Plasma");
-        appointmentConfirmedPage.tapDoneButton();
-    }
 }

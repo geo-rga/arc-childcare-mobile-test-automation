@@ -5,12 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.JavascriptExecutor;
-import io.appium.java_client.AppiumBy;
-
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
 
 import java.lang.reflect.Field;
 import java.time.Duration;
@@ -144,53 +138,54 @@ public class BasePage {
 
     // === Scrolling method ===
 
-    protected void scrollToElement(By locator, String direction) {
-        int maxScrolls = 5;
-        int attempts = 0;
+    @SuppressWarnings("unchecked")
+    protected WebElement scrollToElement(By locator) {
         String platform = driver.getCapabilities().getPlatformName().toString().toLowerCase();
+        int maxScrolls = 5;
+        int scrolled = 0;
 
-        // ✅ Prime iOS scroll view with a soft swipe to avoid tap interference
-        if (platform.equals("ios")) {
-            try {
-                ((JavascriptExecutor) driver).executeScript("mobile: swipe", Map.of("direction", "down"));
-            } catch (Exception ignored) {
-                System.out.println("⚠ Initial soft swipe failed to run");
-            }
-        }
-
-        while (attempts < maxScrolls) {
+        while (scrolled < maxScrolls) {
             try {
                 WebElement element = driver.findElement(locator);
-                if (element.isDisplayed()) return;
+                if (element.isDisplayed()) return element;
             } catch (Exception ignored) {}
 
-            if (platform.equals("android")) {
-                String text = extractText(locator);
-                String uiScroll = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView("
-                        + "new UiSelector().textContains(\"" + text + "\"))";
-
-                try {
-                    driver.findElement(AppiumBy.androidUIAutomator(uiScroll));
-                } catch (Exception scrollFail) {
-                    System.out.println("❌ Android scroll failed: " + scrollFail.getMessage());
-                }
-
-            } else if (platform.equals("ios")) {
-                try {
-                    ((io.appium.java_client.ios.IOSDriver) driver).executeScript("mobile: scroll", Map.of(
-                            "direction", direction,
-                            "predicateString", "name CONTAINS '" + extractText(locator) + "'"
-                    ));
-                } catch (Exception scrollFail) {
-                    System.out.println("⚠ iOS scroll failed: " + scrollFail.getMessage());
-                }
+            if (platform.equals("ios")) {
+                driver.executeScript("mobile: swipe", Map.of("direction", "up"));
+            } else if (platform.equals("android")) {
+                Map<String, Object> scrollArgs = Map.of(
+                        "left", 100,
+                        "top", 500,
+                        "width", 800,
+                        "height", 1200,
+                        "direction", "down",
+                        "percent", 0.7
+                );
+                driver.executeScript("mobile: scrollGesture", scrollArgs);
+            } else {
+                throw new RuntimeException("Unsupported platform");
             }
 
-            attempts++;
+            waitForSeconds(1);
+            scrolled++;
         }
 
-        throw new RuntimeException("❌ Failed to scroll to element after " + maxScrolls + " attempts: " + locator);
+        throw new RuntimeException("Element not found after scrolling: " + locator);
     }
+
+
+
+
+    protected void scrollToFirstVisible(List<By> locators) {
+        for (By locator : locators) {
+            try {
+                scrollToElement(locator);
+                return;
+            } catch (Exception ignored) {}
+        }
+        throw new RuntimeException("None of the locators found after scrolling.");
+    }
+
 
     /**
      * isDynamicTextVisible()

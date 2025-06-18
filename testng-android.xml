@@ -24,7 +24,7 @@
         <!-- TODO: Select the tests to be ran here -->
         <groups>
             <run>
-                <include name="smoke"/>
+                <include name="wip"/>
             </run>
         </groups>
         <classes>

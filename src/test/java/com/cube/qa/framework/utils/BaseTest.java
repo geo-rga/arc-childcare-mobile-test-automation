@@ -4,7 +4,6 @@ import com.cube.qa.framework.config.ConfigLoader;
 import com.cube.qa.framework.config.TestConfig;
 
 // TODO: Import your page objects here for pages that will be used in most tests (e.g. log in or key flows)
-import com.cube.qa.framework.pages.DonationTypePage;
 import com.cube.qa.framework.pages.deviceHelpers.AndroidHelpersPage;
 import com.cube.qa.framework.pages.deviceHelpers.IOSHelpersPage;
 import com.cube.qa.framework.pages.onboarding.*;

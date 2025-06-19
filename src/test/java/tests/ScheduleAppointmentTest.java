@@ -22,6 +22,7 @@ public class ScheduleAppointmentTest extends BaseTest {
         driveResultsPage.tapGiveBloodButton();
         confirmAppointmentPage.tapConfirmButton();
         appointmentConfirmedPage.isThankYouMessageVisible();
+        appointmentConfirmedPage.isDynamicTextVisible("Blood");
         appointmentConfirmedPage.tapDoneButton();
     }
 
@@ -81,4 +82,104 @@ public class ScheduleAppointmentTest extends BaseTest {
         appointmentConfirmedPage.isDynamicTextVisible("AB Plasma");
         appointmentConfirmedPage.tapDoneButton();
     }
+
+    // Sponsor Code Tests
+    @Test(groups = {"scheduling", "sponsor code"})
+    public void verifySponsorCodeBannerDisplays() {
+        welcomePage.tapScheduleAppointmentButton();
+        donationTypePage.tapSponsorCodeButton();
+        donationTypePage.enterSponsorCode("ARC");
+        donationTypePage.tapSponsorCodeModalDoneButton();
+        donationTypePage.isSponsorCodeAppliedLabelVisible();
+        donationTypePage.isDynamicTextVisible("ARC");
+        donationTypePage.isSponsorCodeEditButtonVisible();
+    }
+
+    @Test(groups = {"scheduling", "sponsor code"})
+    public void verifyEditOpensSponsorCodePopUp() {
+        welcomePage.tapScheduleAppointmentButton();
+        donationTypePage.tapSponsorCodeButton();
+        donationTypePage.enterSponsorCode("ARC");
+        donationTypePage.tapSponsorCodeModalDoneButton();
+        donationTypePage.isSponsorCodeEditButtonVisible();
+        donationTypePage.tapSponsorCodeEditButton();
+        donationTypePage.isSponsorCodeModalTitleVisible();
+        donationTypePage.isSponsorCodeModalDoneButtonVisible();
+        donationTypePage.isSponsorCodeModalCancelButtonVisible();
+    }
+
+    @Test(groups = {"scheduling", "sponsor code"})
+    public void verifyCancelEditRetainsPreviousSponsorCode() {
+        welcomePage.tapScheduleAppointmentButton();
+        donationTypePage.tapSponsorCodeButton();
+        donationTypePage.enterSponsorCode("ARC");
+        donationTypePage.tapSponsorCodeModalDoneButton();
+        donationTypePage.tapSponsorCodeEditButton();
+        donationTypePage.tapSponsorCodeModalCancelButton();
+        donationTypePage.isSponsorCodeAppliedLabelVisible();
+        donationTypePage.isDynamicTextVisible("ARC");
+    }
+
+    @Test(groups = {"scheduling", "sponsor code"})
+    public void verifyEditSponsorDisplaysUpdatedDriveResults() {
+        welcomePage.tapScheduleAppointmentButton();
+        donationTypePage.tapSponsorCodeButton();
+        donationTypePage.enterSponsorCode("ARC");
+        donationTypePage.tapSponsorCodeModalDoneButton();
+        donationTypePage.tapSponsorCodeEditButton();
+        donationTypePage.enterSponsorCode("GILKEY");
+        donationTypePage.tapSponsorCodeModalDoneButton();
+        donationTypePage.tapBloodTitle();
+        donationTypePage.isDynamicTextVisible("Gilkey School Community Center");
+    }
+
+    @Test(groups = {"scheduling", "sponsor code"})
+    public void validateSponsorCodeInfoScreen() {
+        welcomePage.tapScheduleAppointmentButton();
+        donationTypePage.tapSponsorCodeWhatIsThisButton();
+        donationTypePage.isSponsorCodeInfoTitleVisible();
+        donationTypePage.isSponsorCodeInfoDescriptionVisible();
+    }
+
+    @Test(groups = {"scheduling", "sponsor code"})
+    public void verifyInvalidSponsorCodeErrorDisplays() {
+        welcomePage.tapScheduleAppointmentButton();
+        donationTypePage.tapSponsorCodeButton();
+        donationTypePage.enterSponsorCode("INVALIDCODE123");
+        donationTypePage.tapSponsorCodeModalDoneButton();
+        donationTypePage.tapBloodTitle();
+
+        donationTypePage.isSponsorCodeNotFoundTitleVisible();
+        donationTypePage.isSponsorCodeNotFoundDescriptionVisible();
+        donationTypePage.isTryAgainButtonVisible();
+    }
+
+    @Test(groups = {"scheduling", "sponsor code", "smoke"})
+    public void verifyUsersCanBookSponsorCodeAppointment() {
+        User user = UserDataLoader.findUser(u -> !u.hasDonations);
+        loginToApp(user.username, user.password);
+
+        profileTabMenuItems.tapScheduleAppointment();
+        donationTypePage.tapSponsorCodeButton();
+        donationTypePage.enterSponsorCode("ARC");
+        donationTypePage.tapSponsorCodeModalDoneButton();
+        donationTypePage.tapBloodTitle();
+        driveResultsPage.tapSeeTimesButton();
+        driveResultsPage.tapGiveBloodButton();
+        confirmAppointmentPage.tapConfirmButton();
+        appointmentConfirmedPage.isThankYouMessageVisible();
+        appointmentConfirmedPage.isDynamicTextVisible("Blood");
+        appointmentConfirmedPage.tapDoneButton();
+    }
+
+    @Test(groups = {"scheduling", "sponsor code"})
+    public void verifyDateRangeSelectionIsNotPresentWhenSearchingForSponsorCodeDrive() {
+        welcomePage.tapScheduleAppointmentButton();
+        donationTypePage.tapSponsorCodeButton();
+        donationTypePage.enterSponsorCode("ARC");
+        donationTypePage.tapSponsorCodeModalDoneButton();
+        donationTypePage.tapBloodTitle();
+        dayPage.isDayTitleNotVisible();
+    }
+
 }

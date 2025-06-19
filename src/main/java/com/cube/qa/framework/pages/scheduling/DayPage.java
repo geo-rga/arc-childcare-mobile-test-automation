@@ -70,6 +70,10 @@ public class DayPage extends BasePage {
     public boolean isDayTitleVisible() {
         return isVisible(dayTitleLocators);
     }
+    public boolean isDayTitleNotVisible() {
+        waitForSeconds(3);
+        return isInvisible(dayTitleLocators);
+    }
     public boolean hasDayTitleText(String text) {
         return hasText(dayTitleLocators, text);
     }

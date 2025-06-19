@@ -7,7 +7,7 @@
         <parameter name="platform" value="ios"/>
 
         <!-- TODO: Add path to app file and the build number when testing locally-->
-        <parameter name="build" value="src/test/resources/apps/ios/ios_blood_2244.ipa"/>
+        <parameter name="build" value="src/test/resources/apps/ios/ios_blood_2278.ipa"/>
         <parameter name="buildNumber" value="2244"/>
 
         <!-- TODO: To get the iOS device udid, run the following in the terminal: xcrun xctrace list devices. Set to "auto" to run on a simulator-->

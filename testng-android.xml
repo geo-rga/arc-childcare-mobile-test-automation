@@ -2,29 +2,29 @@
 <suite name="Android Suite" parallel="false" thread-count="1">
 
     <!-- TODO: Update build path and udid -->
-    <!-- TODO: Update fullReset to "true" to run each test from a fresh install-->
+    <!-- TODO: Update fullReset to "true" if you want run each test from a fresh install-->
     <test name="Android Tests">
         <parameter name="platform" value="android"/>
 
-        <!-- TODO: Add path to app file and the build number when testing locally-->
-        <parameter name="build" value="src/test/resources/apps/android/android_staging_2003.apk"/>
+        <!-- TODO QA: Add path to app file and the build number when testing locally. Add in the "resources" directory-->
+        <parameter name="build" value="src/test/resources/apps/android/android_staging_2038.apk"/>
         <parameter name="buildNumber" value="2003"/>
 
-        <!-- TODO: To get the Android device udid, run the following in the terminal: adb devices -->
+        <!-- TODO QA: To get the Android device udid, run the following in the terminal: adb devices -->
         <parameter name="deviceName" value=""/>
         <parameter name="udid" value="33071FDH2007QH"/>
         <parameter name="fullReset" value="true"/>
 
-        <!-- TODO: Add correct environment when testing locally-->
+        <!-- TODO QA: Add correct environment when testing locally-->
         <parameter name="env" value="staging"/>
         <parameter name="isSimulator" value="false"/>
 
 
 
-        <!-- TODO: Select the tests to be ran here -->
+        <!-- TODO QA: Select the tests to be ran here -->
         <groups>
             <run>
-                <include name="wip"/>
+                <include name="smoke"/>
             </run>
         </groups>
         <classes>

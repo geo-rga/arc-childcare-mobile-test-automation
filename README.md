@@ -59,10 +59,9 @@ Set `fullReset` to `"true"` to install a fresh app each time, or `"false"` to re
 Each page defines element locators using a **primary + fallback** approach. For example:
 
 ```java
-welcomeLoginLocators = Arrays.asList(
-    By.id("broken_id"),
-    By.xpath("//android.widget.Button[@text='LOG IN']")
-);
+welcomeTitleLocators = List.of(
+        By.id("com.cube.arc.blood:id/title")
+            );
 ```
 
 Only the first working and visible locator will be used. This increases resilience across versions/platforms.
@@ -116,7 +115,7 @@ This allows Android and iOS tests to run **simultaneously**, each on a dedicated
 ## 🧹 .gitignore Highlights
 
 - App binaries:
-    - `*.apk`, `*.ipa`
+    - `*.apk`, `*.ipa`, `*.app`
 - Build output:
     - `/target/`, `/build/`, `/out/`
 - IDEs: `.idea/`, `.vscode/`
@@ -139,6 +138,17 @@ The framework includes safe, thread-aware logging like:
 This helps distinguish test output during parallel runs.
 
 ---
+## 💡 Main files and directories
+
+- **Pages Directory**: Add locators and functions in here
+- **testData Directory**: Model data and store within here
+- **BaseTest.java**: Initialise pages within here. Also add helper functions for repeated flows
+- **HelperFunctions.java**: Helper functions that are likely to repeat across projects
+- **Tests Directory**: Tests written within here
+- **testng-platform.xml**: Configure the environments for running the tests
+- **deviceHelpers Directory**: Contains platform specific helpers that can work on multiple projects
+
+---
 
 ## 💡 Tips
 
@@ -155,6 +165,8 @@ This helps distinguish test output during parallel runs.
 - Device not connected? Run:
     - `adb devices` for Android
     - `xcrun xctrace list devices` for iOS
+- Tests not running on iOS?
+  - Verify that the device is provisioned in App Developer Portal and then run a new build
 - App fails to start? Confirm Appium logs for errors and package/activity names
 
 ---

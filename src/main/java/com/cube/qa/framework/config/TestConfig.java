@@ -1,5 +1,5 @@
 package com.cube.qa.framework.config;
-// TODO: The package names and files paths should ideally be universal so we can easily set up other projects. e.g. "framework" is specific to this context
+
 public class TestConfig {
     private String platform;
     private String buildPath;

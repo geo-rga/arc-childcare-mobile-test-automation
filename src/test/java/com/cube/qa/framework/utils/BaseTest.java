@@ -3,12 +3,8 @@ package com.cube.qa.framework.utils;
 import com.cube.qa.framework.config.ConfigLoader;
 import com.cube.qa.framework.config.TestConfig;
 
-// TODO: Import your page objects here for pages that will be used in most tests (e.g. log in or key flows)
 import com.cube.qa.framework.pages.deviceHelpers.AndroidHelpersPage;
 import com.cube.qa.framework.pages.deviceHelpers.IOSHelpersPage;
-import com.cube.qa.framework.pages.onboarding.*;
-import com.cube.qa.framework.pages.profileTab.ProfileTabMenuItems;
-import com.cube.qa.framework.pages.scheduling.*;
 import com.cube.qa.framework.testdata.loader.UserDataLoader; // ✅ Add this import
 
 import io.appium.java_client.AppiumDriver;
@@ -25,33 +21,9 @@ public class BaseTest {
     protected IOSHelpersPage iosHelpersPage;
 
     // TODO: Add your page objects here for pages that will be used in most tests (e.g. log in or key flows)
-    // Onboarding
-    protected WelcomePage welcomePage;
-    protected LoginPage loginPage;
-    protected BiometricPermissionsPage biometricPermissionsPage;
-
-    protected CreateAccountEmailPage createAccountEmailPage;
-    protected CreateAccountNamePage createAccountNamePage;
-    protected CreateAccountDobPage createAccountDobPage;
-    protected CreateAccountZipCodePage createAccountZipCodePage;
-    protected CreateAccountUsernamePage createAccountUsernamePage;
-    protected CreateAccountPasswordPage createAccountPasswordPage;
-    protected CreateAccountDoYouHaveADonorIdPage createAccountDoYouHaveADonorIdPage;
-    protected CreateAccountWhatsYourDonorIdPage createAccountWhatsYourDonorIdPage;
-
-    // Schedule Appointments
-    protected SmartSchedulingPage smartSchedulingPage;
-    protected DonationTypePage donationTypePage;
-    protected DayPage dayPage;
-    protected TimePage timePage;
-    protected LocationPage locationPage;
-    protected DriveResultsPage driveResultsPage;
-    protected ConfirmAppointmentPage confirmAppointmentPage;
-    protected AppointmentConfirmedPage appointmentConfirmedPage;
-    protected BookingErrorPage bookingErrorPage;
-
-    // Profile Tab
-    protected ProfileTabMenuItems profileTabMenuItems;
+//     Blood Examples
+//    protected WelcomePage welcomePage;
+//    protected LoginPage loginPage;
 
     protected void log(String message) {
         String prefix = "[" + config.getPlatform().toUpperCase() +
@@ -59,6 +31,7 @@ public class BaseTest {
         System.out.println(prefix + " " + message);
     }
 
+    // Call to check if the current platform is Android or iOS
     protected boolean isAndroid() {
         return config.getPlatform().equalsIgnoreCase("android");
     }
@@ -67,29 +40,7 @@ public class BaseTest {
         return config.getPlatform().equalsIgnoreCase("ios");
     }
 
-    // TODO: Add Repeated App Flow Functions in here
-    public void createAccountFlow(String email) {
-        createAccountZipCodePage.tapContinueButton();
-    }
-
-    // Log in to app and dismiss permissions
-    public void loginToApp(String username, String password) {
-        welcomePage.tapLogInButton();
-        loginPage.enterUsername(username);
-        loginPage.enterPassword(password);
-        loginPage.tapContinueButton();
-        biometricPermissionsPage.tapNotNowButton();
-
-        if (isIOS()) {
-            dismissPermissions();
-            dismissPermissions();
-        } else {
-            acceptPermissions();
-            acceptPermissions();
-        }
-
-    }
-
+    // Call these functions to accept or dismiss permissions
     public void acceptPermissions() {
         try {
             Thread.sleep(1000); // 1-second delay
@@ -120,6 +71,24 @@ public class BaseTest {
         }
     }
 
+    // TODO: Add Repeated App Flow Functions in here
+    // Blood Example Log in to app and dismiss permissions
+//    public void loginToApp(String username, String password) {
+//        welcomePage.tapLogInButton();
+//        loginPage.enterUsername(username);
+//        loginPage.enterPassword(password);
+//        loginPage.tapContinueButton();
+//        biometricPermissionsPage.tapNotNowButton();
+//
+//        if (isIOS()) {
+//            dismissPermissions();
+//            dismissPermissions();
+//        } else {
+//            acceptPermissions();
+//            acceptPermissions();
+//        }
+//
+//    }
 
     @Parameters({"platform", "build", "buildNumber", "deviceName", "udid", "fullReset", "env", "isSimulator", "platformVersion"})
     @BeforeMethod(alwaysRun = true)
@@ -157,34 +126,11 @@ public class BaseTest {
         androidHelpersPage = new AndroidHelpersPage(driver);
         iosHelpersPage = new IOSHelpersPage(driver);
 
-        // TODO: Initialize page objects that will be used in most tests (e.g. log in or key flows)
-        // Onboarding
-        welcomePage = new WelcomePage(driver, config.getPlatform());
-        loginPage = new LoginPage(driver, config.getPlatform());
-        biometricPermissionsPage = new BiometricPermissionsPage(driver, config.getPlatform());
-
-        createAccountEmailPage = new CreateAccountEmailPage(driver, config.getPlatform());
-        createAccountNamePage = new CreateAccountNamePage(driver, config.getPlatform());
-        createAccountDobPage = new CreateAccountDobPage(driver, config.getPlatform());
-        createAccountZipCodePage = new CreateAccountZipCodePage(driver, config.getPlatform());
-        createAccountUsernamePage = new CreateAccountUsernamePage(driver, config.getPlatform());
-        createAccountPasswordPage = new CreateAccountPasswordPage(driver, config.getPlatform());
-        createAccountDoYouHaveADonorIdPage = new CreateAccountDoYouHaveADonorIdPage(driver, config.getPlatform());
-        createAccountWhatsYourDonorIdPage = new CreateAccountWhatsYourDonorIdPage(driver, config.getPlatform());
-
-        // Schedule Appointments
-        smartSchedulingPage = new SmartSchedulingPage(driver, config.getPlatform());
-        donationTypePage = new DonationTypePage(driver, config.getPlatform());
-        dayPage = new DayPage(driver, config.getPlatform());
-        timePage = new TimePage(driver, config.getPlatform());
-        locationPage = new LocationPage(driver, config.getPlatform());
-        driveResultsPage = new DriveResultsPage(driver, config.getPlatform());
-        confirmAppointmentPage = new ConfirmAppointmentPage(driver, config.getPlatform());
-        appointmentConfirmedPage = new AppointmentConfirmedPage(driver, config.getPlatform());
-        bookingErrorPage = new BookingErrorPage(driver, config.getPlatform());
-
-        // Profile Tab
-        profileTabMenuItems = new ProfileTabMenuItems(driver, config.getPlatform());
+        // TODO: Initialize page objects
+        // Blood Examples Onboarding
+//        welcomePage = new WelcomePage(driver, config.getPlatform());
+//        loginPage = new LoginPage(driver, config.getPlatform());
+//        biometricPermissionsPage = new BiometricPermissionsPage(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());

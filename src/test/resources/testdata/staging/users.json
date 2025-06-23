@@ -1,26 +1,12 @@
 [
   {
-    "username": "QWERTYTEST",
-    "password": "Redcross1",
-    "hasDonations": false,
-    "healthCharts": {
-      "hasBloodPressure": true,
-      "hasHemoglobin": true
-    }
+    "username": "ExampleUser",
+    "password": "MyPassword",
+    "hasDonations": false
   },
   {
-    "username": "SSKEYS24",
-    "password": "Redcross1",
-    "hasDonations": true,
-    "eligibility": {
-      "blood": "now",
-      "powerRed": "now",
-      "platelets": "now",
-      "abPlasma": "now"
-    },
-    "healthCharts": {
-      "hasBloodPressure": false,
-      "hasHemoglobin": false
-    }
+    "username": "QWERTYTEST",
+    "password": "password123",
+    "hasDonations": true
   }
 ]

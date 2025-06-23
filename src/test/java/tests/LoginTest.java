@@ -6,48 +6,24 @@ import com.cube.qa.framework.utils.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+// Create a new test class file in the directory for each area of the app
 public class LoginTest extends BaseTest {
 
-    @Test(groups = {"login", "smoke"})
+    @Test(groups = {"login", "smoke", "wip"})
     public void verifyUsersCanLogIntoApp() {
-        User user = UserDataLoader.findUser(u -> u.hasDonations);
-        loginToApp(user.username, user.password);
-    }
+        // groups: Add feature, smoke / regression to the groups. Keep this simple.
+        // Use "wip" for work in progress (limit what you are currently working on so we don't have a growing list of "wip" cases)
 
-    @Test(groups = {"login"})
-    public void verifyUsersCanAttemptToLogInAgain() {
-        welcomePage.tapLogInButton();
-        loginPage.enterUsername("invalidUser");
-        loginPage.enterPassword("invalidPassword!");
-        loginPage.tapContinueButton();
-        loginPage.tapTryAgainButton();
-        loginPage.isTryAgainNotVisible();
-    }
+        // Descriptive name for test function above
+        // Add test functionality in here
 
-    @Test(groups = {"login"})
-    public void verifyUsersSeeErrorWhenEnteringIncorrectDetails() {
-        welcomePage.tapLogInButton();
-        loginPage.enterUsername("invalidUser");
-        loginPage.enterPassword("invalidPassword!");
-        loginPage.tapContinueButton();
-        loginPage.isInvalidLoginTitleVisible();
-        loginPage.isInvalidLoginMessageVisible();
-        loginPage.isTryAgainButtonVisible();
-        loginPage.isHelpButtonVisible();
-    }
-
-    @Test(groups = {"biometrics"})
-    public void validateBiometricPermissionsScreen() {
-        User user = UserDataLoader.findUser(u -> u.hasDonations);
-        welcomePage.tapLogInButton();
-        loginPage.enterUsername(user.username);
-        loginPage.enterPassword(user.password);
-        loginPage.tapContinueButton();
-        biometricPermissionsPage.isTitleVisible();
-        biometricPermissionsPage.isBenefitOneVisible();
-        biometricPermissionsPage.isBenefitOneVisible();
-        biometricPermissionsPage.isEnablePermissionsButtonVisible();
-        biometricPermissionsPage.isNotNowButtonVisible();
+        // Example tests
+        // welcomePage.tapLogInButton();
+        // loginPage.enterUsername("MyUser");
+        // loginPage.enterPassword("MyPassword");
+        // loginPage.tapContinueButton();
+        // loginPage.tapTryAgainButton();
+        // loginPage.isTryAgainNotVisible();
     }
 
 }

@@ -6,14 +6,19 @@
         <parameter name="platform" value="ios"/>
 
         <!-- TODO: Add path to app file and the build number when testing locally-->
-        <parameter name="build" value="src/test/resources/apps/ios/Blood_2306.ipa"/>
-        <parameter name="buildNumber" value="2244"/>
+        <parameter name="build" value="src/test/resources/apps/ios/ARC-Childcare-iOS-Prod-1097.ipa"/>
+        <parameter name="buildNumber" value="1097"/>
 
         <!-- TODO: To get the iOS device udid, run the following in the terminal: xcrun xctrace list devices. Set to "auto" to run on a simulator-->
-        <parameter name="deviceName" value="iPhone 12"/> <!-- TODO: Add device name for iOS-->
-        <parameter name="platformVersion" value="18.3.1"/>
-        <parameter name="udid" value="00008101-000E49EA1081401E"/>
-        <parameter name="fullReset" value="true"/> <!--Update fullReset to "true" to run each test from a fresh install-->
+        <parameter name="deviceName" value="GT - iPhone 11 (18.1)"/>
+        <parameter name="platformVersion" value="18.1"/>
+        <parameter name="udid" value="00008030-000A31C134C0802E"/>
+        <parameter name="fullReset" value="true"/>
+        <parameter name="xcodeOrgId" value="25H7BM6YWK"/>
+        <parameter name="xcodeSigningId" value="iPhone Developer"/>
+        <parameter name="updateWDABundleId" value="com.facebook.WebDriverAgentRunner.xctrunner"/>
+        <parameter name="usePrebuiltWDA" value="true"/>
+        <parameter name="useNewWDA" value="false"/>
 
         <!-- Add correct environment for env specific tests and test data to be selected -->
         <parameter name="env" value="staging"/>
@@ -29,7 +34,7 @@
 
         <!-- Add test classes in here -->
         <classes>
-            <class name="tests.LoginTest"/>
+            <class name="tests.WelcomeTest"/>
         </classes>
     </test>
 </suite>

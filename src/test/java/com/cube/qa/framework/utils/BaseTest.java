@@ -5,6 +5,7 @@ import com.cube.qa.framework.config.TestConfig;
 
 import com.cube.qa.framework.pages.deviceHelpers.AndroidHelpersPage;
 import com.cube.qa.framework.pages.deviceHelpers.IOSHelpersPage;
+import com.cube.qa.framework.pages.onboarding.WelcomePage;
 import com.cube.qa.framework.testdata.loader.UserDataLoader; // ✅ Add this import
 
 import io.appium.java_client.AppiumDriver;
@@ -21,9 +22,7 @@ public class BaseTest {
     protected IOSHelpersPage iosHelpersPage;
 
     // TODO: Add your page objects here for pages that will be used in most tests (e.g. log in or key flows)
-//     Blood Examples
-//    protected WelcomePage welcomePage;
-//    protected LoginPage loginPage;
+    protected WelcomePage welcomePage;
 
     protected void log(String message) {
         String prefix = "[" + config.getPlatform().toUpperCase() +

@@ -59,11 +59,26 @@ public class SignInTest extends BaseTest {
         termsOfServicePage.isPrivacyPolicyTextVisible();
     }
 
-    @Test(groups = {"wip"})
+    @Test(groups = {"smoke"})
     public void acceptTermsOfService(){
         welcomePage.tapContinueAsGuestButton();
         permissionsPage.tapSkipButton();
         termsOfServicePage.tapAcceptAndContinueButton();
+        whatsNewPage.isHeaderTitleVisible();
+    }
+
+    @Test(groups = {"wip"})
+    public void validateWhatsNewPage(){
+        welcomePage.tapContinueAsGuestButton();
+        permissionsPage.tapSkipButton();
+        termsOfServicePage.tapAcceptAndContinueButton();
+        whatsNewPage.isHeaderTitleVisible();
+        whatsNewPage.isLearnFeatureTitleVisible();
+        whatsNewPage.isQuizFeatureTitleVisible();
+        whatsNewPage.isAchievementsFeatureTitleVisible();
+        whatsNewPage.isRecordsFeatureTitleVisible();
+        whatsNewPage.isContinueButtonVisible();
+
     }
 
 }

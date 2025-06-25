@@ -4,6 +4,7 @@ import com.cube.qa.framework.config.ConfigLoader;
 import com.cube.qa.framework.config.TestConfig;
 
 import com.cube.qa.framework.pages.BasePage;
+import com.cube.qa.framework.pages.WhatsNewPage;
 import com.cube.qa.framework.pages.deviceHelpers.AndroidHelpersPage;
 import com.cube.qa.framework.pages.deviceHelpers.IOSHelpersPage;
 import com.cube.qa.framework.pages.onboarding.PermissionsPage;
@@ -30,6 +31,7 @@ public class BaseTest {
     protected SignInPage signInPage;
     protected PermissionsPage permissionsPage;
     protected TermsOfServicePage termsOfServicePage;
+    protected WhatsNewPage whatsNewPage;
 
     protected void log(String message) {
         String prefix = "[" + config.getPlatform().toUpperCase() +
@@ -137,6 +139,7 @@ public class BaseTest {
         signInPage = new SignInPage(driver, config.getPlatform());
         permissionsPage = new PermissionsPage(driver, config.getPlatform());
         termsOfServicePage = new TermsOfServicePage(driver, config.getPlatform());
+        whatsNewPage = new WhatsNewPage(driver, config.getPlatform());
 
 
         // ✅ Automatically log the test starting

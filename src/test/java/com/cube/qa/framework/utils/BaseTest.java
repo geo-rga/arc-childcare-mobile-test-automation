@@ -127,7 +127,7 @@ public class BaseTest {
 
         // TODO: Initialize page objects
         // Blood Examples Onboarding
-//        welcomePage = new WelcomePage(driver, config.getPlatform());
+        welcomePage = new WelcomePage(driver, config.getPlatform());
 //        loginPage = new LoginPage(driver, config.getPlatform());
 //        biometricPermissionsPage = new BiometricPermissionsPage(driver, config.getPlatform());
 

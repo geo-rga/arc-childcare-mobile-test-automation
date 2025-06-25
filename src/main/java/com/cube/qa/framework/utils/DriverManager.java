@@ -22,6 +22,8 @@ public class DriverManager {
                 caps.setCapability("platformName", "Android");
                 caps.setCapability("deviceName", "Android Device");
                 caps.setCapability("automationName", "UiAutomator2");
+                caps.setCapability("appWaitActivity", "com.cube.arc.childcare.activities.WelcomeActivity");
+                caps.setCapability("appWaitPackage", "com.cube.arc.childcare");
 
                 if (isSimulator) {
                     caps.setCapability("isSimulator", true);
@@ -49,6 +51,10 @@ public class DriverManager {
                 caps.setCapability("platformName", "iOS");
                 caps.setCapability("deviceName", "iPhone");
                 caps.setCapability("automationName", "XCUITest");
+                caps.setCapability("usePrebuiltWDA", true);
+                caps.setCapability("useNewWDA", false);
+                caps.setCapability("updatedWDABundleId", "com.facebook.WebDriverAgentRunner.xctrunner.xctrunner.xctrunner.xctrunner");
+
 
                 if (isSimulator) {
                     caps.setCapability("isSimulator", true);

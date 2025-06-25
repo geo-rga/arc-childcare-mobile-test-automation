@@ -16,9 +16,6 @@
         <parameter name="fullReset" value="true"/>
         <parameter name="xcodeOrgId" value="25H7BM6YWK"/>
         <parameter name="xcodeSigningId" value="iPhone Developer"/>
-        <parameter name="updateWDABundleId" value="com.facebook.WebDriverAgentRunner.xctrunner"/>
-        <parameter name="usePrebuiltWDA" value="true"/>
-        <parameter name="useNewWDA" value="false"/>
 
         <!-- Add correct environment for env specific tests and test data to be selected -->
         <parameter name="env" value="staging"/>

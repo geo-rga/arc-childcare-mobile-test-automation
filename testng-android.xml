@@ -12,8 +12,6 @@
         <parameter name="deviceName" value="Pixel 6"/>
         <parameter name="udid" value="23091FDF6001DX"/>
         <parameter name="fullReset" value="true"/>
-        <parameter name="appWaitActivity" value="com.cube.arc.childcare.activities.WelcomeActivity"/>
-        <parameter name="appWaitPackage" value="com.cube.arc.childcare"/>
 
         <!-- Add correct environment for env specific tests and test data to be selected -->
         <parameter name="env" value="staging"/>

@@ -8,6 +8,7 @@ import com.cube.qa.framework.pages.deviceHelpers.AndroidHelpersPage;
 import com.cube.qa.framework.pages.deviceHelpers.IOSHelpersPage;
 import com.cube.qa.framework.pages.onboarding.PermissionsPage;
 import com.cube.qa.framework.pages.onboarding.SignInPage;
+import com.cube.qa.framework.pages.onboarding.TermsOfServicePage;
 import com.cube.qa.framework.pages.onboarding.WelcomePage;
 import com.cube.qa.framework.testdata.loader.UserDataLoader; // ✅ Add this import
 
@@ -28,6 +29,7 @@ public class BaseTest {
     protected WelcomePage welcomePage;
     protected SignInPage signInPage;
     protected PermissionsPage permissionsPage;
+    protected TermsOfServicePage termsOfServicePage;
 
     protected void log(String message) {
         String prefix = "[" + config.getPlatform().toUpperCase() +
@@ -72,12 +74,6 @@ public class BaseTest {
             iosHelpersPage.dismissIOSAlert();
         } else {
             androidHelpersPage.dismissAndroidPermission();
-        }
-    }
-
-    public void dismissTestflight(){
-        if(isIOS()){
-
         }
     }
 
@@ -137,12 +133,11 @@ public class BaseTest {
         iosHelpersPage = new IOSHelpersPage(driver);
 
         // TODO: Initialize page objects
-        // Blood Examples Onboarding
         welcomePage = new WelcomePage(driver, config.getPlatform());
         signInPage = new SignInPage(driver, config.getPlatform());
         permissionsPage = new PermissionsPage(driver, config.getPlatform());
-//        loginPage = new LoginPage(driver, config.getPlatform());
-//        biometricPermissionsPage = new BiometricPermissionsPage(driver, config.getPlatform());
+        termsOfServicePage = new TermsOfServicePage(driver, config.getPlatform());
+
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());

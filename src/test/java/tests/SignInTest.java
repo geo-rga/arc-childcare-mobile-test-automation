@@ -20,13 +20,50 @@ public class SignInTest extends BaseTest {
         signInPage.isLearnMoreTitleVisible();
     }
 
-    @Test(groups = {"wip"})
+    @Test(groups = {"smoke"})
     public void logInToApp(){
         welcomePage.tapSignInButton();
         signInPage.enterEmail("3sc.test100@gmail.com.prod");
-        signInPage.enterPassword("hello1234\n");
+        if(isIOS()){
+            signInPage.enterPassword("hello1234\n");
+        } else {
+            signInPage.enterPassword("hello1234");
+        }
         signInPage.tapContinueButton();
         permissionsPage.isPermissionTitleVisible();
+    }
+
+    @Test(groups = {"smoke"})
+    public void validateNotificationPermissions(){
+        welcomePage.tapContinueAsGuestButton();
+        permissionsPage.isPermissionTitleVisible();
+        permissionsPage.isPermissionBodyVisible();
+        permissionsPage.isEnablePermissionsButtonVisible();
+        permissionsPage.isSkipButtonVisible();
+    }
+
+    @Test(groups = {"smoke"})
+    public void skipPermissions(){
+        welcomePage.tapContinueAsGuestButton();
+        permissionsPage.tapSkipButton();
+        termsOfServicePage.isHeaderTextVisible();
+    }
+
+    @Test(groups = {"smoke"})
+    public void validateTermsOfService(){
+        welcomePage.tapContinueAsGuestButton();
+        permissionsPage.tapSkipButton();
+        termsOfServicePage.isHeaderTextVisible();
+        termsOfServicePage.isAcceptAndContinueButtonVisible();
+        termsOfServicePage.isBodyTextVisible();
+        termsOfServicePage.isPrivacyPolicyTextVisible();
+    }
+
+    @Test(groups = {"wip"})
+    public void acceptTermsOfService(){
+        welcomePage.tapContinueAsGuestButton();
+        permissionsPage.tapSkipButton();
+        termsOfServicePage.tapAcceptAndContinueButton();
     }
 
 }

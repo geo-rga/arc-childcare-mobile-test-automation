@@ -13,7 +13,7 @@
         <parameter name="deviceName" value="GT - iPhone 11 (18.1)"/>
         <parameter name="platformVersion" value="18.1"/>
         <parameter name="udid" value="00008030-000A31C134C0802E"/>
-        <parameter name="fullReset" value="true"/>
+        <parameter name="fullReset" value="false"/>
         <parameter name="xcodeOrgId" value="25H7BM6YWK"/>
         <parameter name="xcodeSigningId" value="iPhone Developer"/>
 
@@ -24,14 +24,14 @@
         <!-- Set up the tests to run here -->
         <groups>
             <run> <!-- Sets which type tests will run, e.g. "onboarding", "regression" etc. -->
-                <include name="smoke"/>
-                <exclude name="wip"/>
+                <include name="wip"/>
             </run>
         </groups>
 
         <!-- Add test classes in here -->
         <classes>
             <class name="tests.WelcomeTest"/>
+            <class name="tests.SignInTest"/>
         </classes>
     </test>
 </suite>

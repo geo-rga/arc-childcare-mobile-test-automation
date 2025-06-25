@@ -5,6 +5,7 @@ import com.cube.qa.framework.config.TestConfig;
 
 import com.cube.qa.framework.pages.deviceHelpers.AndroidHelpersPage;
 import com.cube.qa.framework.pages.deviceHelpers.IOSHelpersPage;
+import com.cube.qa.framework.pages.onboarding.SignInPage;
 import com.cube.qa.framework.pages.onboarding.WelcomePage;
 import com.cube.qa.framework.testdata.loader.UserDataLoader; // ✅ Add this import
 
@@ -23,6 +24,7 @@ public class BaseTest {
 
     // TODO: Add your page objects here for pages that will be used in most tests (e.g. log in or key flows)
     protected WelcomePage welcomePage;
+    protected SignInPage signInPage;
 
     protected void log(String message) {
         String prefix = "[" + config.getPlatform().toUpperCase() +
@@ -128,6 +130,7 @@ public class BaseTest {
         // TODO: Initialize page objects
         // Blood Examples Onboarding
         welcomePage = new WelcomePage(driver, config.getPlatform());
+        signInPage = new SignInPage(driver, config.getPlatform());
 //        loginPage = new LoginPage(driver, config.getPlatform());
 //        biometricPermissionsPage = new BiometricPermissionsPage(driver, config.getPlatform());
 

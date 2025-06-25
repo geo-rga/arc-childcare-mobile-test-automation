@@ -22,14 +22,14 @@
         <!-- Set up the test types to run here -->
         <groups>
             <run> <!-- Sets which type tests will run, e.g. "onboarding", "regression" etc. -->
-                <include name="smoke"/>
-                <exclude name="wip"/>
+                <include name="wip"/>
             </run>
         </groups>
 
         <!-- Add test classes in here -->
         <classes>
             <class name="tests.WelcomeTest"/>
+            <class name="tests.SignInTest"/>
         </classes>
     </test>
 </suite>

@@ -3,8 +3,10 @@ package com.cube.qa.framework.utils;
 import com.cube.qa.framework.config.ConfigLoader;
 import com.cube.qa.framework.config.TestConfig;
 
+import com.cube.qa.framework.pages.BasePage;
 import com.cube.qa.framework.pages.deviceHelpers.AndroidHelpersPage;
 import com.cube.qa.framework.pages.deviceHelpers.IOSHelpersPage;
+import com.cube.qa.framework.pages.onboarding.PermissionsPage;
 import com.cube.qa.framework.pages.onboarding.SignInPage;
 import com.cube.qa.framework.pages.onboarding.WelcomePage;
 import com.cube.qa.framework.testdata.loader.UserDataLoader; // ✅ Add this import
@@ -25,6 +27,7 @@ public class BaseTest {
     // TODO: Add your page objects here for pages that will be used in most tests (e.g. log in or key flows)
     protected WelcomePage welcomePage;
     protected SignInPage signInPage;
+    protected PermissionsPage permissionsPage;
 
     protected void log(String message) {
         String prefix = "[" + config.getPlatform().toUpperCase() +
@@ -69,6 +72,12 @@ public class BaseTest {
             iosHelpersPage.dismissIOSAlert();
         } else {
             androidHelpersPage.dismissAndroidPermission();
+        }
+    }
+
+    public void dismissTestflight(){
+        if(isIOS()){
+
         }
     }
 
@@ -131,6 +140,7 @@ public class BaseTest {
         // Blood Examples Onboarding
         welcomePage = new WelcomePage(driver, config.getPlatform());
         signInPage = new SignInPage(driver, config.getPlatform());
+        permissionsPage = new PermissionsPage(driver, config.getPlatform());
 //        loginPage = new LoginPage(driver, config.getPlatform());
 //        biometricPermissionsPage = new BiometricPermissionsPage(driver, config.getPlatform());
 

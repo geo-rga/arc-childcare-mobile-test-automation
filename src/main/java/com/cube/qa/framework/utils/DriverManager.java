@@ -51,10 +51,11 @@ public class DriverManager {
                 caps.setCapability("platformName", "iOS");
                 caps.setCapability("deviceName", "iPhone");
                 caps.setCapability("automationName", "XCUITest");
-                caps.setCapability("usePrebuiltWDA", true);
-                caps.setCapability("useNewWDA", false);
-                caps.setCapability("updatedWDABundleId", "com.facebook.WebDriverAgentRunner.xctrunner.xctrunner.xctrunner.xctrunner");
-
+                caps.setCapability("updatedWDABundleId", "com.facebook.WebDriverAgentRunner.xctrunner");
+                caps.setCapability(  "bundleId","org.redcross.Childcare");
+                caps.setCapability("wdaLaunchTimeout", 80000);
+                caps.setCapability("wdaStartupRetries", 3);
+                caps.setCapability("wdaStartupRetryInterval", 30000);
 
                 if (isSimulator) {
                     caps.setCapability("isSimulator", true);
@@ -63,6 +64,7 @@ public class DriverManager {
                     // Omit udid if running on a simulator
                 } else {
                     caps.setCapability("deviceName", deviceName);
+                    caps.setCapability("platformVersion", platformVersion);
                     caps.setCapability("udid", udid);
                 }  // Add support for real iOS device too
 
@@ -70,8 +72,8 @@ public class DriverManager {
                 caps.setCapability("noReset", !fullReset);
                 caps.setCapability("autoAcceptAlerts", false); // TODO: Set this in testng.xml
 
-                String fullAppPath = Paths.get(System.getProperty("user.dir"), buildPath).normalize().toString();
-                caps.setCapability("app", fullAppPath);
+//                String fullAppPath = Paths.get(System.getProperty("user.dir"), buildPath).normalize().toString();
+//                caps.setCapability("app", fullAppPath);
 
                 return new IOSDriver(appiumServerUrl, caps);
 

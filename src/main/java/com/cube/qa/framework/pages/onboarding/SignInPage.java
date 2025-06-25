@@ -15,6 +15,11 @@ public class SignInPage extends BasePage {
     private List<By> forgotPasswordButtonLocators;
     private List<By> learnMoreTitleLocators;
     private List<By> learnMoreDescriptionLocators;
+    private List<By> loginFailedTitleLocators;
+    private List<By> loginFailedMessageLocators;
+    private List<By> loginFailedRetryButtonLocators;
+    private List<By> loginFailedOkayButtonLocators;
+    private List<By> loginFailedActionButtonLocators;
 
     public SignInPage(AppiumDriver driver, String platform) {
         super(driver);
@@ -44,6 +49,15 @@ public class SignInPage extends BasePage {
             learnMoreDescriptionLocators = List.of(
                 By.xpath("//XCUIElementTypeStaticText[@name='Find out more about how to get a Red Cross Learning Center account to start viewing your certificates and courses in the app.']")
             );
+            loginFailedTitleLocators = List.of(
+                    By.xpath("//XCUIElementTypeStaticText[@name='Login Failed']")
+            );
+            loginFailedMessageLocators = List.of(
+                    By.xpath("//XCUIElementTypeStaticText[@name='Please check your account details and try again']")
+            );
+            loginFailedActionButtonLocators = List.of(
+                    By.xpath("//XCUIElementTypeButton[@name='Okay']")
+            );
 
         } else {
             screenTitleLocators = List.of(
@@ -69,6 +83,15 @@ public class SignInPage extends BasePage {
             );
             learnMoreDescriptionLocators = List.of(
                 By.xpath("//*[@resource-id='com.cube.arc.childcare:id/tv_learn_more_description']")
+            );
+            loginFailedTitleLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/alertTitle']")
+            );
+            loginFailedMessageLocators = List.of(
+                    By.xpath("//*[@resource-id='android:id/message']")
+            );
+            loginFailedActionButtonLocators = List.of(
+                    By.xpath("//*[@resource-id='android:id/button1']")
             );
         }
     }
@@ -142,4 +165,18 @@ public class SignInPage extends BasePage {
     public boolean hasLearnMoreDescriptionText(String text) {
         return hasText(learnMoreDescriptionLocators, text);
     }
-} 
+
+    // Login Failed Alert
+    public boolean isLoginFailedTitleVisible() {
+        return isVisible(loginFailedTitleLocators);
+    }
+    public boolean isLoginFailedMessageVisible() {
+        return isVisible(loginFailedMessageLocators);
+    }
+    public boolean isLoginFailedActionButtonVisible() {
+        return isVisible(loginFailedActionButtonLocators);
+    }
+    public void tapLoginFailedActionButton() {
+        tap(loginFailedActionButtonLocators);
+    }
+}

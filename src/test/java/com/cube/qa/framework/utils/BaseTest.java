@@ -79,6 +79,16 @@ public class BaseTest {
         }
     }
 
+    public void login(String user, String password){
+        signInPage.enterEmail(user);
+        if(isIOS()){
+            signInPage.enterPassword(password+"\n");
+        } else {
+            signInPage.enterPassword(password);
+        }
+        signInPage.tapContinueButton();
+    }
+
     // TODO: Add Repeated App Flow Functions in here
     // Blood Example Log in to app and dismiss permissions
 //    public void loginToApp(String username, String password) {

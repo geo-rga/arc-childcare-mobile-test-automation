@@ -1,14 +1,12 @@
 package tests;
 
 import com.cube.qa.framework.utils.BaseTest;
-import io.appium.java_client.HasOnScreenKeyboard;
-import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
 
 public class SignInTest extends BaseTest {
 
     @Test(groups = {"smoke"})
-    public void validateSignInPage(){
+    public void validateSignInPageTC23762(){
         welcomePage.tapSignInButton();
         signInPage.isScreenTitleVisible();
         signInPage.isScreenSubtitleVisible();
@@ -21,7 +19,7 @@ public class SignInTest extends BaseTest {
     }
 
     @Test(groups = {"smoke"})
-    public void logInToApp(){
+    public void logInToAppTC23762(){
         welcomePage.tapSignInButton();
         signInPage.enterEmail("3sc.test100@gmail.com.prod");
         if(isIOS()){
@@ -34,7 +32,7 @@ public class SignInTest extends BaseTest {
     }
 
     @Test(groups = {"smoke"})
-    public void validateNotificationPermissions(){
+    public void validateNotificationPermissionsTC23754(){
         welcomePage.tapContinueAsGuestButton();
         permissionsPage.isPermissionTitleVisible();
         permissionsPage.isPermissionBodyVisible();
@@ -43,14 +41,14 @@ public class SignInTest extends BaseTest {
     }
 
     @Test(groups = {"smoke"})
-    public void skipPermissions(){
+    public void skipPermissionsTC23757(){
         welcomePage.tapContinueAsGuestButton();
         permissionsPage.tapSkipButton();
         termsOfServicePage.isHeaderTextVisible();
     }
 
     @Test(groups = {"smoke"})
-    public void validateTermsOfService(){
+    public void validateTermsOfServiceTC23759(){
         welcomePage.tapContinueAsGuestButton();
         permissionsPage.tapSkipButton();
         termsOfServicePage.isHeaderTextVisible();
@@ -60,15 +58,15 @@ public class SignInTest extends BaseTest {
     }
 
     @Test(groups = {"smoke"})
-    public void acceptTermsOfService(){
+    public void acceptTermsOfServiceTC23761(){
         welcomePage.tapContinueAsGuestButton();
         permissionsPage.tapSkipButton();
         termsOfServicePage.tapAcceptAndContinueButton();
         whatsNewPage.isHeaderTitleVisible();
     }
 
-    @Test(groups = {"wip"})
-    public void validateWhatsNewPage(){
+    @Test(groups = {"smoke"})
+    public void validateWhatsNewPageTC18910(){
         welcomePage.tapContinueAsGuestButton();
         permissionsPage.tapSkipButton();
         termsOfServicePage.tapAcceptAndContinueButton();
@@ -78,7 +76,43 @@ public class SignInTest extends BaseTest {
         whatsNewPage.isAchievementsFeatureTitleVisible();
         whatsNewPage.isRecordsFeatureTitleVisible();
         whatsNewPage.isContinueButtonVisible();
+    }
 
+    @Test(groups = {"smoke"})
+    public void completeGuestFlowTC18911(){
+        welcomePage.tapContinueAsGuestButton();
+        permissionsPage.tapSkipButton();
+        termsOfServicePage.tapAcceptAndContinueButton();
+        whatsNewPage.tapContinueButton();
+    }
+
+    @Test(groups = {"additional"})
+    public void completeLoginFlow(){
+        welcomePage.tapSignInButton();
+        login("3sc.test100@gmail.com.prod", "hello1234");
+        permissionsPage.tapSkipButton();
+        termsOfServicePage.tapAcceptAndContinueButton();
+        whatsNewPage.tapContinueButton();
+    }
+
+    @Test(groups = {"smoke"})
+    public void invalidPasswordTestTC23766(){
+        welcomePage.tapSignInButton();
+        login("3sc.test100@gmail.com.prod", "hello4321");
+        signInPage.isLoginFailedTitleVisible();
+        signInPage.isLoginFailedMessageVisible();
+        signInPage.isLoginFailedActionButtonVisible();
+        signInPage.tapLoginFailedActionButton();
+    }
+
+    @Test(groups = {"smoke"})
+    public void invalidEmailTestTC23765(){
+        welcomePage.tapSignInButton();
+        login("testing@testuser.com", "hello1234");
+        signInPage.isLoginFailedTitleVisible();
+        signInPage.isLoginFailedMessageVisible();
+        signInPage.isLoginFailedActionButtonVisible();
+        signInPage.tapLoginFailedActionButton();
     }
 
 }

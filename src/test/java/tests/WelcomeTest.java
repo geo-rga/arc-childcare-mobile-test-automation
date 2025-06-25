@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class WelcomeTest extends BaseTest {
 
     @Test(groups = {"smoke"})
-    public void validateWelcomePageDisplay() {
+    public void validateWelcomePageDisplayTC23753() {
         welcomePage.isTitleTextVisible();
         welcomePage.isSubtitleTextVisible();
         welcomePage.isSignInButtonVisible();

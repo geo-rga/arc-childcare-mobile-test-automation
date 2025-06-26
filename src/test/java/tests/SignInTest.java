@@ -141,7 +141,7 @@ public class SignInTest extends BaseTest {
         signInPageErrors.isEmailErrorVisible();
     }
 
-    @Test(groups = {"wip"})
+    @Test(groups = {"smoke"})
     public void goBackFromSignInTC23769(){
         welcomePage.tapSignInButton();
         signInPage.isScreenTitleVisible();

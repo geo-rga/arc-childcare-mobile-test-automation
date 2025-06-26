@@ -3,6 +3,7 @@ package com.cube.qa.framework.pages.learn;
 import com.cube.qa.framework.pages.BasePage;
 import org.openqa.selenium.By;
 import io.appium.java_client.AppiumDriver;
+
 import java.util.List;
 
 public class LearnPageFull extends BasePage {
@@ -27,108 +28,185 @@ public class LearnPageFull extends BasePage {
 
         if (platform.equalsIgnoreCase("ios")) {
             headerTitleLocators = List.of(
-                By.xpath("//XCUIElementTypeStaticText[@name='Learn']")
+                    By.xpath("//XCUIElementTypeStaticText[@name='Learn']")
             );
             searchFieldLocators = List.of(
-                By.xpath("//XCUIElementTypeSearchField[@name='Search...']")
+                    By.xpath("//XCUIElementTypeSearchField[@name='Search...']")
             );
             moreButtonLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='More']")
+                    By.xpath("//XCUIElementTypeButton[@name='More']")
             );
             stayingSafeCategoryLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Staying Safe on the Job']")
+                    By.xpath("//XCUIElementTypeButton[@name='Staying Safe on the Job']")
             );
             stoppingSpreadCategoryLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Stopping the Spread of Germs']")
+                    By.xpath("//XCUIElementTypeButton[@name='Stopping the Spread of Germs']")
             );
             pickingUpHoldingLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Picking Up and Holding']")
+                    By.xpath("//XCUIElementTypeButton[@name='Picking Up and Holding']")
             );
             feedingLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Feeding']")
+                    By.xpath("//XCUIElementTypeButton[@name='Feeding']")
             );
             diaperingToiletingLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Diapering and Toileting']")
+                    By.xpath("//XCUIElementTypeButton[@name='Diapering and Toileting']")
             );
             routinesLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Maintaining Morning and Bedtime Routines ']"));
+                    By.xpath("//XCUIElementTypeButton[@name='Maintaining Morning and Bedtime Routines ']"));
             beingALeaderLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Being a Leader ']"));
+                    By.xpath("//XCUIElementTypeButton[@name='Being a Leader ']"));
             startingBabysittingBusinessLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Starting Your Babysitting Business']"));
+                    By.xpath("//XCUIElementTypeButton[@name='Starting Your Babysitting Business']"));
             makingPlaytimeFunLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Making Playtime Fun']"));
+                    By.xpath("//XCUIElementTypeButton[@name='Making Playtime Fun']"));
             guidingBehaviourLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Guiding Behaviour']"));
+                    By.xpath("//XCUIElementTypeButton[@name='Guiding Behaviour']"));
             firstAidEmergenciesLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='First Aid Emergencies']"));
+                    By.xpath("//XCUIElementTypeButton[@name='First Aid Emergencies']"));
         } else {
             headerTitleLocators = List.of(
-                By.xpath("//*[@resource-id='com.cube.arc.childcare:id/toolbar']//*[@text='Learn']"));
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/toolbar']//*[@text='Learn']"));
             searchFieldLocators = List.of(
-                By.xpath("//*[@resource-id='android:id/search_src_text']"));
+                    By.xpath("//*[@resource-id='android:id/search_src_text']"));
             moreButtonLocators = List.of(
-                By.xpath("//*[@resource-id='com.cube.arc.childcare:id/more_btn']"));
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/more_btn']"));
             stayingSafeCategoryLocators = List.of(
-                By.xpath("//*[@text='Staying Safe on the Job']"));
+                    By.xpath("//*[@text='Staying Safe on the Job']"));
             stoppingSpreadCategoryLocators = List.of(
-                By.xpath("//*[@text='Stopping the Spread of Germs']"));
+                    By.xpath("//*[@text='Stopping the Spread of Germs']"));
             pickingUpHoldingLocators = List.of(
-                By.xpath("//*[@text='Picking Up and Holding']"));
+                    By.xpath("//*[@text='Picking Up and Holding']"));
             feedingLocators = List.of(
-                By.xpath("//*[@text='Feeding']"));
+                    By.xpath("//*[@text='Feeding']"));
             diaperingToiletingLocators = List.of(
-                By.xpath("//*[@text='Diapering and Toileting']"));
+                    By.xpath("//*[@text='Diapering and Toileting']"));
             routinesLocators = List.of(
-                By.xpath("//*[@text='Maintaining Morning and Bedtime Routines']"));
+                    By.xpath("//*[@text='Maintaining Morning and Bedtime Routines']"));
             beingALeaderLocators = List.of(
-                By.xpath("//*[@text='Being a Leader']"));
+                    By.xpath("//*[@text='Being a Leader']"));
             startingBabysittingBusinessLocators = List.of(
-                By.xpath("//*[@text='Starting Your Babysitting Business']"));
+                    By.xpath("//*[@text='Starting Your Babysitting Business']"));
             makingPlaytimeFunLocators = List.of(
-                By.xpath("//*[@text='Making Playtime Fun']"));
+                    By.xpath("//*[@text='Making Playtime Fun']"));
             guidingBehaviourLocators = List.of(
-                By.xpath("//*[@text='Guiding Behaviour']"));
+                    By.xpath("//*[@text='Guiding Behaviour']"));
             firstAidEmergenciesLocators = List.of(
-                By.xpath("//*[@text='First Aid Emergencies']"));
+                    By.xpath("//*[@text='First Aid Emergencies']"));
         }
     }
 
-    public boolean isHeaderTitleVisible() { return isVisible(headerTitleLocators); }
-    public boolean isSearchFieldVisible() { return isVisible(searchFieldLocators); }
-    public boolean isMoreButtonVisible() { return isVisible(moreButtonLocators); }
-    public void tapMoreButton() { tap(moreButtonLocators); }
+    public boolean isHeaderTitleVisible() {
+        return isVisible(headerTitleLocators);
+    }
 
-    public boolean isStayingSafeCategoryVisible() { return isVisible(stayingSafeCategoryLocators); }
-    public void tapStayingSafeCategory() { tap(stayingSafeCategoryLocators); }
+    public boolean isSearchFieldVisible() {
+        return isVisible(searchFieldLocators);
+    }
 
-    public boolean isStoppingSpreadCategoryVisible() { return isVisible(stoppingSpreadCategoryLocators); }
-    public void tapStoppingSpreadCategory() { tap(stoppingSpreadCategoryLocators); }
+    public boolean isMoreButtonVisible() {
+        return isVisible(moreButtonLocators);
+    }
 
-    public boolean isPickingUpHoldingVisible() { return isVisible(pickingUpHoldingLocators); }
-    public void tapPickingUpHolding() { tap(pickingUpHoldingLocators); }
+    public void tapMoreButton() {
+        tap(moreButtonLocators);
+    }
 
-    public boolean isFeedingVisible() { return isVisible(feedingLocators); }
-    public void tapFeeding() { tap(feedingLocators); }
+    public boolean isStayingSafeCategoryVisible() {
+        scrollToFirstVisible(stayingSafeCategoryLocators);
+        return isVisible(stayingSafeCategoryLocators);
+    }
 
-    public boolean isDiaperingToiletingVisible() { return isVisible(diaperingToiletingLocators); }
-    public void tapDiaperingToileting() { tap(diaperingToiletingLocators); }
+    public void tapStayingSafeCategory() {
+        tap(stayingSafeCategoryLocators);
+    }
 
-    public boolean isRoutinesVisible() { return isVisible(routinesLocators); }
-    public void tapRoutines() { tap(routinesLocators); }
+    public boolean isStoppingSpreadCategoryVisible() {
+        scrollToFirstVisible(stoppingSpreadCategoryLocators);
+        return isVisible(stoppingSpreadCategoryLocators);
+    }
 
-    public boolean isBeingALeaderVisible() { return isVisible(beingALeaderLocators); }
-    public void tapBeingALeader() { tap(beingALeaderLocators); }
+    public void tapStoppingSpreadCategory() {
+        tap(stoppingSpreadCategoryLocators);
+    }
 
-    public boolean isStartingBabysittingBusinessVisible() { return isVisible(startingBabysittingBusinessLocators); }
-    public void tapStartingBabysittingBusiness() { tap(startingBabysittingBusinessLocators); }
+    public boolean isPickingUpHoldingVisible() {
+        scrollToFirstVisible(pickingUpHoldingLocators);
+        return isVisible(pickingUpHoldingLocators);
+    }
 
-    public boolean isMakingPlaytimeFunVisible() { return isVisible(makingPlaytimeFunLocators); }
-    public void tapMakingPlaytimeFun() { tap(makingPlaytimeFunLocators); }
+    public void tapPickingUpHolding() {
+        tap(pickingUpHoldingLocators);
+    }
 
-    public boolean isGuidingBehaviourVisible() { return isVisible(guidingBehaviourLocators); }
-    public void tapGuidingBehaviour() { tap(guidingBehaviourLocators); }
+    public boolean isFeedingVisible() {
+        scrollToFirstVisible(feedingLocators);
+        return isVisible(feedingLocators);
+    }
 
-    public boolean isFirstAidEmergenciesVisible() { return isVisible(firstAidEmergenciesLocators); }
-    public void tapFirstAidEmergencies() { tap(firstAidEmergenciesLocators); }
+    public void tapFeeding() {
+        tap(feedingLocators);
+    }
+
+    public boolean isDiaperingToiletingVisible() {
+        scrollToFirstVisible(diaperingToiletingLocators);
+        return isVisible(diaperingToiletingLocators);
+    }
+
+    public void tapDiaperingToileting() {
+        tap(diaperingToiletingLocators);
+    }
+
+    public boolean isRoutinesVisible() {
+        scrollToFirstVisible(routinesLocators);
+        return isVisible(routinesLocators);
+    }
+
+    public void tapRoutines() {
+        tap(routinesLocators);
+    }
+
+    public boolean isBeingALeaderVisible() {
+        scrollToFirstVisible(beingALeaderLocators);
+        return isVisible(beingALeaderLocators);
+    }
+
+    public void tapBeingALeader() {
+        tap(beingALeaderLocators);
+    }
+
+    public boolean isStartingBabysittingBusinessVisible() {
+        scrollToFirstVisible(startingBabysittingBusinessLocators);
+        return isVisible(startingBabysittingBusinessLocators);
+    }
+
+    public void tapStartingBabysittingBusiness() {
+        tap(startingBabysittingBusinessLocators);
+    }
+
+    public boolean isMakingPlaytimeFunVisible() {
+        scrollToFirstVisible(makingPlaytimeFunLocators);
+        return isVisible(makingPlaytimeFunLocators);
+    }
+
+    public void tapMakingPlaytimeFun() {
+        tap(makingPlaytimeFunLocators);
+    }
+
+    public boolean isGuidingBehaviourVisible() {
+        scrollToFirstVisible(guidingBehaviourLocators);
+        return isVisible(guidingBehaviourLocators);
+    }
+
+    public void tapGuidingBehaviour() {
+        tap(guidingBehaviourLocators);
+    }
+
+    public boolean isFirstAidEmergenciesVisible() {
+        scrollToFirstVisible(firstAidEmergenciesLocators);
+        return isVisible(firstAidEmergenciesLocators);
+    }
+
+    public void tapFirstAidEmergencies() {
+        tap(firstAidEmergenciesLocators);
+    }
 } 

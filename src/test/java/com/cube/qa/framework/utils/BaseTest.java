@@ -4,6 +4,7 @@ import com.cube.qa.framework.config.ConfigLoader;
 import com.cube.qa.framework.config.TestConfig;
 
 import com.cube.qa.framework.pages.*;
+import com.cube.qa.framework.pages.learn.LearnPageFull;
 import com.cube.qa.framework.pages.onboarding.ForgotPasswordWebViewPage;
 import com.cube.qa.framework.pages.onboarding.HelpLoggingInPage;
 import com.cube.qa.framework.pages.onboarding.SignInPageErrors;
@@ -38,6 +39,7 @@ public class BaseTest {
     protected SignInPageErrors signInPageErrors;
     protected HelpLoggingInPage helpLoggingInPage;
     protected ForgotPasswordWebViewPage forgotPasswordWebViewPage;
+    protected LearnPageFull learnPageFull;
 
     protected void log(String message) {
         String prefix = "[" + config.getPlatform().toUpperCase() +
@@ -181,7 +183,7 @@ public class BaseTest {
         signInPageErrors = new SignInPageErrors(driver, config.getPlatform());
         helpLoggingInPage = new HelpLoggingInPage(driver, config.getPlatform());
         forgotPasswordWebViewPage = new ForgotPasswordWebViewPage(driver, config.getPlatform());
-
+        learnPageFull = new LearnPageFull(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());

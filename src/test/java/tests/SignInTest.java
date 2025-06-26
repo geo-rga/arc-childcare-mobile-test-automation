@@ -105,7 +105,7 @@ public class SignInTest extends BaseTest {
         signInPage.tapLoginFailedActionButton();
     }
 
-    @Test(groups = {"wip"})
+    @Test(groups = {"smoke"})
     public void invalidEmailTestTC23765(){
         welcomePage.tapSignInButton();
         login("testing@testuser.com", "hello1234");
@@ -115,19 +115,33 @@ public class SignInTest extends BaseTest {
         signInPage.tapLoginFailedActionButton();
     }
 
-    @Test(groups = {"new"})
+    @Test(groups = {"smoke"})
     public void accessForgotPasswordTC23767(){
-
+        welcomePage.tapSignInButton();
+        signInPage.tapForgotPasswordButton();
+        forgotPasswordWebViewPage.isWebViewVisible();
+        forgotPasswordWebViewPage.isBackButtonVisible();
+        forgotPasswordWebViewPage.isCloseButtonVisible();
     }
 
-    @Test(groups = {"new"})
+    @Test(groups = {"smoke"})
     public void accessLearnMoreTC23768(){
-
+        welcomePage.tapSignInButton();
+        signInPage.tapLearnMore();
+        helpLoggingInPage.isScreenTitleVisible();
+        helpLoggingInPage.isSectionTitleVisible();
+        helpLoggingInPage.isDescriptionTextVisible();
+        helpLoggingInPage.isRecoverUsernameButtonVisible();
+        helpLoggingInPage.isRecoverPasswordButtonVisible();
+        helpLoggingInPage.isFindMyCertificateButtonVisible();
     }
 
-    @Test(groups = {"new"})
+    @Test(groups = {"wip"})
     public void invalidEmailFormatTC23764(){
-
+        welcomePage.tapSignInButton();
+        signInPage.enterEmail("a");
+        signInPage.enterPassword("");
+        signInPageErrors.isEmailErrorVisible();
     }
 
 }

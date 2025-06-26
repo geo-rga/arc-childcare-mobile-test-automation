@@ -165,6 +165,9 @@ public class SignInPage extends BasePage {
     public boolean hasLearnMoreDescriptionText(String text) {
         return hasText(learnMoreDescriptionLocators, text);
     }
+    public void tapLearnMore(){
+        tap(learnMoreDescriptionLocators);
+    }
 
     // Login Failed Alert
     public boolean isLoginFailedTitleVisible() {

@@ -3,7 +3,10 @@ package com.cube.qa.framework.utils;
 import com.cube.qa.framework.config.ConfigLoader;
 import com.cube.qa.framework.config.TestConfig;
 
-import com.cube.qa.framework.pages.BasePage;
+import com.cube.qa.framework.pages.*;
+import com.cube.qa.framework.pages.onboarding.ForgotPasswordWebViewPage;
+import com.cube.qa.framework.pages.onboarding.HelpLoggingInPage;
+import com.cube.qa.framework.pages.onboarding.SignInPageErrors;
 import com.cube.qa.framework.pages.WhatsNewPage;
 import com.cube.qa.framework.pages.deviceHelpers.AndroidHelpersPage;
 import com.cube.qa.framework.pages.deviceHelpers.IOSHelpersPage;
@@ -32,6 +35,9 @@ public class BaseTest {
     protected PermissionsPage permissionsPage;
     protected TermsOfServicePage termsOfServicePage;
     protected WhatsNewPage whatsNewPage;
+    protected SignInPageErrors signInPageErrors;
+    protected HelpLoggingInPage helpLoggingInPage;
+    protected ForgotPasswordWebViewPage forgotPasswordWebViewPage;
 
     protected void log(String message) {
         String prefix = "[" + config.getPlatform().toUpperCase() +

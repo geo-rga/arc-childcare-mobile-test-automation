@@ -86,6 +86,7 @@ public class BaseTest {
     }
 
     public void login(String user, String password){
+        welcomePage.tapSignInButton();
         signInPage.enterEmail(user);
         if(isIOS()){
             signInPage.enterPassword(password+"\n");
@@ -93,6 +94,27 @@ public class BaseTest {
             signInPage.enterPassword(password);
         }
         signInPage.tapContinueButton();
+    }
+
+    public void continueAsGuest(){
+        welcomePage.tapContinueAsGuestButton();
+        permissionsPage.tapSkipButton();
+        termsOfServicePage.tapAcceptAndContinueButton();
+        whatsNewPage.tapContinueButton();
+    }
+
+    public void continueWithAccount(String user, String password){
+        welcomePage.tapSignInButton();
+        signInPage.enterEmail(user);
+        if(isIOS()){
+            signInPage.enterPassword(password+"\n");
+        } else {
+            signInPage.enterPassword(password);
+        }
+        signInPage.tapContinueButton();
+        permissionsPage.tapSkipButton();
+        termsOfServicePage.tapAcceptAndContinueButton();
+        whatsNewPage.tapContinueButton();
     }
 
     // TODO: Add Repeated App Flow Functions in here

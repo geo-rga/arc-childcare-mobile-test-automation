@@ -88,7 +88,6 @@ public class SignInTest extends BaseTest {
 
     @Test(groups = {"additional"})
     public void completeLoginFlow(){
-        welcomePage.tapSignInButton();
         login("3sc.test100@gmail.com.prod", "hello1234");
         permissionsPage.tapSkipButton();
         termsOfServicePage.tapAcceptAndContinueButton();
@@ -97,7 +96,6 @@ public class SignInTest extends BaseTest {
 
     @Test(groups = {"smoke"})
     public void invalidPasswordTestTC23766(){
-        welcomePage.tapSignInButton();
         login("3sc.test100@gmail.com.prod", "hello4321");
         signInPage.isLoginFailedTitleVisible();
         signInPage.isLoginFailedMessageVisible();
@@ -107,7 +105,6 @@ public class SignInTest extends BaseTest {
 
     @Test(groups = {"smoke"})
     public void invalidEmailTestTC23765(){
-        welcomePage.tapSignInButton();
         login("testing@testuser.com", "hello1234");
         signInPage.isLoginFailedTitleVisible();
         signInPage.isLoginFailedMessageVisible();

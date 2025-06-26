@@ -156,6 +156,9 @@ public class BaseTest {
         permissionsPage = new PermissionsPage(driver, config.getPlatform());
         termsOfServicePage = new TermsOfServicePage(driver, config.getPlatform());
         whatsNewPage = new WhatsNewPage(driver, config.getPlatform());
+        signInPageErrors = new SignInPageErrors(driver, config.getPlatform());
+        helpLoggingInPage = new HelpLoggingInPage(driver, config.getPlatform());
+        forgotPasswordWebViewPage = new ForgotPasswordWebViewPage(driver, config.getPlatform());
 
 
         // ✅ Automatically log the test starting

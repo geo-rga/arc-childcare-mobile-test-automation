@@ -17,9 +17,8 @@ public class SignInPage extends BasePage {
     private List<By> learnMoreDescriptionLocators;
     private List<By> loginFailedTitleLocators;
     private List<By> loginFailedMessageLocators;
-    private List<By> loginFailedRetryButtonLocators;
-    private List<By> loginFailedOkayButtonLocators;
     private List<By> loginFailedActionButtonLocators;
+    private List<By> backButtonLocators;
 
     public SignInPage(AppiumDriver driver, String platform) {
         super(driver);
@@ -58,6 +57,9 @@ public class SignInPage extends BasePage {
             loginFailedActionButtonLocators = List.of(
                     By.xpath("//XCUIElementTypeButton[@name='Okay']")
             );
+            backButtonLocators = List.of(
+                    By.xpath("//XCUIElementTypeButton[@name='Back']")
+            );
 
         } else {
             screenTitleLocators = List.of(
@@ -92,6 +94,9 @@ public class SignInPage extends BasePage {
             );
             loginFailedActionButtonLocators = List.of(
                     By.xpath("//*[@resource-id='android:id/button1']")
+            );
+            backButtonLocators = List.of(
+                    By.xpath("//android.widget.ImageButton")
             );
         }
     }
@@ -181,5 +186,14 @@ public class SignInPage extends BasePage {
     }
     public void tapLoginFailedActionButton() {
         tap(loginFailedActionButtonLocators);
+    }
+
+    // Back
+    public boolean isBackButtonVisible() {
+        return isVisible(backButtonLocators);
+    }
+
+    public void tapBackButton() {
+        tap(backButtonLocators);
     }
 }

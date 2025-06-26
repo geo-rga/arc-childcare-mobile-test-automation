@@ -136,12 +136,22 @@ public class SignInTest extends BaseTest {
         helpLoggingInPage.isFindMyCertificateButtonVisible();
     }
 
-    @Test(groups = {"wip"})
+    @Test(groups = {"smoke"})
     public void invalidEmailFormatTC23764(){
         welcomePage.tapSignInButton();
         signInPage.enterEmail("a");
         signInPage.enterPassword("");
         signInPageErrors.isEmailErrorVisible();
     }
+
+    @Test(groups = {"wip"})
+    public void goBackFromSignInTC23769(){
+        welcomePage.tapSignInButton();
+        signInPage.isScreenTitleVisible();
+        signInPage.isBackButtonVisible();
+        signInPage.tapBackButton();
+        welcomePage.isTitleTextVisible();
+    }
+
 
 }

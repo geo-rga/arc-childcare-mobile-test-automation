@@ -51,8 +51,8 @@ public class DriverManager {
                 caps.setCapability("platformName", "iOS");
                 caps.setCapability("deviceName", "iPhone");
                 caps.setCapability("automationName", "XCUITest");
-                caps.setCapability("updatedWDABundleId", "com.facebook.WebDriverAgentRunner.xctrunner");
-                caps.setCapability(  "bundleId","org.redcross.Childcare");
+                caps.setCapability("updatedWDABundleId", "com.facebook.WebDriverAgentRunner.xctrunner.xctrunner");
+                caps.setCapability("bundleId","org.redcross.Childcare");
                 caps.setCapability("wdaLaunchTimeout", 80000);
                 caps.setCapability("wdaStartupRetries", 3);
                 caps.setCapability("wdaStartupRetryInterval", 30000);

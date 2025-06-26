@@ -105,7 +105,7 @@ public class SignInTest extends BaseTest {
         signInPage.tapLoginFailedActionButton();
     }
 
-    @Test(groups = {"smoke"})
+    @Test(groups = {"wip"})
     public void invalidEmailTestTC23765(){
         welcomePage.tapSignInButton();
         login("testing@testuser.com", "hello1234");
@@ -113,6 +113,21 @@ public class SignInTest extends BaseTest {
         signInPage.isLoginFailedMessageVisible();
         signInPage.isLoginFailedActionButtonVisible();
         signInPage.tapLoginFailedActionButton();
+    }
+
+    @Test(groups = {"new"})
+    public void accessForgotPasswordTC23767(){
+
+    }
+
+    @Test(groups = {"new"})
+    public void accessLearnMoreTC23768(){
+
+    }
+
+    @Test(groups = {"new"})
+    public void invalidEmailFormatTC23764(){
+
     }
 
 }

@@ -84,6 +84,8 @@ public class LearnPageFull extends BasePage {
                     By.xpath("//*[@text='Maintaining Morning and Bedtime Routines']"));
             beingALeaderLocators = List.of(
                     By.xpath("//*[@text='Being a Leader']"));
+//            startingBabysittingBusinessLocators = List.of(
+//                    By.xpath("//*[normalize-space()='Starting Your Babysitting Business']"));
             startingBabysittingBusinessLocators = List.of(
                     By.xpath("//*[@text='Starting Your Babysitting Business']"));
             makingPlaytimeFunLocators = List.of(
@@ -94,6 +96,8 @@ public class LearnPageFull extends BasePage {
                     By.xpath("//*[@text='First Aid Emergencies']"));
         }
     }
+
+    //android.widget.LinearLayout[@content-desc="Starting Your Babysitting Business Category. Expanded"]/android.widget.TextView
 
     public boolean isHeaderTitleVisible() {
         return isVisible(headerTitleLocators);
@@ -175,7 +179,6 @@ public class LearnPageFull extends BasePage {
     }
 
     public boolean isStartingBabysittingBusinessVisible() {
-        scrollToFirstVisible(startingBabysittingBusinessLocators);
         return isVisible(startingBabysittingBusinessLocators);
     }
 

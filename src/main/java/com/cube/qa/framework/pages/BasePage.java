@@ -173,9 +173,6 @@ public class BasePage {
         throw new RuntimeException("Element not found after scrolling: " + locator);
     }
 
-
-
-
     protected void scrollToFirstVisible(List<By> locators) {
         for (By locator : locators) {
             try {

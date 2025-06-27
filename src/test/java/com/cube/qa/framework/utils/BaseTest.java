@@ -21,6 +21,9 @@ import io.appium.java_client.AppiumDriver;
 import org.testng.annotations.*;
 import org.testng.ITestContext; // added for Extent listener
 import java.lang.reflect.Method;
+import java.util.Map;
+
+import static java.lang.Thread.sleep;
 
 public class BaseTest {
 
@@ -59,7 +62,7 @@ public class BaseTest {
     // Call these functions to accept or dismiss permissions
     public void acceptPermissions() {
         try {
-            Thread.sleep(1000); // 1-second delay
+            sleep(1000); // 1-second delay
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // Restore the interrupt status
             System.out.println("⚠️ Interrupted during sleep: " + e.getMessage());
@@ -74,7 +77,7 @@ public class BaseTest {
 
     public void dismissPermissions() {
         try {
-            Thread.sleep(1000); // 1-second delay
+            sleep(1000); // 1-second delay
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // Restore the interrupt status
             System.out.println("⚠️ Interrupted during sleep: " + e.getMessage());
@@ -117,6 +120,35 @@ public class BaseTest {
         permissionsPage.tapSkipButton();
         termsOfServicePage.tapAcceptAndContinueButton();
         whatsNewPage.tapContinueButton();
+    }
+
+    public void swipe() throws InterruptedException {
+        String platform = driver.getCapabilities().getPlatformName().toString().toLowerCase();
+        int maxScrolls = 1;
+        int scrolled = 0;
+
+        while (scrolled < maxScrolls) {
+            if (platform.equals("ios")) {
+                driver.executeScript("mobile: swipe", Map.of("direction", "up"));
+            } else if (platform.equals("android")) {
+                Map<String, Object> scrollArgs = Map.of(
+                        "left", 100,
+                        "top", 500,
+                        "width", 800,
+                        "height", 1200,
+                        "direction", "down",
+                        "percent", 0.7
+                );
+                driver.executeScript("mobile: scrollGesture", scrollArgs);
+            } else {
+                throw new RuntimeException("Unsupported platform");
+            }
+
+            sleep(1000);
+            scrolled++;
+        }
+
+        throw new RuntimeException("Swipe not possible");
     }
 
     // TODO: Add Repeated App Flow Functions in here

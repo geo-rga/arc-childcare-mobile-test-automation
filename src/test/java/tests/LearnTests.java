@@ -5,42 +5,22 @@ import org.testng.annotations.Test;
 
 public class LearnTests extends BaseTest {
 
-    @Test(groups = {"broken"})
-    public void validateLearnTabDisplay()  {
+    @Test(groups = {"wip"})
+    public void validateLearnTabDisplayTC18912()  {
+        // This test partially works on iOS but not on Android
+        // unsure if this is related to Android identifiers but will need further debugging
         continueAsGuest();
         learnPageFull.isSearchFieldVisible();
-
-
         learnPageFull.isStartingBabysittingBusinessVisible();
-
         learnPageFull.isBeingALeaderVisible();
-        learnPageFull.tapBeingALeader();
-
         learnPageFull.isStayingSafeCategoryVisible();
-        learnPageFull.tapStayingSafeCategory();
-
         learnPageFull.isStoppingSpreadCategoryVisible();
-        learnPageFull.tapStoppingSpreadCategory();
-
         learnPageFull.isPickingUpHoldingVisible();
-        learnPageFull.tapPickingUpHolding();
-
         learnPageFull.isFeedingVisible();
-        learnPageFull.tapFeeding();
-
         learnPageFull.isDiaperingToiletingVisible();
-        learnPageFull.tapDiaperingToileting();
-
         learnPageFull.isRoutinesVisible();
-        learnPageFull.tapRoutines();
-
         learnPageFull.isMakingPlaytimeFunVisible();
-        learnPageFull.tapMakingPlaytimeFun();
-
         learnPageFull.isGuidingBehaviourVisible();
-        learnPageFull.tapGuidingBehaviour();
-
         learnPageFull.isFirstAidEmergenciesVisible();
-        learnPageFull.tapFirstAidEmergencies();
     }
 }

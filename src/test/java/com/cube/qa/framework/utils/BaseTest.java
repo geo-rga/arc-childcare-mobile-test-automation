@@ -5,6 +5,10 @@ import com.cube.qa.framework.config.TestConfig;
 
 import com.cube.qa.framework.pages.*;
 import com.cube.qa.framework.pages.learn.LearnPageFull;
+import com.cube.qa.framework.pages.learn.foryou.PersonalisationCompletePage;
+import com.cube.qa.framework.pages.learn.foryou.PersonalizedJourneyPage;
+import com.cube.qa.framework.pages.learn.foryou.SkillSelectionPage;
+import com.cube.qa.framework.pages.learn.foryou.UserTypeQuestionPage;
 import com.cube.qa.framework.pages.onboarding.ForgotPasswordWebViewPage;
 import com.cube.qa.framework.pages.onboarding.HelpLoggingInPage;
 import com.cube.qa.framework.pages.onboarding.SignInPageErrors;
@@ -43,6 +47,10 @@ public class BaseTest {
     protected HelpLoggingInPage helpLoggingInPage;
     protected ForgotPasswordWebViewPage forgotPasswordWebViewPage;
     protected LearnPageFull learnPageFull;
+    protected PersonalizedJourneyPage personalizedJourneyPage;
+    protected UserTypeQuestionPage userTypeQuestionPage;
+    protected SkillSelectionPage skillSelectionPage;
+    protected PersonalisationCompletePage personalisationCompletePage;
 
     protected void log(String message) {
         String prefix = "[" + config.getPlatform().toUpperCase() +
@@ -123,7 +131,14 @@ public class BaseTest {
     }
 
     public void personalisationFlow(){
-
+        learnPageFull.tapForYouIncompleteCard();
+        personalizedJourneyPage.tapBeginButton();
+        userTypeQuestionPage.tapOtherOption();
+        userTypeQuestionPage.tapNextButton();
+        skillSelectionPage.tapSkillStartingBusiness();
+        skillSelectionPage.tapSkillBeingLeader();
+        skillSelectionPage.tapNextButton();
+        personalisationCompletePage.tapBackToLearnButton();
     }
 
     @Parameters({"platform", "build", "buildNumber", "deviceName", "udid", "fullReset", "env", "isSimulator", "platformVersion"})
@@ -172,6 +187,10 @@ public class BaseTest {
         helpLoggingInPage = new HelpLoggingInPage(driver, config.getPlatform());
         forgotPasswordWebViewPage = new ForgotPasswordWebViewPage(driver, config.getPlatform());
         learnPageFull = new LearnPageFull(driver, config.getPlatform());
+        personalizedJourneyPage = new PersonalizedJourneyPage(driver, config.getPlatform());
+        userTypeQuestionPage = new UserTypeQuestionPage(driver, config.getPlatform());
+        skillSelectionPage = new SkillSelectionPage(driver, config.getPlatform());
+        personalisationCompletePage = new PersonalisationCompletePage(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());

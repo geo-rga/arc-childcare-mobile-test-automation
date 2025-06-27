@@ -1,4 +1,4 @@
-package com.cube.qa.framework.pages;
+package com.cube.qa.framework.pages.learn.foryou;
 
 import com.cube.qa.framework.pages.BasePage;
 import org.openqa.selenium.By;

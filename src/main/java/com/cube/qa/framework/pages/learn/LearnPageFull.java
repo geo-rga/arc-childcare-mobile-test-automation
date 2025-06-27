@@ -22,7 +22,8 @@ public class LearnPageFull extends BasePage {
     private List<By> makingPlaytimeFunLocators;
     private List<By> guidingBehaviourLocators;
     private List<By> firstAidEmergenciesLocators;
-    private List<By> forYouCardLocators;
+    private List<By> forYouIncompleteCardLocators;
+    private List<By> forYouCompleteCardLocators;
     private List<By> forYouTitleLocators;
     private List<By> forYouSubtitleLocators;
 
@@ -30,8 +31,11 @@ public class LearnPageFull extends BasePage {
         super(driver);
 
         if (platform.equalsIgnoreCase("ios")) {
-            forYouCardLocators = List.of(
+            forYouIncompleteCardLocators = List.of(
                     By.xpath("//XCUIElementTypeButton[@name='For You, A tailored space just for you, with recommended topics and quizzes.']")
+            );
+            forYouCompleteCardLocators = List.of(
+                    By.xpath("//XCUIElementTypeButton[@name='For You']")
             );
             forYouTitleLocators = List.of(
                     By.xpath("//XCUIElementTypeStaticText[@name='For You']")
@@ -76,7 +80,10 @@ public class LearnPageFull extends BasePage {
             firstAidEmergenciesLocators = List.of(
                     By.xpath("//XCUIElementTypeButton[@name='First Aid Emergencies']"));
         } else {
-            forYouCardLocators = List.of(
+            forYouIncompleteCardLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/card_for_you']")
+            );
+            forYouCompleteCardLocators = List.of(
                     By.xpath("//*[@resource-id='com.cube.arc.childcare:id/card_for_you']")
             );
             forYouTitleLocators = List.of(
@@ -230,12 +237,20 @@ public class LearnPageFull extends BasePage {
         tap(firstAidEmergenciesLocators);
     }
 
-    // For You Card
-    public boolean isForYouCardVisible() {
-        return isVisible(forYouCardLocators);
+    // For You Incomplete Card
+    public boolean isForYouIncompleteCardVisible() {
+        return isVisible(forYouIncompleteCardLocators);
     }
-    public void tapForYouCard() {
-        tap(forYouCardLocators);
+    public void tapForYouIncompleteCard() {
+        tap(forYouIncompleteCardLocators);
+    }
+
+    // For You Complete Card
+    public boolean isForYouCompleteCardVisible() {
+        return isVisible(forYouCompleteCardLocators);
+    }
+    public void tapForYouCompleteCard() {
+        tap(forYouCompleteCardLocators);
     }
 
     // For You Title

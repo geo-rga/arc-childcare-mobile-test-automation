@@ -27,7 +27,7 @@ public class LearnTests extends BaseTest {
     @Test(groups = {"smoke"})
     public void validateForYouIncompleteState(){
         continueAsGuest();
-        learnPageFull.isForYouCardVisible();
+        learnPageFull.isForYouIncompleteCardVisible();
         learnPageFull.isForYouTitleVisible();
         learnPageFull.isForYouSubtitleVisible();
     }
@@ -35,8 +35,8 @@ public class LearnTests extends BaseTest {
     @Test(groups = {"wip"})
     public void validateForYouCompleteState(){
         continueAsGuest();
-        learnPageFull.isForYouCardVisible();
+        personalisationFlow();
+        learnPageFull.isForYouCompleteCardVisible();
         learnPageFull.isForYouTitleVisible();
-        learnPageFull.isForYouSubtitleVisible();
     }
 }

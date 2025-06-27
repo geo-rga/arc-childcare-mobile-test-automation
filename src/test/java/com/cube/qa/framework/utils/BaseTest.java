@@ -122,53 +122,9 @@ public class BaseTest {
         whatsNewPage.tapContinueButton();
     }
 
-    public void swipe() throws InterruptedException {
-        String platform = driver.getCapabilities().getPlatformName().toString().toLowerCase();
-        int maxScrolls = 1;
-        int scrolled = 0;
+    public void personalisationFlow(){
 
-        while (scrolled < maxScrolls) {
-            if (platform.equals("ios")) {
-                driver.executeScript("mobile: swipe", Map.of("direction", "up"));
-            } else if (platform.equals("android")) {
-                Map<String, Object> scrollArgs = Map.of(
-                        "left", 100,
-                        "top", 500,
-                        "width", 800,
-                        "height", 1200,
-                        "direction", "down",
-                        "percent", 0.7
-                );
-                driver.executeScript("mobile: scrollGesture", scrollArgs);
-            } else {
-                throw new RuntimeException("Unsupported platform");
-            }
-
-            sleep(1000);
-            scrolled++;
-        }
-
-        throw new RuntimeException("Swipe not possible");
     }
-
-    // TODO: Add Repeated App Flow Functions in here
-    // Blood Example Log in to app and dismiss permissions
-//    public void loginToApp(String username, String password) {
-//        welcomePage.tapLogInButton();
-//        loginPage.enterUsername(username);
-//        loginPage.enterPassword(password);
-//        loginPage.tapContinueButton();
-//        biometricPermissionsPage.tapNotNowButton();
-//
-//        if (isIOS()) {
-//            dismissPermissions();
-//            dismissPermissions();
-//        } else {
-//            acceptPermissions();
-//            acceptPermissions();
-//        }
-//
-//    }
 
     @Parameters({"platform", "build", "buildNumber", "deviceName", "udid", "fullReset", "env", "isSimulator", "platformVersion"})
     @BeforeMethod(alwaysRun = true)

@@ -22,11 +22,23 @@ public class LearnPageFull extends BasePage {
     private List<By> makingPlaytimeFunLocators;
     private List<By> guidingBehaviourLocators;
     private List<By> firstAidEmergenciesLocators;
+    private List<By> forYouCardLocators;
+    private List<By> forYouTitleLocators;
+    private List<By> forYouSubtitleLocators;
 
     public LearnPageFull(AppiumDriver driver, String platform) {
         super(driver);
 
         if (platform.equalsIgnoreCase("ios")) {
+            forYouCardLocators = List.of(
+                    By.xpath("//XCUIElementTypeButton[@name='For You, A tailored space just for you, with recommended topics and quizzes.']")
+            );
+            forYouTitleLocators = List.of(
+                    By.xpath("//XCUIElementTypeStaticText[@name='For You']")
+            );
+            forYouSubtitleLocators = List.of(
+                    By.xpath("//XCUIElementTypeStaticText[@name='A tailored space just for you, with recommended topics and quizzes.']")
+            );
             headerTitleLocators = List.of(
                     By.xpath("//XCUIElementTypeStaticText[@name='Learn']")
             );
@@ -64,6 +76,15 @@ public class LearnPageFull extends BasePage {
             firstAidEmergenciesLocators = List.of(
                     By.xpath("//XCUIElementTypeButton[@name='First Aid Emergencies']"));
         } else {
+            forYouCardLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/card_for_you']")
+            );
+            forYouTitleLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/title' and @text='For You']")
+            );
+            forYouSubtitleLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/subtitle']")
+            );
             headerTitleLocators = List.of(
                     By.xpath("//*[@resource-id='com.cube.arc.childcare:id/toolbar']//*[@text='Learn']"));
             searchFieldLocators = List.of(
@@ -84,8 +105,6 @@ public class LearnPageFull extends BasePage {
                     By.xpath("//*[@text='Maintaining Morning and Bedtime Routines']"));
             beingALeaderLocators = List.of(
                     By.xpath("//*[@text='Being a Leader']"));
-//            startingBabysittingBusinessLocators = List.of(
-//                    By.xpath("//*[normalize-space()='Starting Your Babysitting Business']"));
             startingBabysittingBusinessLocators = List.of(
                     By.xpath("//*[@text='Starting Your Babysitting Business']"));
             makingPlaytimeFunLocators = List.of(
@@ -96,8 +115,6 @@ public class LearnPageFull extends BasePage {
                     By.xpath("//*[@text='First Aid Emergencies']"));
         }
     }
-
-    //android.widget.LinearLayout[@content-desc="Starting Your Babysitting Business Category. Expanded"]/android.widget.TextView
 
     public boolean isHeaderTitleVisible() {
         return isVisible(headerTitleLocators);
@@ -211,5 +228,29 @@ public class LearnPageFull extends BasePage {
 
     public void tapFirstAidEmergencies() {
         tap(firstAidEmergenciesLocators);
+    }
+
+    // For You Card
+    public boolean isForYouCardVisible() {
+        return isVisible(forYouCardLocators);
+    }
+    public void tapForYouCard() {
+        tap(forYouCardLocators);
+    }
+
+    // For You Title
+    public boolean isForYouTitleVisible() {
+        return isVisible(forYouTitleLocators);
+    }
+    public boolean hasForYouTitleText(String text) {
+        return hasText(forYouTitleLocators, text);
+    }
+
+    // For You Subtitle
+    public boolean isForYouSubtitleVisible() {
+        return isVisible(forYouSubtitleLocators);
+    }
+    public boolean hasForYouSubtitleText(String text) {
+        return hasText(forYouSubtitleLocators, text);
     }
 } 

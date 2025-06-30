@@ -33,6 +33,7 @@
             <class name="tests.WelcomeTest"/>
             <class name="tests.SignInTest"/>
             <class name="tests.LearnTests"/>
+            <class name="tests.PersonalisationTests"/>
         </classes>
     </test>
 </suite>

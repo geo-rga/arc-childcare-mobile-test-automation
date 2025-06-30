@@ -52,6 +52,7 @@ public class BaseTest {
     protected SkillSelectionPage skillSelectionPage;
     protected PersonalisationCompletePage personalisationCompletePage;
 
+
     protected void log(String message) {
         String prefix = "[" + config.getPlatform().toUpperCase() +
                 " | Thread-" + Thread.currentThread().getId() + "]";
@@ -139,6 +140,14 @@ public class BaseTest {
         skillSelectionPage.tapSkillBeingLeader();
         skillSelectionPage.tapNextButton();
         personalisationCompletePage.tapBackToLearnButton();
+    }
+
+    public void personalisationData(){
+        // This completes flow up to skill selection
+        learnPageFull.tapForYouIncompleteCard();
+        personalizedJourneyPage.tapBeginButton();
+        userTypeQuestionPage.tapOtherOption();
+        userTypeQuestionPage.tapNextButton();
     }
 
     @Parameters({"platform", "build", "buildNumber", "deviceName", "udid", "fullReset", "env", "isSimulator", "platformVersion"})

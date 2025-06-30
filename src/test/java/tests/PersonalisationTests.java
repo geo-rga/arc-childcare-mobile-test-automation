@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class PersonalisationTests extends BaseTest {
 
-    @Test(groups = {"wip"})
+    @Test(groups = {"smoke"})
     public void personalisationCompleteScreenTC23776(){
         continueAsGuest();
         learnPageFull.tapForYouIncompleteCard();
@@ -20,5 +20,17 @@ public class PersonalisationTests extends BaseTest {
         personalisationCompletePage.isCompletionMessageVisible();
         personalisationCompletePage.isTakeMeToMyPageButtonVisible();
         personalisationCompletePage.isBackToLearnButtonVisible();
+    }
+
+    @Test(groups = {"wip"})
+    public void validateSelectedTopicsTC23784() {
+        continueAsGuest();
+        personalisationData();
+        skillSelectionPage.tapSkillStartingBusiness();
+        skillSelectionPage.tapSkillBeingLeader();
+        skillSelectionPage.tapSkillStayingSafe();
+        skillSelectionPage.tapSkillStoppingGerms();
+        skillSelectionPage.tapNextButton();
+        personalisationCompletePage.isTakeMeToMyPageButtonVisible();
     }
 }

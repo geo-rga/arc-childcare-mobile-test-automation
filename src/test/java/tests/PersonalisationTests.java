@@ -34,7 +34,7 @@ public class PersonalisationTests extends BaseTest {
         forYouPage.isGermControlTopicVisible();
     }
 
-    @Test(groups = {"wip"})
+    @Test(groups = {"smoke"})
     public void startQuizFromForYouTC23792() {
         continueAsGuest();
         completeForYouShowPage();

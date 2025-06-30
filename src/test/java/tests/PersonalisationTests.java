@@ -22,15 +22,26 @@ public class PersonalisationTests extends BaseTest {
         personalisationCompletePage.isBackToLearnButtonVisible();
     }
 
-    @Test(groups = {"wip"})
+    @Test(groups = {"smoke"})
     public void validateSelectedTopicsTC23784() {
         continueAsGuest();
-        personalisationData();
-        skillSelectionPage.tapSkillStartingBusiness();
-        skillSelectionPage.tapSkillBeingLeader();
-        skillSelectionPage.tapSkillStayingSafe();
-        skillSelectionPage.tapSkillStoppingGerms();
-        skillSelectionPage.tapNextButton();
-        personalisationCompletePage.isTakeMeToMyPageButtonVisible();
+        completeForYouShowPage();
+        forYouPage.isForYouTitleVisible();
+        forYouPage.isTryNewTopicTitleVisible();
+        forYouPage.isExpectationsTopicVisible();
+        forYouPage.isLeadershipTopicVisible();
+        forYouPage.isSafetyTopicVisible();
+        forYouPage.isGermControlTopicVisible();
+    }
+
+    @Test(groups = {"wip"})
+    public void startQuizFromForYouTC23792() {
+        continueAsGuest();
+        completeForYouShowPage();
+        forYouPage.scrollToQuizTitle();
+        forYouPage.isJumpToQuizTitleVisible();
+        forYouPage.tapQuizExpectationsTopic();
+        personalisedQuiz.isQuizTitleVisible();
+        personalisedQuiz.isCheckButtonVisible();
     }
 }

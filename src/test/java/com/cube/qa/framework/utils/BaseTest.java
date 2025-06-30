@@ -5,10 +5,7 @@ import com.cube.qa.framework.config.TestConfig;
 
 import com.cube.qa.framework.pages.*;
 import com.cube.qa.framework.pages.learn.LearnPageFull;
-import com.cube.qa.framework.pages.learn.foryou.PersonalisationCompletePage;
-import com.cube.qa.framework.pages.learn.foryou.PersonalizedJourneyPage;
-import com.cube.qa.framework.pages.learn.foryou.SkillSelectionPage;
-import com.cube.qa.framework.pages.learn.foryou.UserTypeQuestionPage;
+import com.cube.qa.framework.pages.learn.foryou.*;
 import com.cube.qa.framework.pages.onboarding.ForgotPasswordWebViewPage;
 import com.cube.qa.framework.pages.onboarding.HelpLoggingInPage;
 import com.cube.qa.framework.pages.onboarding.SignInPageErrors;
@@ -51,6 +48,8 @@ public class BaseTest {
     protected UserTypeQuestionPage userTypeQuestionPage;
     protected SkillSelectionPage skillSelectionPage;
     protected PersonalisationCompletePage personalisationCompletePage;
+    protected ForYouPage forYouPage;
+    protected PersonalisedQuiz personalisedQuiz;
 
 
     protected void log(String message) {
@@ -138,16 +137,23 @@ public class BaseTest {
         userTypeQuestionPage.tapNextButton();
         skillSelectionPage.tapSkillStartingBusiness();
         skillSelectionPage.tapSkillBeingLeader();
+        skillSelectionPage.tapSkillStayingSafe();
+        skillSelectionPage.tapSkillStoppingGerms();
         skillSelectionPage.tapNextButton();
         personalisationCompletePage.tapBackToLearnButton();
     }
 
-    public void personalisationData(){
-        // This completes flow up to skill selection
+    public void completeForYouShowPage(){
         learnPageFull.tapForYouIncompleteCard();
         personalizedJourneyPage.tapBeginButton();
         userTypeQuestionPage.tapOtherOption();
         userTypeQuestionPage.tapNextButton();
+        skillSelectionPage.tapSkillStartingBusiness();
+        skillSelectionPage.tapSkillBeingLeader();
+        skillSelectionPage.tapSkillStayingSafe();
+        skillSelectionPage.tapSkillStoppingGerms();
+        skillSelectionPage.tapNextButton();
+        personalisationCompletePage.tapTakeMeToMyPageButton();
     }
 
     @Parameters({"platform", "build", "buildNumber", "deviceName", "udid", "fullReset", "env", "isSimulator", "platformVersion"})
@@ -200,6 +206,8 @@ public class BaseTest {
         userTypeQuestionPage = new UserTypeQuestionPage(driver, config.getPlatform());
         skillSelectionPage = new SkillSelectionPage(driver, config.getPlatform());
         personalisationCompletePage = new PersonalisationCompletePage(driver, config.getPlatform());
+        forYouPage = new ForYouPage(driver, config.getPlatform());
+        personalisedQuiz = new PersonalisedQuiz(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());

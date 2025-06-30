@@ -5,7 +5,9 @@ import com.cube.qa.framework.config.TestConfig;
 
 import com.cube.qa.framework.pages.*;
 import com.cube.qa.framework.pages.learn.LearnPageFull;
+import com.cube.qa.framework.pages.learn.LearnTopics;
 import com.cube.qa.framework.pages.learn.foryou.*;
+import com.cube.qa.framework.pages.learn.topic.LearnTopicDetail;
 import com.cube.qa.framework.pages.onboarding.ForgotPasswordWebViewPage;
 import com.cube.qa.framework.pages.onboarding.HelpLoggingInPage;
 import com.cube.qa.framework.pages.onboarding.SignInPageErrors;
@@ -50,6 +52,8 @@ public class BaseTest {
     protected PersonalisationCompletePage personalisationCompletePage;
     protected ForYouPage forYouPage;
     protected PersonalisedQuiz personalisedQuiz;
+    protected LearnTopics learnTopics;
+    protected LearnTopicDetail learnTopicDetail;
 
 
     protected void log(String message) {
@@ -208,6 +212,8 @@ public class BaseTest {
         personalisationCompletePage = new PersonalisationCompletePage(driver, config.getPlatform());
         forYouPage = new ForYouPage(driver, config.getPlatform());
         personalisedQuiz = new PersonalisedQuiz(driver, config.getPlatform());
+        learnTopics = new LearnTopics(driver, config.getPlatform());
+        learnTopicDetail = new LearnTopicDetail(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());

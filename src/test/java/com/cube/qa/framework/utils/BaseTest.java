@@ -35,7 +35,6 @@ public class BaseTest {
 
     protected AndroidHelpersPage androidHelpersPage;
     protected IOSHelpersPage iosHelpersPage;
-    protected BasePage globalHelpers;
 
     // TODO: Add your page objects here for pages that will be used in most tests (e.g. log in or key flows)
     protected WelcomePage welcomePage;

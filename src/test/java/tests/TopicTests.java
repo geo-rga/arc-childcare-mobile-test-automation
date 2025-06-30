@@ -1,5 +1,6 @@
 package tests;
 
+import com.cube.qa.framework.pages.BasePage;
 import com.cube.qa.framework.utils.BaseTest;
 import org.testng.annotations.Test;
 

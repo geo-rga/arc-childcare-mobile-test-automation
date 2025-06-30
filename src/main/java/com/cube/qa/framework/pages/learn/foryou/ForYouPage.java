@@ -36,10 +36,10 @@ public class ForYouPage extends BasePage {
                 By.xpath("//XCUIElementTypeStaticText[@name='Try a New Topic']")
             );
             expectationsTopicLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Expectations, Skills and Qualifications'][2]")
+                By.xpath("(//XCUIElementTypeButton[@name='Expectations, Skills and Qualifications'])[1]")
             );
             leadershipTopicLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Leadership Skills'][2]")
+                By.xpath("(//XCUIElementTypeButton[@name='Leadership Skills'])[1]")
             );
             safetyTopicLocators = List.of(
                 By.xpath("//XCUIElementTypeButton[@name='A+ Safety: Inside ']")
@@ -51,10 +51,10 @@ public class ForYouPage extends BasePage {
                 By.xpath("//XCUIElementTypeStaticText[@name='Jump into a new quiz']")
             );
             quizExpectationsTopicLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Expectations, Skills and Qualifications'][2]")
+                By.xpath("(//XCUIElementTypeButton[@name='Expectations, Skills and Qualifications'])[2]")
             );
             quizLeadershipTopicLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Leadership Skills'][2]")
+                By.xpath("(//XCUIElementTypeButton[@name='Leadership Skills'])[2]")
             );
 
         } else {

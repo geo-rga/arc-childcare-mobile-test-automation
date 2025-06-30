@@ -8,6 +8,7 @@ import com.cube.qa.framework.pages.learn.LearnPageFull;
 import com.cube.qa.framework.pages.learn.LearnTopics;
 import com.cube.qa.framework.pages.learn.foryou.*;
 import com.cube.qa.framework.pages.learn.topic.LearnTopicDetail;
+import com.cube.qa.framework.pages.learn.topic.lesson.*;
 import com.cube.qa.framework.pages.onboarding.ForgotPasswordWebViewPage;
 import com.cube.qa.framework.pages.onboarding.HelpLoggingInPage;
 import com.cube.qa.framework.pages.onboarding.SignInPageErrors;
@@ -24,7 +25,6 @@ import io.appium.java_client.AppiumDriver;
 import org.testng.annotations.*;
 import org.testng.ITestContext; // added for Extent listener
 import java.lang.reflect.Method;
-import java.util.Map;
 
 import static java.lang.Thread.sleep;
 
@@ -35,6 +35,7 @@ public class BaseTest {
 
     protected AndroidHelpersPage androidHelpersPage;
     protected IOSHelpersPage iosHelpersPage;
+    protected BasePage globalHelpers;
 
     // TODO: Add your page objects here for pages that will be used in most tests (e.g. log in or key flows)
     protected WelcomePage welcomePage;
@@ -54,6 +55,14 @@ public class BaseTest {
     protected PersonalisedQuiz personalisedQuiz;
     protected LearnTopics learnTopics;
     protected LearnTopicDetail learnTopicDetail;
+    protected LessonIntroPage lessonIntroPage;
+    protected LessonOverlay lessonOverlay;
+    protected LessonPageOne lessonPageOne;
+    protected LessonPageTwo lessonPageTwo;
+    protected LessonPageThree lessonPageThree;
+    protected LessonPageFour lessonPageFour;
+    protected LessonPageFive lessonPageFive;
+    protected LessonSuccess lessonSuccess;
 
 
     protected void log(String message) {
@@ -214,6 +223,14 @@ public class BaseTest {
         personalisedQuiz = new PersonalisedQuiz(driver, config.getPlatform());
         learnTopics = new LearnTopics(driver, config.getPlatform());
         learnTopicDetail = new LearnTopicDetail(driver, config.getPlatform());
+        lessonIntroPage = new LessonIntroPage(driver, config.getPlatform());
+        lessonOverlay = new LessonOverlay(driver, config.getPlatform());
+        lessonPageOne = new LessonPageOne(driver, config.getPlatform());
+        lessonPageTwo = new LessonPageTwo(driver, config.getPlatform());
+        lessonPageThree = new LessonPageThree(driver, config.getPlatform());
+        lessonPageFour = new LessonPageFour(driver, config.getPlatform());
+        lessonPageFive = new LessonPageFive(driver, config.getPlatform());
+        lessonSuccess = new LessonSuccess(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());

@@ -33,12 +33,14 @@ public class TopicTests extends BaseTest {
         learnTopicDetail.isAdditionalResourceLinkVisible();
     }
 
-    @Test(groups = {"smoke"})
+    @Test(groups = {"wip"})
     public void completeLessonTC18937(){
         continueAsGuest();
         learnTopics.tapExpectationsTopic();
         learnTopicDetail.scrollToFirstVisibleLessonCardTitle();
         learnTopicDetail.tapLessonCardTitle();
+        lessonIntroPage.tapStartButton();
+        lessonOverlay.tapDismissOverlay();
     }
 
 }

@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class LearnTests extends BaseTest {
 
-    @Test(groups = {"broken"})
+    @Test(groups = {"regression"})
     public void validateLearnTabDisplayTC18912()  {
         // This test partially works on iOS but not on Android
         // unsure if this is related to Android identifiers but will need further debugging
@@ -24,16 +24,16 @@ public class LearnTests extends BaseTest {
         learnPageFull.isFirstAidEmergenciesVisible();
     }
 
-    @Test(groups = {"smoke"})
-    public void validateForYouIncompleteState(){
+    @Test(groups = {"regression"})
+    public void validateForYouIncompleteStateTC23770(){
         continueAsGuest();
         learnPageFull.isForYouIncompleteCardVisible();
         learnPageFull.isForYouTitleVisible();
         learnPageFull.isForYouSubtitleVisible();
     }
 
-    @Test(groups = {"wip"})
-    public void validateForYouCompleteState(){
+    @Test(groups = {"regression"})
+    public void validateForYouCompleteStateTC23771(){
         continueAsGuest();
         personalisationFlow();
         learnPageFull.isForYouCompleteCardVisible();

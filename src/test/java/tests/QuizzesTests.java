@@ -5,31 +5,30 @@ import org.testng.annotations.Test;
 
 public class QuizzesTests extends BaseTest {
 
-    @Test(groups = {"smoke"})
+    @Test(groups = {"wip"})
     public void textQuestionCorrectTC18970() {
         continueAsGuest();
-        learnTopics.tapExpectationsTopic();
-        learnTopicDetail.scrollToFirstVisibleAdditionalResourcesHeader();
-        learnTopicDetail.tapQuizCard();
-        quizReadyPopUp.tapConfirmButton();
+        openQuiz();
+
         textSelectQuestion.tapAnswerOption2();
         textSelectQuestion.tapCheckButton();
         textSelectCorrect.isCorrectMessageVisible();
+        textSelectCorrect.tapNextButton();
     }
 
-    @Test(groups = {"wip"})
+    @Test(groups = {"smoke"})
     public void imageQuestionCorrectTC18970() {
         continueAsGuest();
-        learnTopics.tapExpectationsTopic();
-        learnTopicDetail.scrollToFirstVisibleAdditionalResourcesHeader();
-        learnTopicDetail.tapQuizCard();
-        quizReadyPopUp.tapConfirmButton();
+        openQuiz();
+
         textSelectQuestion.tapAnswerOption2();
         textSelectQuestion.tapCheckButton();
         textSelectCorrect.tapNextButton();
-        textSelectQuestion.tapAnswerOption4();
-        textSelectQuestion.tapCheckButton();
-        textSelectCorrect.tapNextButton();
+
+        secondTextSelectQuestion.tapAnswerOption4();
+        secondTextSelectQuestion.tapCheckButton();
+        secondTextSelectQuestion.tapNextButton();
+
         imageSelectQuestion.tapImageOption3();
         imageSelectQuestion.tapCheckButton();
         imageSelectCorrect.isCorrectMessageVisible();

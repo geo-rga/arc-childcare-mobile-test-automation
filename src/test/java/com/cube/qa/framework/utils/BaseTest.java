@@ -72,6 +72,7 @@ public class BaseTest {
     protected ImageSelectQuestion imageSelectQuestion;
     protected ImageSelectCorrect imageSelectCorrect;
     protected ImageSelectIncorrect imageSelectIncorrect;
+    protected SecondTextSelectQuestion secondTextSelectQuestion;
 
 
     protected void log(String message) {
@@ -207,6 +208,13 @@ public class BaseTest {
 
     }
 
+    public void openQuiz(){
+        learnTopics.tapExpectationsTopic();
+        learnTopicDetail.scrollToFirstVisibleAdditionalResourcesHeader();
+        learnTopicDetail.tapQuizCard();
+        quizReadyPopUp.tapConfirmButton();
+    }
+
     @Parameters({"platform", "build", "buildNumber", "deviceName", "udid", "fullReset", "env", "isSimulator", "platformVersion"})
     @BeforeMethod(alwaysRun = true)
     public void setUp(ITestContext ctx,
@@ -276,6 +284,7 @@ public class BaseTest {
         imageSelectQuestion = new ImageSelectQuestion(driver, config.getPlatform());
         imageSelectCorrect = new ImageSelectCorrect(driver, config.getPlatform());
         imageSelectIncorrect = new ImageSelectIncorrect(driver, config.getPlatform());
+        secondTextSelectQuestion = new SecondTextSelectQuestion(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());

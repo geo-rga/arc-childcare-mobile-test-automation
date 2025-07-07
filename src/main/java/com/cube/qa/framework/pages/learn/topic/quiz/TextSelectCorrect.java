@@ -20,7 +20,7 @@ public class TextSelectCorrect extends BasePage {
                 By.xpath("//XCUIElementTypeStaticText[@name='CORRECT!']")
             );
             nextButtonLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Next']")
+                By.xpath("(//XCUIElementTypeButton[@name=\"Next\"])[2]")
             );
             closeButtonLocators = List.of(
                 By.xpath("//XCUIElementTypeButton[@name='_GENERAL_DISMISS']")
@@ -49,6 +49,7 @@ public class TextSelectCorrect extends BasePage {
         return isVisible(nextButtonLocators);
     }
     public void tapNextButton() {
+        waitForSeconds(1);
         tap(nextButtonLocators);
     }
 

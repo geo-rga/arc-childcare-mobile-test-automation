@@ -25,6 +25,7 @@ import io.appium.java_client.AppiumDriver;
 import org.testng.annotations.*;
 import org.testng.ITestContext; // added for Extent listener
 import java.lang.reflect.Method;
+import java.util.HashMap;
 
 import static java.lang.Thread.sleep;
 
@@ -166,6 +167,34 @@ public class BaseTest {
         skillSelectionPage.tapSkillStoppingGerms();
         skillSelectionPage.tapNextButton();
         personalisationCompletePage.tapTakeMeToMyPageButton();
+    }
+
+    public void locationPermissions(String location){
+        HashMap<String, String> args = new HashMap<>();
+        args.put("action", "accept");
+
+        switch (location) {
+            case "once":
+                args.put("buttonLabel", "Allow Once");
+                break;
+            case "all":
+                args.put("buttonLabel", "Allow While Using App");
+                break;
+            case "deny":
+                args.put("buttonLabel", "Don't Allow");
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown location permission option: " + location);
+        }
+        driver.executeScript("mobile: alert", args);
+    }
+
+    public void selectAlert(String alertText){
+        HashMap<String, String> args = new HashMap<>();
+        args.put("action", "accept");
+        args.put("buttonLabel", alertText);
+        driver.executeScript("mobile: alert", args);
+
     }
 
     @Parameters({"platform", "build", "buildNumber", "deviceName", "udid", "fullReset", "env", "isSimulator", "platformVersion"})

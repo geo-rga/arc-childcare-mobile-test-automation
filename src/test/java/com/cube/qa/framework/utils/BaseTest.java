@@ -198,7 +198,8 @@ public class BaseTest {
         driver.executeScript("mobile: alert", args);
     }
 
-    public void selectAlert(String alertText) {
+    public void selectAlert(String alertText) throws InterruptedException {
+        Thread.sleep(2000);
         HashMap<String, String> args = new HashMap<>();
         args.put("action", "accept");
         args.put("buttonLabel", alertText);

@@ -17,6 +17,7 @@ public class LearnTopicDetail extends BasePage {
     private List<By> quizTitleLocators;
     private List<By> quizSubtitleLocators;
     private List<By> quizDurationLocators;
+    private List<By> quizCardLocators;
     private List<By> additionalResourcesHeaderLocators;
     private List<By> additionalResourceLinkLocators;
 
@@ -47,6 +48,9 @@ public class LearnTopicDetail extends BasePage {
             );
             quizTitleLocators = List.of(
                     By.xpath("//XCUIElementTypeStaticText[@name='Test your knowledge']")
+            );
+            quizCardLocators = List.of(
+                    By.xpath("//XCUIElementTypeButton[@name='Test your knowledge, Ready to take the quiz?, 4 minutes']")
             );
             quizSubtitleLocators = List.of(
                     By.xpath("//XCUIElementTypeStaticText[@name='Ready to take the quiz?']")
@@ -85,6 +89,9 @@ public class LearnTopicDetail extends BasePage {
             );
             quizTitleLocators = List.of(
                     By.xpath("//*[@resource-id='com.cube.arc.childcare:id/card_title' and @text='Test your knowledge']")
+            );
+            quizCardLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/main_card']")
             );
             quizSubtitleLocators = List.of(
                     By.xpath("//*[@resource-id='com.cube.arc.childcare:id/card_subtitle' and @text='Ready to take the quiz?']")
@@ -169,6 +176,17 @@ public class LearnTopicDetail extends BasePage {
     }
     public void scrollToFirstVisibleQuizTitle() {
         scrollToFirstVisible(quizTitleLocators);
+    }
+
+    // Quiz Card
+    public boolean isQuizCardVisible() {
+        return isVisible(quizCardLocators);
+    }
+    public void tapQuizCard() {
+        tap(quizCardLocators);
+    }
+    public void scrollToFirstVisibleQuizCard() {
+        scrollToFirstVisible(quizCardLocators);
     }
 
     // Quiz Subtitle

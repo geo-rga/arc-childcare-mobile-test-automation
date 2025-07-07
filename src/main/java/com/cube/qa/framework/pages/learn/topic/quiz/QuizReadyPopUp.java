@@ -17,10 +17,18 @@ public class QuizReadyPopUp extends BasePage {
         super(driver);
 
         if (platform.equalsIgnoreCase("ios")) {
-            quizReadyTitleLocators = List.of();
-            quizReadyMessageLocators = List.of();
-            cancelButtonLocators = List.of();
-            confirmButtonLocators = List.of();
+            quizReadyTitleLocators = List.of(
+                    By.xpath("//XCUIElementTypeStaticText[@name='Ready to take the quiz?']")
+            );
+            quizReadyMessageLocators = List.of(
+                    By.xpath("//XCUIElementTypeStaticText[@name=\"You haven’t completed all the lessons in this topic yet. Are you sure you want to take the quiz now?\"]")
+            );
+            cancelButtonLocators = List.of(
+                    By.xpath("//XCUIElementTypeButton[@name='Cancel']")
+            );
+            confirmButtonLocators = List.of(
+                    By.xpath("//XCUIElementTypeButton[@name='Yes, I’m ready']")
+            );
         } else {
             quizReadyTitleLocators = List.of(
                 By.xpath("//*[@resource-id='com.cube.arc.childcare:id/alertTitle' and @text='Ready to take the quiz?']")

@@ -24,7 +24,7 @@
         <!-- Set up the tests to run here -->
         <groups>
             <run> <!-- Sets which type tests will run, e.g. "onboarding", "regression" etc. -->
-                <include name="smoke"/>
+                <include name="wip"/>
             </run>
         </groups>
 
@@ -35,6 +35,7 @@
             <class name="tests.LearnTests"/>
             <class name="tests.PersonalisationTests"/>
             <class name="tests.TopicTests"/>
+            <class name="tests.QuizzesTests"/>
         </classes>
     </test>
 </suite>

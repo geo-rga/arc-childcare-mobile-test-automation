@@ -34,7 +34,7 @@ public class TopicTests extends BaseTest {
         learnTopicDetail.isAdditionalResourceLinkVisible();
     }
 
-    @Test(groups = {"wip"})
+    @Test(groups = {"debug"})
     public void completeLessonTC18937(){
         continueAsGuest();
         learnTopics.tapExpectationsTopic();

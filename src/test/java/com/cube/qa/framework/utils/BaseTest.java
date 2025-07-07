@@ -9,6 +9,7 @@ import com.cube.qa.framework.pages.learn.LearnTopics;
 import com.cube.qa.framework.pages.learn.foryou.*;
 import com.cube.qa.framework.pages.learn.topic.LearnTopicDetail;
 import com.cube.qa.framework.pages.learn.topic.lesson.*;
+import com.cube.qa.framework.pages.learn.topic.quiz.*;
 import com.cube.qa.framework.pages.onboarding.ForgotPasswordWebViewPage;
 import com.cube.qa.framework.pages.onboarding.HelpLoggingInPage;
 import com.cube.qa.framework.pages.onboarding.SignInPageErrors;
@@ -24,6 +25,7 @@ import com.cube.qa.framework.testdata.loader.UserDataLoader; // ✅ Add this imp
 import io.appium.java_client.AppiumDriver;
 import org.testng.annotations.*;
 import org.testng.ITestContext; // added for Extent listener
+
 import java.lang.reflect.Method;
 import java.util.HashMap;
 
@@ -63,6 +65,13 @@ public class BaseTest {
     protected LessonPageFour lessonPageFour;
     protected LessonPageFive lessonPageFive;
     protected LessonSuccess lessonSuccess;
+    protected QuizReadyPopUp quizReadyPopUp;
+    protected TextSelectQuestion textSelectQuestion;
+    protected TextSelectCorrect textSelectCorrect;
+    protected TextSelectIncorrect textSelectIncorrect;
+    protected ImageSelectQuestion imageSelectQuestion;
+    protected ImageSelectCorrect imageSelectCorrect;
+    protected ImageSelectIncorrect imageSelectIncorrect;
 
 
     protected void log(String message) {
@@ -89,7 +98,7 @@ public class BaseTest {
             System.out.println("⚠️ Interrupted during sleep: " + e.getMessage());
         }
 
-        if(isIOS()) {
+        if (isIOS()) {
             iosHelpersPage.acceptIOSAlert();
         } else {
             androidHelpersPage.acceptAndroidPermission();
@@ -104,36 +113,36 @@ public class BaseTest {
             System.out.println("⚠️ Interrupted during sleep: " + e.getMessage());
         }
 
-        if(isIOS()) {
+        if (isIOS()) {
             iosHelpersPage.dismissIOSAlert();
         } else {
             androidHelpersPage.dismissAndroidPermission();
         }
     }
 
-    public void login(String user, String password){
+    public void login(String user, String password) {
         welcomePage.tapSignInButton();
         signInPage.enterEmail(user);
-        if(isIOS()){
-            signInPage.enterPassword(password+"\n");
+        if (isIOS()) {
+            signInPage.enterPassword(password + "\n");
         } else {
             signInPage.enterPassword(password);
         }
         signInPage.tapContinueButton();
     }
 
-    public void continueAsGuest(){
+    public void continueAsGuest() {
         welcomePage.tapContinueAsGuestButton();
         permissionsPage.tapSkipButton();
         termsOfServicePage.tapAcceptAndContinueButton();
         whatsNewPage.tapContinueButton();
     }
 
-    public void continueWithAccount(String user, String password){
+    public void continueWithAccount(String user, String password) {
         welcomePage.tapSignInButton();
         signInPage.enterEmail(user);
-        if(isIOS()){
-            signInPage.enterPassword(password+"\n");
+        if (isIOS()) {
+            signInPage.enterPassword(password + "\n");
         } else {
             signInPage.enterPassword(password);
         }
@@ -143,7 +152,7 @@ public class BaseTest {
         whatsNewPage.tapContinueButton();
     }
 
-    public void personalisationFlow(){
+    public void personalisationFlow() {
         learnPageFull.tapForYouIncompleteCard();
         personalizedJourneyPage.tapBeginButton();
         userTypeQuestionPage.tapOtherOption();
@@ -156,7 +165,7 @@ public class BaseTest {
         personalisationCompletePage.tapBackToLearnButton();
     }
 
-    public void completeForYouShowPage(){
+    public void completeForYouShowPage() {
         learnPageFull.tapForYouIncompleteCard();
         personalizedJourneyPage.tapBeginButton();
         userTypeQuestionPage.tapOtherOption();
@@ -169,7 +178,7 @@ public class BaseTest {
         personalisationCompletePage.tapTakeMeToMyPageButton();
     }
 
-    public void locationPermissions(String location){
+    public void locationPermissions(String location) {
         HashMap<String, String> args = new HashMap<>();
         args.put("action", "accept");
 
@@ -189,7 +198,7 @@ public class BaseTest {
         driver.executeScript("mobile: alert", args);
     }
 
-    public void selectAlert(String alertText){
+    public void selectAlert(String alertText) {
         HashMap<String, String> args = new HashMap<>();
         args.put("action", "accept");
         args.put("buttonLabel", alertText);
@@ -259,6 +268,13 @@ public class BaseTest {
         lessonPageFour = new LessonPageFour(driver, config.getPlatform());
         lessonPageFive = new LessonPageFive(driver, config.getPlatform());
         lessonSuccess = new LessonSuccess(driver, config.getPlatform());
+        quizReadyPopUp = new QuizReadyPopUp(driver, config.getPlatform());
+        textSelectQuestion = new TextSelectQuestion(driver, config.getPlatform());
+        textSelectCorrect = new TextSelectCorrect(driver, config.getPlatform());
+        textSelectIncorrect = new TextSelectIncorrect(driver, config.getPlatform());
+        imageSelectQuestion = new ImageSelectQuestion(driver, config.getPlatform());
+        imageSelectCorrect = new ImageSelectCorrect(driver, config.getPlatform());
+        imageSelectIncorrect = new ImageSelectIncorrect(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());

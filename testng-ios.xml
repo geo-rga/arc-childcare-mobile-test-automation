@@ -6,14 +6,14 @@
         <parameter name="platform" value="ios"/>
 
         <!-- TODO: Add path to app file and the build number when testing locally-->
-        <parameter name="build" value="src/test/resources/apps/ios/ARC-Childcare-iOS-Prod-1097.ipa"/>
+        <parameter name="build" value="src/test/resources/apps/ios/ARC-Childcare-prod.ipa"/>
         <parameter name="buildNumber" value="1097"/>
 
         <!-- TODO: To get the iOS device udid, run the following in the terminal: xcrun xctrace list devices. Set to "auto" to run on a simulator-->
         <parameter name="deviceName" value="GT - iPhone 11 (18.1)"/>
         <parameter name="platformVersion" value="18.1"/>
         <parameter name="udid" value="00008030-000A31C134C0802E"/>
-        <parameter name="fullReset" value="false"/>
+        <parameter name="fullReset" value="true"/>
         <parameter name="xcodeOrgId" value="25H7BM6YWK"/>
         <parameter name="xcodeSigningId" value="iPhone Developer"/>
 
@@ -24,7 +24,7 @@
         <!-- Set up the tests to run here -->
         <groups>
             <run> <!-- Sets which type tests will run, e.g. "onboarding", "regression" etc. -->
-                <include name="wip"/>
+                <include name="smoke"/>
             </run>
         </groups>
 

@@ -73,8 +73,8 @@ public class DriverManager {
                 caps.setCapability("noReset", !fullReset);
                 caps.setCapability("autoAcceptAlerts", false); // TODO: Set this in testng.xml
 
-//                String fullAppPath = Paths.get(System.getProperty("user.dir"), buildPath).normalize().toString();
-//                caps.setCapability("app", fullAppPath);
+                String fullAppPath = Paths.get(System.getProperty("user.dir"), buildPath).normalize().toString();
+                caps.setCapability("app", fullAppPath);
 
                 return new IOSDriver(appiumServerUrl, caps);
 

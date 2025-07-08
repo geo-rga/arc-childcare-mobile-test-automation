@@ -23,10 +23,16 @@ import com.cube.qa.framework.pages.onboarding.WelcomePage;
 import com.cube.qa.framework.testdata.loader.UserDataLoader; // ✅ Add this import
 
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.testng.annotations.*;
 import org.testng.ITestContext; // added for Extent listener
 
 import java.lang.reflect.Method;
+import java.time.Duration;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import static java.lang.Thread.sleep;
@@ -213,6 +219,43 @@ public class BaseTest {
         learnTopicDetail.scrollToFirstVisibleAdditionalResourcesHeader();
         learnTopicDetail.tapQuizCard();
         quizReadyPopUp.tapConfirmButton();
+    }
+
+    public static void performSwipe(AppiumDriver driver, Point start, Point end) {
+        final PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1)
+                .addAction(FINGER.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), start.getX(), start.getY()))
+                .addAction(FINGER.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+                .addAction(FINGER.createPointerMove(Duration.ofMillis(1000), PointerInput.Origin.viewport(), end.getX(), end.getY()))
+                .addAction(FINGER.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Arrays.asList(swipe));
+    }
+
+    public static void swipeLeft(AppiumDriver driver, int iteration) {
+        Dimension size = driver.manage().window().getSize();
+        int height = size.getHeight();
+        int width = size.getWidth();
+
+        Point start = new Point((int) (width * 0.8), height / 2);
+        Point end = new Point((int) (width * 0.2), height / 2);
+
+        for (int i = 0; i < iteration; i++) {
+            performSwipe(driver, start, end);
+        }
+    }
+
+    public static void swipeRight(AppiumDriver driver, int iteration) {
+        Dimension size = driver.manage().window().getSize();
+        int height = size.getHeight();
+        int width = size.getWidth();
+
+        Point start = new Point((int) (width * 0.2), height / 2);
+        Point end = new Point((int) (width * 0.8), height / 2);
+
+        for (int i = 0; i < iteration; i++) {
+            performSwipe(driver, start, end);
+        }
     }
 
     @Parameters({"platform", "build", "buildNumber", "deviceName", "udid", "fullReset", "env", "isSimulator", "platformVersion"})

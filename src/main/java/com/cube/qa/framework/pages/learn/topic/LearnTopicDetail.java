@@ -13,6 +13,7 @@ public class LearnTopicDetail extends BasePage {
     private List<By> lessonsHeaderLocators;
     private List<By> lessonCardTitleLocators;
     private List<By> lessonCardDurationLocators;
+    private List<By> lessonCardLocators;
     private List<By> quizHeaderLocators;
     private List<By> quizTitleLocators;
     private List<By> quizSubtitleLocators;
@@ -42,6 +43,9 @@ public class LearnTopicDetail extends BasePage {
             );
             lessonCardDurationLocators = List.of(
                     By.xpath("//XCUIElementTypeStaticText[@name='5 minutes']")
+            );
+            lessonCardLocators = List.of(
+                    By.xpath("//XCUIElementTypeButton[@name=\"Expectations, Skills and Qualifications,   , 5 minutes\"]")
             );
             quizHeaderLocators = List.of(
                     By.xpath("//XCUIElementTypeStaticText[@name='Quiz']")
@@ -83,6 +87,9 @@ public class LearnTopicDetail extends BasePage {
             );
             lessonCardDurationLocators = List.of(
                     By.xpath("//*[@resource-id='com.cube.arc.childcare:id/duration' and @text='5 minutes']")
+            );
+            lessonCardLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/spotlight_container']")
             );
             quizHeaderLocators = List.of(
                     By.xpath("//*[@resource-id='com.cube.arc.childcare:id/title' and @text='Quiz']")
@@ -145,10 +152,23 @@ public class LearnTopicDetail extends BasePage {
         return isVisible(lessonCardTitleLocators);
     }
     public void tapLessonCardTitle() {
+        waitForSeconds(1);
         tap(lessonCardTitleLocators);
     }
     public void scrollToFirstVisibleLessonCardTitle() {
         scrollToFirstVisible(lessonCardTitleLocators);
+    }
+
+    // Lesson Card
+    public boolean isLessonCardVisible() {
+        return isVisible(lessonCardLocators);
+    }
+    public void tapLessonCard() {
+        waitForSeconds(1);
+        tap(lessonCardLocators);
+    }
+    public void scrollToFirstVisibleLessonCard() {
+        scrollToFirstVisible(lessonCardLocators);
     }
 
     // Lesson Card Duration
@@ -172,6 +192,7 @@ public class LearnTopicDetail extends BasePage {
         return isVisible(quizTitleLocators);
     }
     public void tapQuizTitle() {
+        waitForSeconds(1);
         tap(quizTitleLocators);
     }
     public void scrollToFirstVisibleQuizTitle() {
@@ -183,6 +204,7 @@ public class LearnTopicDetail extends BasePage {
         return isVisible(quizCardLocators);
     }
     public void tapQuizCard() {
+        waitForSeconds(1);
         tap(quizCardLocators);
     }
     public void scrollToFirstVisibleQuizCard() {
@@ -218,6 +240,7 @@ public class LearnTopicDetail extends BasePage {
         return isVisible(additionalResourceLinkLocators);
     }
     public void tapAdditionalResourceLink() {
+        waitForSeconds(1);
         tap(additionalResourceLinkLocators);
     }
     public void scrollToFirstVisibleAdditionalResourceLink() {

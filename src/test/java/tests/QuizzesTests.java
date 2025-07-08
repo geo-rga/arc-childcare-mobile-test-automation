@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class QuizzesTests extends BaseTest {
 
-    @Test(groups = {"wip"})
+    @Test(groups = {"smoke"})
     public void textQuestionCorrectTC18970() {
         continueAsGuest();
         openQuiz();
@@ -34,5 +34,14 @@ public class QuizzesTests extends BaseTest {
         imageSelectCorrect.isCorrectMessageVisible();
     }
 
+    @Test(groups = {"wip"})
+    public void validateQuizSuccess(){
+
+    }
+
+    @Test(groups = {"wip"})
+    public void validateQuizFail(){
+
+    }
 
 }

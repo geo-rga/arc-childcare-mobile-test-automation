@@ -58,6 +58,7 @@ public class LessonPageFive extends BasePage {
         return isVisible(doneButtonLocators);
     }
     public void tapDoneButton() {
+        waitForSeconds(1);
         tap(doneButtonLocators);
     }
     public void scrollToFirstVisibleDoneButton() {

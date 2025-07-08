@@ -65,6 +65,7 @@ public class LessonSuccess extends BasePage {
         return isVisible(takeQuizButtonLocators);
     }
     public void tapTakeQuizButton() {
+        waitForSeconds(1);
         tap(takeQuizButtonLocators);
     }
     public void scrollToFirstVisibleTakeQuizButton() {
@@ -76,6 +77,7 @@ public class LessonSuccess extends BasePage {
         return isVisible(backToTopicButtonLocators);
     }
     public void tapBackToTopicButton() {
+        waitForSeconds(1);
         tap(backToTopicButtonLocators);
     }
     public void scrollToFirstVisibleBackToTopicButton() {

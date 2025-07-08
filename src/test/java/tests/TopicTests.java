@@ -34,14 +34,37 @@ public class TopicTests extends BaseTest {
         learnTopicDetail.isAdditionalResourceLinkVisible();
     }
 
-    @Test(groups = {"debug"})
-    public void completeLessonTC18937(){
+    @Test(groups = {"smoke"})
+    public void finishLessonTC18937(){
         continueAsGuest();
         learnTopics.tapExpectationsTopic();
-        learnTopicDetail.scrollToFirstVisibleLessonCardTitle();
-        learnTopicDetail.tapLessonCardTitle();
+        learnTopicDetail.scrollToFirstVisibleQuizDuration();
+        learnTopicDetail.tapLessonCard();
         lessonIntroPage.tapStartButton();
         lessonOverlay.tapDismissOverlay();
+        swipeLeft(driver, 4);
+        lessonPageFive.tapDoneButton();
+        lessonSuccess.isSuccessTitleVisible();
+        lessonSuccess.isSuccessSubtitleVisible();
+        lessonSuccess.isTakeQuizButtonVisible();
+        lessonSuccess.isBackToTopicButtonVisible();
+    }
+
+    @Test(groups = {"smoke"})
+    public void completeLessonStartQuizTC18937(){
+        continueAsGuest();
+        learnTopics.tapExpectationsTopic();
+        learnTopicDetail.scrollToFirstVisibleQuizDuration();
+        learnTopicDetail.tapLessonCard();
+        lessonIntroPage.tapStartButton();
+        lessonOverlay.tapDismissOverlay();
+        swipeLeft(driver, 4);
+        lessonPageFive.tapDoneButton();
+        lessonSuccess.isSuccessTitleVisible();
+        lessonSuccess.isSuccessSubtitleVisible();
+        lessonSuccess.isTakeQuizButtonVisible();
+        lessonSuccess.isBackToTopicButtonVisible();
+        lessonSuccess.tapTakeQuizButton();
     }
 
 }

@@ -11,6 +11,7 @@ public class LearnTopics extends BasePage {
     private List<By> searchFieldLocators;
     private List<By> allTopicsHeaderLocators;
     private List<By> expectationsTopicLocators;
+    private List<By> ageAppropriatePlayTopicLocators;
 
     public LearnTopics(AppiumDriver driver, String platform) {
         super(driver);
@@ -28,6 +29,9 @@ public class LearnTopics extends BasePage {
             expectationsTopicLocators = List.of(
                 By.xpath("//XCUIElementTypeButton[@name='Expectations, Skills and Qualifications']")
             );
+            ageAppropriatePlayTopicLocators = List.of(
+                    By.xpath("//XCUIElementTypeButton[@name='Age-Appropriate Play]")
+            );
         } else {
             learnHeaderLocators = List.of(
                 By.xpath("//*[@resource-id='com.cube.arc.childcare:id/toolbar']//android.widget.TextView[@text='Learn']")
@@ -40,6 +44,9 @@ public class LearnTopics extends BasePage {
             );
             expectationsTopicLocators = List.of(
                 By.xpath("//*[@content-desc='Expectations, Skills and Qualifications. Incomplete']")
+            );
+            ageAppropriatePlayTopicLocators = List.of(
+                    By.xpath("//*[@content-desc='Age-Appropriate Play. Incomplete']")
             );
         }
     }
@@ -65,5 +72,15 @@ public class LearnTopics extends BasePage {
     }
     public void tapExpectationsTopic() {
         tap(expectationsTopicLocators);
+    }
+
+    // Age-Appropriate Play Topic
+    public boolean isAgeAppropriatePlayTopicVisible() {
+        return isVisible(ageAppropriatePlayTopicLocators);
+    }
+    public void tapAgeAppropriatePlayTopic() {
+        scrollToFirstVisible(ageAppropriatePlayTopicLocators);
+        waitForSeconds(2);
+        tap(ageAppropriatePlayTopicLocators);
     }
 }

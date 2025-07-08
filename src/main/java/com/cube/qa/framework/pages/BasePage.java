@@ -144,7 +144,7 @@ public class BasePage {
     @SuppressWarnings("unchecked")
     protected WebElement scrollToElement(By locator) {
         String platform = driver.getCapabilities().getPlatformName().toString().toLowerCase();
-        int maxScrolls = 5;
+        int maxScrolls = 15;
         int scrolled = 0;
 
         while (scrolled < maxScrolls) {

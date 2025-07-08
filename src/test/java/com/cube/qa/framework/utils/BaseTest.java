@@ -3,10 +3,10 @@ package com.cube.qa.framework.utils;
 import com.cube.qa.framework.config.ConfigLoader;
 import com.cube.qa.framework.config.TestConfig;
 
-import com.cube.qa.framework.pages.*;
 import com.cube.qa.framework.pages.learn.LearnPageFull;
 import com.cube.qa.framework.pages.learn.LearnTopics;
 import com.cube.qa.framework.pages.learn.foryou.*;
+import com.cube.qa.framework.pages.learn.topic.AgeAppropriatePlay;
 import com.cube.qa.framework.pages.learn.topic.LearnTopicDetail;
 import com.cube.qa.framework.pages.learn.topic.lesson.*;
 import com.cube.qa.framework.pages.learn.topic.quiz.*;
@@ -81,6 +81,8 @@ public class BaseTest {
     protected SecondTextSelectQuestion secondTextSelectQuestion;
     protected QuizSuccess quizSuccess;
     protected QuizFail quizFail;
+    protected AgeAppropriatePlay ageAppropriatePlay;
+    protected AgeAppropriatePlayQuiz ageAppropriatePlayQuiz;
 
 
     protected void log(String message) {
@@ -332,6 +334,8 @@ public class BaseTest {
         secondTextSelectQuestion = new SecondTextSelectQuestion(driver, config.getPlatform());
         quizSuccess = new QuizSuccess(driver, config.getPlatform());
         quizFail = new QuizFail(driver, config.getPlatform());
+        ageAppropriatePlay = new AgeAppropriatePlay(driver, config.getPlatform());
+        ageAppropriatePlayQuiz = new AgeAppropriatePlayQuiz(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());

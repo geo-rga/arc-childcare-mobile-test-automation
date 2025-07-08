@@ -24,7 +24,7 @@ public class TextSelectIncorrect extends BasePage {
                 By.xpath("//XCUIElementTypeStaticText[@name='Close, but not quite!']")
             );
             nextButtonLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Next']")
+                By.xpath("(//XCUIElementTypeButton[@name=\"Next\"])[2]")
             );
             closeButtonLocators = List.of(
                 By.xpath("//XCUIElementTypeButton[@name='_GENERAL_DISMISS']")

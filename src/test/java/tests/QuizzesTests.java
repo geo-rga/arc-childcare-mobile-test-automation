@@ -34,8 +34,8 @@ public class QuizzesTests extends BaseTest {
         imageSelectCorrect.isCorrectMessageVisible();
     }
 
-    @Test(groups = {"wip"})
-    public void validateQuizSuccess(){
+    @Test(groups = {"smoke"})
+    public void validateQuizSuccessTC18979(){
         continueAsGuest();
         openQuiz();
 
@@ -57,8 +57,8 @@ public class QuizzesTests extends BaseTest {
         quizSuccess.isDoneButtonVisible();
     }
 
-    @Test(groups = {"wip"})
-    public void validateQuizFail(){
+    @Test(groups = {"smoke"})
+    public void validateQuizFailTC18984(){
         continueAsGuest();
         openQuiz();
 
@@ -81,4 +81,15 @@ public class QuizzesTests extends BaseTest {
         quizFail.isDoneButtonVisible();
     }
 
+    @Test(groups = {"wip"})
+    public void blankQuestionCorrectTC23910() {
+        continueAsGuest();
+        learnTopics.tapAgeAppropriatePlayTopic();
+        ageAppropriatePlay.scrollToFirstVisibleAdditionalResourcesHeader();
+        ageAppropriatePlay.tapQuizCard();
+        ageAppropriatePlay.tapConfirmButton();
+        ageAppropriatePlayQuiz.tapAnswerOption1();
+        ageAppropriatePlayQuiz.isCorrectMessageVisible();
+        ageAppropriatePlayQuiz.tapNextQuestionButton();
+    }
 }

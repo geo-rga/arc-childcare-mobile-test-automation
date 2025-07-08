@@ -36,12 +36,49 @@ public class QuizzesTests extends BaseTest {
 
     @Test(groups = {"wip"})
     public void validateQuizSuccess(){
+        continueAsGuest();
+        openQuiz();
 
+        textSelectQuestion.tapAnswerOption2();
+        textSelectQuestion.tapCheckButton();
+        textSelectCorrect.tapNextButton();
+
+        secondTextSelectQuestion.tapAnswerOption4();
+        secondTextSelectQuestion.tapCheckButton();
+        secondTextSelectQuestion.tapNextButton();
+
+        imageSelectQuestion.tapImageOption3();
+        imageSelectQuestion.tapCheckButton();
+        imageSelectCorrect.tapFinishButton();
+
+        quizSuccess.isCongratulationsTitleVisible();
+        quizSuccess.isDescriptionTextVisible();
+        quizSuccess.isShareButtonVisible();
+        quizSuccess.isDoneButtonVisible();
     }
 
     @Test(groups = {"wip"})
     public void validateQuizFail(){
+        continueAsGuest();
+        openQuiz();
 
+        textSelectQuestion.tapAnswerOption1();
+        textSelectQuestion.tapCheckButton();
+        textSelectCorrect.tapNextButton();
+
+        secondTextSelectQuestion.tapAnswerOption4();
+        secondTextSelectQuestion.tapCheckButton();
+        secondTextSelectQuestion.tapNextButton();
+
+        imageSelectQuestion.tapImageOption3();
+        imageSelectQuestion.tapCheckButton();
+        imageSelectCorrect.tapFinishButton();
+
+        quizFail.isFailTitleVisible();
+        quizFail.isFailSubtitleVisible();
+        quizFail.isQuizScoreVisible();
+        quizFail.isRetryButtonVisible();
+        quizFail.isDoneButtonVisible();
     }
 
 }

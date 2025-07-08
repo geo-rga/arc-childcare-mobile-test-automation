@@ -79,6 +79,8 @@ public class BaseTest {
     protected ImageSelectCorrect imageSelectCorrect;
     protected ImageSelectIncorrect imageSelectIncorrect;
     protected SecondTextSelectQuestion secondTextSelectQuestion;
+    protected QuizSuccess quizSuccess;
+    protected QuizFail quizFail;
 
 
     protected void log(String message) {
@@ -328,6 +330,8 @@ public class BaseTest {
         imageSelectCorrect = new ImageSelectCorrect(driver, config.getPlatform());
         imageSelectIncorrect = new ImageSelectIncorrect(driver, config.getPlatform());
         secondTextSelectQuestion = new SecondTextSelectQuestion(driver, config.getPlatform());
+        quizSuccess = new QuizSuccess(driver, config.getPlatform());
+        quizFail = new QuizFail(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());

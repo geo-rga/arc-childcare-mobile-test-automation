@@ -20,7 +20,7 @@ public class ImageSelectCorrect extends BasePage {
                 By.xpath("//XCUIElementTypeStaticText[@name='CORRECT!']")
             );
             finishButtonLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Finish']")
+                By.xpath("(//XCUIElementTypeButton[@name=\"Finish\"])[2]")
             );
             closeButtonLocators = List.of(
                 By.xpath("//XCUIElementTypeButton[@name='_GENERAL_DISMISS']")
@@ -49,6 +49,7 @@ public class ImageSelectCorrect extends BasePage {
         return isVisible(finishButtonLocators);
     }
     public void tapFinishButton() {
+        waitForSeconds(1);
         tap(finishButtonLocators);
     }
 
@@ -57,6 +58,7 @@ public class ImageSelectCorrect extends BasePage {
         return isVisible(closeButtonLocators);
     }
     public void tapCloseButton() {
+        waitForSeconds(1);
         tap(closeButtonLocators);
     }
 } 

@@ -25,6 +25,10 @@ import com.cube.qa.framework.pages.onboarding.PermissionsPage;
 import com.cube.qa.framework.pages.onboarding.SignInPage;
 import com.cube.qa.framework.pages.onboarding.TermsOfServicePage;
 import com.cube.qa.framework.pages.onboarding.WelcomePage;
+import com.cube.qa.framework.pages.records.RecordInputScreen;
+import com.cube.qa.framework.pages.records.RecordsEmptyState;
+import com.cube.qa.framework.pages.records.SingleRecordAddedState;
+import com.cube.qa.framework.pages.records.AvatarModal;
 import com.cube.qa.framework.testdata.loader.UserDataLoader; // ✅ Add this import
 
 import io.appium.java_client.AppiumDriver;
@@ -40,6 +44,8 @@ import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashMap;
+
+import org.testng.ITestResult;
 
 import static java.lang.Thread.sleep;
 
@@ -94,6 +100,11 @@ public class BaseTest {
     protected BottomNavBar bottomNavBar;
     protected GiveCareCall giveCareCall;
     protected GiveCareTab giveCareTab;
+    protected RecordInputScreen recordInputScreen;
+    protected RecordsEmptyState recordsEmptyState;
+    protected SingleRecordAddedState singleRecordAddedState;
+    protected AvatarModal avatarModal;
+
 
 
     protected void log(String message) {
@@ -352,13 +363,32 @@ public class BaseTest {
         bottomNavBar = new BottomNavBar(driver, config.getPlatform());
         giveCareCall = new GiveCareCall(driver, config.getPlatform());
         giveCareTab = new GiveCareTab(driver, config.getPlatform());
+        recordInputScreen = new RecordInputScreen(driver, config.getPlatform());
+        recordsEmptyState = new RecordsEmptyState(driver, config.getPlatform());
+        singleRecordAddedState = new SingleRecordAddedState(driver, config.getPlatform());
+        avatarModal = new AvatarModal(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());
     }
 
     @AfterMethod(alwaysRun = true)
-    public void tearDown() {
+    public void tearDown(Method method, ITestResult result) {
+        String status;
+        switch (result.getStatus()) {
+            case ITestResult.SUCCESS:
+                status = "✅ PASSED";
+                break;
+            case ITestResult.FAILURE:
+                status = "❌ FAILED";
+                break;
+            case ITestResult.SKIP:
+                status = "⏩️ SKIPPED";
+                break;
+            default:
+                status = "⚠️ UNKNOWN";
+        }
+        log(status + " - " + method.getName());
         if (driver != null) {
             driver.quit();
         }

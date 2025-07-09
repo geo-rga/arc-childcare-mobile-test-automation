@@ -243,4 +243,21 @@ public class BasePage {
             System.out.println("⚠ Interrupted during wait");
         }
     }
+
+    public boolean isEnabled(List<By> locators) {
+        for (By locator : locators) {
+            try {
+                String enabledAttr = driver.findElement(locator).getAttribute("enabled");
+                if (enabledAttr != null) {
+                    if (enabledAttr.equalsIgnoreCase("false") || enabledAttr.equals("0")) {
+                        return false;
+                    }
+                    return true;
+                }
+            } catch (Exception ignored) {}
+        }
+        return false;
+    }
+
+
 }

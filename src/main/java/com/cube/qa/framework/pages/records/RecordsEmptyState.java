@@ -1,4 +1,4 @@
-package com.cube.qa.framework.pagesrecrods;
+package com.cube.qa.framework.pages.records;
 
 import com.cube.qa.framework.pages.BasePage;
 import org.openqa.selenium.By;

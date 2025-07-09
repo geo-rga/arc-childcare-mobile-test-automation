@@ -1,4 +1,4 @@
-package com.cube.qa.framework.pagesrecrods;
+package com.cube.qa.framework.pages.records;
 
 import com.cube.qa.framework.pages.BasePage;
 import org.openqa.selenium.By;
@@ -19,6 +19,10 @@ public class RecordInputScreen extends BasePage {
     private List<By> notesInputFieldLocators;
     private List<By> privacyMessageLocators;
     private List<By> createButtonLocators;
+    private List<By> avatarTitleLocators;
+    private List<By> avatarImageLocators;
+    private List<By> randomizeAvatarButtonLocators;
+    private List<By> removeAvatarButtonLocators;
 
     public RecordInputScreen(AppiumDriver driver, String platform) {
         super(driver);
@@ -57,6 +61,18 @@ public class RecordInputScreen extends BasePage {
             createButtonLocators = List.of(
                 By.xpath("//XCUIElementTypeButton[@name='Create']")
             );
+            avatarTitleLocators = List.of(
+                    By.xpath("//XCUIElementTypeStaticText[@name='Choose an avatar']")
+            );
+            avatarImageLocators = List.of(
+                    By.xpath("//XCUIElementTypeImage[@name='Features/Records/Avatars/Bear']")
+            );
+            randomizeAvatarButtonLocators = List.of(
+                    By.xpath("//XCUIElementTypeButton[@name='Randomize Avatar']")
+            );
+            removeAvatarButtonLocators = List.of(
+                    By.xpath("//XCUIElementTypeButton[@name='Remove Avatar']")
+            );
         } else {
             createRecordTitleLocators = List.of(
                 By.xpath("//*[@resource-id='com.cube.arc.childcare:id/toolbar']//android.widget.TextView[@text='Create Record']")
@@ -90,6 +106,18 @@ public class RecordInputScreen extends BasePage {
             );
             createButtonLocators = List.of(
                 By.xpath("//*[@resource-id='com.cube.arc.childcare:id/update_childrecord_btn']")
+            );
+            avatarTitleLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/header_avatar']")
+            );
+            avatarImageLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/profile_avatar']")
+            );
+            randomizeAvatarButtonLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/choose_avatar_btn']")
+            );
+            removeAvatarButtonLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/remove_avatar_btn']")
             );
         }
     }
@@ -136,5 +164,35 @@ public class RecordInputScreen extends BasePage {
 
     public void tapCreateButton() {
         tap(createButtonLocators);
+    }
+
+    public boolean isCreateButtonDisabled() {
+        return !isEnabled(createButtonLocators);
+    }
+
+    // Avatar Title
+    public boolean isAvatarTitleVisible() {
+        return isVisible(avatarTitleLocators);
+    }
+
+    // Avatar Image
+    public boolean isAvatarImageVisible() {
+        return isVisible(avatarImageLocators);
+    }
+
+    // Randomize Avatar Button
+    public boolean isRandomizeAvatarButtonVisible() {
+        return isVisible(randomizeAvatarButtonLocators);
+    }
+    public void tapRandomizeAvatarButton() {
+        tap(randomizeAvatarButtonLocators);
+    }
+
+    // Remove Avatar Button
+    public boolean isRemoveAvatarButtonVisible() {
+        return isVisible(removeAvatarButtonLocators);
+    }
+    public void tapRemoveAvatarButton() {
+        tap(removeAvatarButtonLocators);
     }
 }

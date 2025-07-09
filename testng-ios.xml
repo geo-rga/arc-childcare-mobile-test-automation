@@ -37,6 +37,7 @@
             <class name="tests.TopicTests"/>
             <class name="tests.QuizzesTests"/>
             <class name="tests.SearchTests"/>
+            <class name="tests.GiveCareTests"/>
         </classes>
     </test>
 </suite>

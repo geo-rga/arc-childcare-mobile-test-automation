@@ -1,4 +1,8 @@
 package tests;
 
-public class GiveCareTests {
+import com.cube.qa.framework.utils.BaseTest;
+
+public class GiveCareTests extends BaseTest {
+
+
 }

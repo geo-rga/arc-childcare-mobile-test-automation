@@ -6,6 +6,8 @@ import com.cube.qa.framework.config.TestConfig;
 import com.cube.qa.framework.pages.learn.LearnPageFull;
 import com.cube.qa.framework.pages.learn.LearnTopics;
 import com.cube.qa.framework.pages.learn.foryou.*;
+import com.cube.qa.framework.pages.learn.search.SearchResult;
+import com.cube.qa.framework.pages.learn.search.SearchScreen;
 import com.cube.qa.framework.pages.learn.topic.AgeAppropriatePlay;
 import com.cube.qa.framework.pages.learn.topic.LearnTopicDetail;
 import com.cube.qa.framework.pages.learn.topic.lesson.*;
@@ -29,6 +31,7 @@ import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.testng.annotations.*;
 import org.testng.ITestContext; // added for Extent listener
+import tests.SearchTests;
 
 import java.lang.reflect.Method;
 import java.time.Duration;
@@ -83,6 +86,8 @@ public class BaseTest {
     protected QuizFail quizFail;
     protected AgeAppropriatePlay ageAppropriatePlay;
     protected AgeAppropriatePlayQuiz ageAppropriatePlayQuiz;
+    protected SearchResult searchResult;
+    protected SearchScreen searchScreen;
 
 
     protected void log(String message) {
@@ -336,6 +341,8 @@ public class BaseTest {
         quizFail = new QuizFail(driver, config.getPlatform());
         ageAppropriatePlay = new AgeAppropriatePlay(driver, config.getPlatform());
         ageAppropriatePlayQuiz = new AgeAppropriatePlayQuiz(driver, config.getPlatform());
+        searchResult = new SearchResult(driver, config.getPlatform());
+        searchScreen = new SearchScreen(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());

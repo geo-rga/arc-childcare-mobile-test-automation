@@ -34,6 +34,7 @@
             <class name="tests.PersonalisationTests"/>
             <class name="tests.TopicTests"/>
             <class name="tests.QuizzesTests"/>
+            <class name="tests.SearchTests"/>
         </classes>
     </test>
 </suite>

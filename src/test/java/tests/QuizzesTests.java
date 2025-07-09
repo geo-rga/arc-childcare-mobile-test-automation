@@ -81,7 +81,7 @@ public class QuizzesTests extends BaseTest {
         quizFail.isDoneButtonVisible();
     }
 
-    @Test(groups = {"wip"})
+    @Test(groups = {"broken"})
     public void blankQuestionCorrectTC23910() {
         continueAsGuest();
         learnTopics.tapAgeAppropriatePlayTopic();

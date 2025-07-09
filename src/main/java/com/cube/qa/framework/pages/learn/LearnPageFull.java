@@ -130,6 +130,16 @@ public class LearnPageFull extends BasePage {
     public boolean isSearchFieldVisible() {
         return isVisible(searchFieldLocators);
     }
+    public void tapSearchField(){
+        waitForSeconds(1);
+        tap(searchFieldLocators);
+    }
+
+    public void enterSearchTerm(String term){
+        waitForSeconds(1);
+        enterText(searchFieldLocators, term);
+        waitForSeconds(5);
+    }
 
     public boolean isMoreButtonVisible() {
         return isVisible(moreButtonLocators);

@@ -51,7 +51,7 @@ public class TopicTests extends BaseTest {
     }
 
     @Test(groups = {"smoke"})
-    public void completeLessonStartQuizTC18937(){
+    public void completeLessonStartQuizTC18939(){
         continueAsGuest();
         learnTopics.tapExpectationsTopic();
         learnTopicDetail.scrollToFirstVisibleQuizDuration();

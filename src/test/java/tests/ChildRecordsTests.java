@@ -29,7 +29,7 @@ public class ChildRecordsTests extends BaseTest {
         bottomNavBar.tapRecordsTab();
         recordsEmptyState.tapAddChildRecordButton();
         recordInputScreen.tapAddAvatarButton();
-        avatarModal.tapAvatar1();
+        avatarModal.tapAvatarOption1();
         avatarModal.tapSaveButton();
         recordInputScreen.isRandomizeAvatarButtonVisible();
         recordInputScreen.isRemoveAvatarButtonVisible();

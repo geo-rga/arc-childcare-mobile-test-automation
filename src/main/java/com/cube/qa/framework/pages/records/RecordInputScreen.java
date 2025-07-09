@@ -128,6 +128,7 @@ public class RecordInputScreen extends BasePage {
 
     public void tapAddAvatarButton() {
         tap(addAvatarButtonLocators);
+        waitForSeconds(2);
     }
 
     public void enterName(String name) {
@@ -147,6 +148,7 @@ public class RecordInputScreen extends BasePage {
 
     public void tapAddContactButton() {
         tap(addContactButtonLocators);
+        waitForSeconds(2);
     }
 
     public void tapAddMedicationButton() {
@@ -164,6 +166,7 @@ public class RecordInputScreen extends BasePage {
 
     public void tapCreateButton() {
         tap(createButtonLocators);
+        waitForSeconds(2);
     }
 
     public boolean isCreateButtonDisabled() {
@@ -186,6 +189,7 @@ public class RecordInputScreen extends BasePage {
     }
     public void tapRandomizeAvatarButton() {
         tap(randomizeAvatarButtonLocators);
+        waitForSeconds(2);
     }
 
     // Remove Avatar Button
@@ -194,5 +198,6 @@ public class RecordInputScreen extends BasePage {
     }
     public void tapRemoveAvatarButton() {
         tap(removeAvatarButtonLocators);
+        waitForSeconds(2);
     }
 }

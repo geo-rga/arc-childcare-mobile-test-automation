@@ -7,8 +7,8 @@ public class LearnTests extends BaseTest {
 
     @Test(groups = {"regression"})
     public void validateLearnTabDisplayTC18912()  {
-        // This test partially works on iOS but not on Android
-        // unsure if this is related to Android identifiers but will need further debugging
+        // TODO: This test partially works on iOS but not on Android - unsure if this is related to Android identifiers but will need further debugging
+        // As this is a regression case and not a smoke case, this is low priority to resolve
         continueAsGuest();
         learnPageFull.isSearchFieldVisible();
         learnPageFull.isStartingBabysittingBusinessVisible();

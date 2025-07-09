@@ -38,6 +38,7 @@
             <class name="tests.QuizzesTests"/>
             <class name="tests.SearchTests"/>
             <class name="tests.GiveCareTests"/>
+            <class name="tests.ChildRecordsTests"/>
         </classes>
     </test>
 </suite>

@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class GiveCareTests extends BaseTest {
 
-    @Test(groups = {"wip"})
+    @Test(groups = {"smoke"})
     public void userCanCall911TC23803(){
         continueAsGuest();
         bottomNavBar.tapGiveCareTab();

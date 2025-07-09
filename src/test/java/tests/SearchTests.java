@@ -5,8 +5,8 @@ import org.testng.annotations.Test;
 
 public class SearchTests extends BaseTest {
 
-    @Test(groups = {"wip"})
-    public void selectSearchResult() {
+    @Test(groups = {"smoke"})
+    public void selectSearchResultTC18955() {
         continueAsGuest();
         learnPageFull.isSearchFieldVisible();
         learnPageFull.tapSearchField();

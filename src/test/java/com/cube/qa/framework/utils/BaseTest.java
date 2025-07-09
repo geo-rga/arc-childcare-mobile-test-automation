@@ -3,6 +3,9 @@ package com.cube.qa.framework.utils;
 import com.cube.qa.framework.config.ConfigLoader;
 import com.cube.qa.framework.config.TestConfig;
 
+import com.cube.qa.framework.pages.BottomNavBar;
+import com.cube.qa.framework.pages.givecare.GiveCareCall;
+import com.cube.qa.framework.pages.givecare.GiveCareTab;
 import com.cube.qa.framework.pages.learn.LearnPageFull;
 import com.cube.qa.framework.pages.learn.LearnTopics;
 import com.cube.qa.framework.pages.learn.foryou.*;
@@ -88,6 +91,9 @@ public class BaseTest {
     protected AgeAppropriatePlayQuiz ageAppropriatePlayQuiz;
     protected SearchResult searchResult;
     protected SearchScreen searchScreen;
+    protected BottomNavBar bottomNavBar;
+    protected GiveCareCall giveCareCall;
+    protected GiveCareTab giveCareTab;
 
 
     protected void log(String message) {
@@ -343,6 +349,9 @@ public class BaseTest {
         ageAppropriatePlayQuiz = new AgeAppropriatePlayQuiz(driver, config.getPlatform());
         searchResult = new SearchResult(driver, config.getPlatform());
         searchScreen = new SearchScreen(driver, config.getPlatform());
+        bottomNavBar = new BottomNavBar(driver, config.getPlatform());
+        giveCareCall = new GiveCareCall(driver, config.getPlatform());
+        giveCareTab = new GiveCareTab(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());

@@ -25,10 +25,7 @@ import com.cube.qa.framework.pages.onboarding.PermissionsPage;
 import com.cube.qa.framework.pages.onboarding.SignInPage;
 import com.cube.qa.framework.pages.onboarding.TermsOfServicePage;
 import com.cube.qa.framework.pages.onboarding.WelcomePage;
-import com.cube.qa.framework.pages.records.RecordInputScreen;
-import com.cube.qa.framework.pages.records.RecordsEmptyState;
-import com.cube.qa.framework.pages.records.SingleRecordAddedState;
-import com.cube.qa.framework.pages.records.AvatarModal;
+import com.cube.qa.framework.pages.records.*;
 import com.cube.qa.framework.testdata.loader.UserDataLoader; // ✅ Add this import
 
 import io.appium.java_client.AppiumDriver;
@@ -104,6 +101,9 @@ public class BaseTest {
     protected RecordsEmptyState recordsEmptyState;
     protected SingleRecordAddedState singleRecordAddedState;
     protected AvatarModal avatarModal;
+    protected AddContact addContact;
+    protected AddAllergies addAllergies;
+    protected AddMedication addMedication;
 
 
 
@@ -367,6 +367,9 @@ public class BaseTest {
         recordsEmptyState = new RecordsEmptyState(driver, config.getPlatform());
         singleRecordAddedState = new SingleRecordAddedState(driver, config.getPlatform());
         avatarModal = new AvatarModal(driver, config.getPlatform());
+        addContact = new AddContact(driver, config.getPlatform());
+        addAllergies = new AddAllergies(driver, config.getPlatform());
+        addMedication = new AddMedication(driver, config.getPlatform());
 
         // ✅ Automatically log the test starting
         log("▶ STARTING TEST: " + method.getName());

@@ -146,8 +146,19 @@ public class RecordInputScreen extends BasePage {
         enterText(familyNameInputFieldLocators, familyName);
     }
 
+    public void scrollToFirstVisibleAddContactButton() {
+        waitForSeconds(2);
+        scrollToFirstVisible(addContactButtonLocators);
+        waitForSeconds(2);
+    }
+
     public void tapAddContactButton() {
         tap(addContactButtonLocators);
+        waitForSeconds(2);
+    }
+
+    public void scrollToFirstVisibleAddMedicationButton() {
+        scrollToFirstVisible(addMedicationButtonLocators);
         waitForSeconds(2);
     }
 
@@ -155,6 +166,11 @@ public class RecordInputScreen extends BasePage {
         tap(addMedicationButtonLocators);
     }
 
+
+    public void scrollToFirstVisibleAddAllergiesButton() {
+        scrollToFirstVisible(addAllergiesButtonLocators);
+        waitForSeconds(2);
+    }
     public void tapAddAllergiesButton() {
         tap(addAllergiesButtonLocators);
     }

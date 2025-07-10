@@ -18,20 +18,39 @@ public class ChildRecordsTests extends BaseTest {
     @Test(groups = {"smoke"})
     public void userCannotAddEmptyRecordTC19015(){
         continueAsGuest();
-        bottomNavBar.tapRecordsTab();
-        recordsEmptyState.tapAddChildRecordButton();
+        openChildRecordsInput();
         recordInputScreen.isCreateButtonDisabled();
     }
 
-    @Test(groups = {"wip"})
+    @Test(groups = {"smoke"})
     public void validateAvatarDisplayTC19017(){
         continueAsGuest();
-        bottomNavBar.tapRecordsTab();
-        recordsEmptyState.tapAddChildRecordButton();
+        openChildRecordsInput();
         recordInputScreen.tapAddAvatarButton();
         avatarModal.tapAvatarOption1();
         avatarModal.tapSaveButton();
         recordInputScreen.isRandomizeAvatarButtonVisible();
         recordInputScreen.isRemoveAvatarButtonVisible();
     }
+    @Test(groups = {"wip"})
+    public void userCanAddContactTC19034(){
+        continueAsGuest();
+        openChildRecordsInput();
+        recordInputScreen.scrollToFirstVisibleAddContactButton();
+        recordInputScreen.tapAddContactButton();
+        addContact.enterName("John Doe");
+        addContact.enterRelationship("Uncle");
+        addContact.enterPhoneNumber("00000000000");
+        addContact.enterEmail("testing@3sidedcube.com");
+        addContact.enterNotes("Example notes");
+        addContact.tapSaveButton();
+    }
+    @Test(groups = {"wip"})
+    public void userCanAddAllergyTC19050(){
+        continueAsGuest();
+        openChildRecordsInput();
+        recordInputScreen.scrollToFirstVisibleAddAllergiesButton();
+        recordInputScreen.tapAddAllergiesButton();
+    }
+
 }

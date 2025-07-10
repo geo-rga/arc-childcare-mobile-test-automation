@@ -79,6 +79,8 @@ public class AddContact extends BasePage {
         return isVisible(nameFieldLocators);
     }
     public void enterName(String name) {
+        scrollToFirstVisible(nameFieldLocators);
+        waitForSeconds(2);
         enterText(nameFieldLocators, name);
     }
 
@@ -87,6 +89,8 @@ public class AddContact extends BasePage {
         return isVisible(relationshipFieldLocators);
     }
     public void enterRelationship(String relationship) {
+        scrollToFirstVisible(relationshipFieldLocators);
+        waitForSeconds(2);
         enterText(relationshipFieldLocators, relationship);
     }
 
@@ -95,6 +99,8 @@ public class AddContact extends BasePage {
         return isVisible(phoneNumberFieldLocators);
     }
     public void enterPhoneNumber(String phoneNumber) {
+        scrollToFirstVisible(phoneNumberFieldLocators);
+        waitForSeconds(2);
         enterText(phoneNumberFieldLocators, phoneNumber);
     }
 
@@ -103,6 +109,8 @@ public class AddContact extends BasePage {
         return isVisible(emailFieldLocators);
     }
     public void enterEmail(String email) {
+        scrollToFirstVisible(emailFieldLocators);
+        waitForSeconds(2);
         enterText(emailFieldLocators, email);
     }
 
@@ -111,6 +119,8 @@ public class AddContact extends BasePage {
         return isVisible(notesFieldLocators);
     }
     public void enterNotes(String notes) {
+        scrollToFirstVisible(notesFieldLocators);
+        waitForSeconds(2);
         enterText(notesFieldLocators, notes);
     }
 

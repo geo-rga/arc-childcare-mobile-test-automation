@@ -284,6 +284,26 @@ public class BaseTest {
         }
     }
 
+    public void openChildRecordsInput(){
+        bottomNavBar.tapRecordsTab();
+        recordsEmptyState.tapAddChildRecordButton();
+        recordInputScreen.enterName("\n");
+    }
+
+    public void addTestDataChildRecordContact(){
+        addContact.enterName("John Doe");
+        addContact.enterRelationship("Relative");
+        addContact.enterPhoneNumber("00000000000");
+        addContact.enterEmail("testing@3sidedcube.com");
+        addContact.enterNotes("Automation notes");
+    }
+    public void addChildRecordAllergy(){
+
+    }
+    public void addChildRecordMedication(){
+
+    }
+
     @Parameters({"platform", "build", "buildNumber", "deviceName", "udid", "fullReset", "env", "isSimulator", "platformVersion"})
     @BeforeMethod(alwaysRun = true)
     public void setUp(ITestContext ctx,

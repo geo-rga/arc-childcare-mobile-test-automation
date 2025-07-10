@@ -72,6 +72,8 @@ public class AddMedication extends BasePage {
         return isVisible(medicationNameFieldLocators);
     }
     public void enterMedicationName(String name) {
+        scrollToFirstVisible(medicationNameFieldLocators);
+        waitForSeconds(2);
         enterText(medicationNameFieldLocators, name);
     }
 
@@ -80,6 +82,8 @@ public class AddMedication extends BasePage {
         return isVisible(dosageFieldLocators);
     }
     public void enterDosage(String dosage) {
+        scrollToFirstVisible(dosageFieldLocators);
+        waitForSeconds(2);
         enterText(dosageFieldLocators, dosage);
     }
 

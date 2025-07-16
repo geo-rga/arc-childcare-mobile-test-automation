@@ -1,6 +1,7 @@
 package tests;
 
 import com.cube.qa.framework.utils.BaseTest;
+
 import org.testng.annotations.Test;
 
 public class ChildRecordsTests extends BaseTest {
@@ -36,6 +37,7 @@ public class ChildRecordsTests extends BaseTest {
     public void userCanAddContactTC19034(){
         continueAsGuest();
         openChildRecordsInput();
+        recordInputScreen.wait(2);
         recordInputScreen.scrollToFirstVisibleAddContactButton();
         recordInputScreen.tapAddContactButton();
         addContact.enterName("John Doe");
@@ -45,7 +47,7 @@ public class ChildRecordsTests extends BaseTest {
         addContact.enterNotes("Example notes");
         addContact.tapSaveButton();
     }
-    @Test(groups = {"wip"})
+    @Test(groups = {"wip2"})
     public void userCanAddAllergyTC19050(){
         continueAsGuest();
         openChildRecordsInput();

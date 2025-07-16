@@ -29,6 +29,7 @@ import com.cube.qa.framework.pages.records.*;
 import com.cube.qa.framework.testdata.loader.UserDataLoader; // ✅ Add this import
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.PerformsTouchActions;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.interactions.PointerInput;
@@ -41,6 +42,10 @@ import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashMap;
+
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
+import io.appium.java_client.TouchAction;
 
 import org.testng.ITestResult;
 
@@ -284,10 +289,35 @@ public class BaseTest {
         }
     }
 
+    public static void swipeUp(AppiumDriver driver, int iteration) {
+        Dimension size = driver.manage().window().getSize();
+        int height = size.getHeight();
+        int width = size.getWidth();
+
+        Point start = new Point(width / 2, (int) (height * 0.4));
+        Point end = new Point(width / 2, (int) (height * 0.2));
+
+        for (int i = 0; i < iteration; i++) {
+            performSwipe(driver, start, end);
+        }
+    }
+
+    public static void swipeDown(AppiumDriver driver, int iteration) {
+        Dimension size = driver.manage().window().getSize();
+        int height = size.getHeight();
+        int width = size.getWidth();
+
+        Point start = new Point(width / 2, (int) (height * 0.2));
+        Point end = new Point(width / 2, (int) (height * 0.8));
+
+        for (int i = 0; i < iteration; i++) {
+            performSwipe(driver, start, end);
+        }
+    }
+
     public void openChildRecordsInput(){
         bottomNavBar.tapRecordsTab();
         recordsEmptyState.tapAddChildRecordButton();
-        recordInputScreen.enterName("\n");
     }
 
     public void addTestDataChildRecordContact(){

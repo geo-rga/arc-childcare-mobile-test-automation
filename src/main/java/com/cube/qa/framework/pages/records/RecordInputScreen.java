@@ -216,4 +216,8 @@ public class RecordInputScreen extends BasePage {
         tap(removeAvatarButtonLocators);
         waitForSeconds(2);
     }
+
+    public void wait(int waitInt){
+        waitForSeconds(waitInt);
+    }
 }

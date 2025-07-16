@@ -1,8 +1,7 @@
 package com.cube.qa.framework.pages;
 
 import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -10,8 +9,6 @@ import java.lang.reflect.Field;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
-
-import org.openqa.selenium.Dimension;
 
 
 public class BasePage {
@@ -156,13 +153,17 @@ public class BasePage {
             if (platform.equals("ios")) {
                 driver.executeScript("mobile: swipe", Map.of("direction", "up"));
             } else if (platform.equals("android")) {
+                Dimension size = driver.manage().window().getSize();
+                int height = size.getHeight();
+                int width = size.getWidth();
+
                 Map<String, Object> scrollArgs = Map.of(
                         "left", 100,
-                        "top", 500,
+                        "top", 50,
                         "width", 800,
                         "height", 1200,
                         "direction", "down",
-                        "percent", 0.7
+                        "percent", 0.4
                 );
                 driver.executeScript("mobile: scrollGesture", scrollArgs);
             } else {

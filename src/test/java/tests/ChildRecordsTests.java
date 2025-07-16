@@ -46,13 +46,26 @@ public class ChildRecordsTests extends BaseTest {
         addContact.enterEmail("testing@3sidedcube.com");
         addContact.enterNotes("Example notes");
         addContact.tapSaveButton();
+        recordInputScreen.wait(2);
+        recordInputScreen.isEmergencyContactHeaderVisible();
+        recordInputScreen.isEmergencyContactNameVisible();
+        recordInputScreen.isEmergencyContactPhoneVisible();
     }
-    @Test(groups = {"wip2"})
+    @Test(groups = {"wip"})
     public void userCanAddAllergyTC19050(){
         continueAsGuest();
         openChildRecordsInput();
         recordInputScreen.scrollToFirstVisibleAddAllergiesButton();
         recordInputScreen.tapAddAllergiesButton();
+        addAllergies.enterAllergy("Sample allergy");
+        addAllergies.enterSymptoms("Sample symptoms");
+        addAllergies.enterTreatment("Sample treatment");
+        addAllergies.enterNotes("Example notes");
+        addAllergies.tapSaveButton();
+        recordInputScreen.wait(2);
+        recordInputScreen.isAllergiesHeaderVisible();
+        recordInputScreen.isAllergyTitleVisible();
+        recordInputScreen.isAllergySubtitleVisible();
     }
 
 }

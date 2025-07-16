@@ -23,6 +23,13 @@ public class RecordInputScreen extends BasePage {
     private List<By> avatarImageLocators;
     private List<By> randomizeAvatarButtonLocators;
     private List<By> removeAvatarButtonLocators;
+    private List<By> emergencyContactHeaderLocators;
+    private List<By> emergencyContactNameLocators;
+    private List<By> emergencyContactPhoneLocators;
+    private List<By> allergiesHeaderLocators;
+    private List<By> addAllergyButtonLocators;
+    private List<By> allergyTitleLocators;
+    private List<By> allergySubtitleLocators;
 
     public RecordInputScreen(AppiumDriver driver, String platform) {
         super(driver);
@@ -73,6 +80,27 @@ public class RecordInputScreen extends BasePage {
             removeAvatarButtonLocators = List.of(
                     By.xpath("//XCUIElementTypeButton[@name='Remove Avatar']")
             );
+            emergencyContactHeaderLocators = List.of(
+                    By.xpath("//XCUIElementTypeStaticText[@name='Who would you like to be contacted in case of an emergency?']")
+            );
+            emergencyContactNameLocators = List.of(
+                    By.xpath("//XCUIElementTypeStaticText[@name='John Doe']")
+            );
+            emergencyContactPhoneLocators = List.of(
+                    By.xpath("//XCUIElementTypeStaticText[@name='00000000000']")
+            );
+            allergiesHeaderLocators = List.of(
+                    By.xpath("//XCUIElementTypeStaticText[@name='Allergies']")
+            );
+            addAllergyButtonLocators = List.of(
+                    By.xpath("//XCUIElementTypeButton[@name='Features/Records/Icon/plusIcon']")
+            );
+            allergyTitleLocators = List.of(
+                    By.xpath("//XCUIElementTypeStaticText[@name='Sample allergy']")
+            );
+            allergySubtitleLocators = List.of(
+                    By.xpath("//XCUIElementTypeStaticText[@name='Sample symptoms']")
+            );
         } else {
             createRecordTitleLocators = List.of(
                 By.xpath("//*[@resource-id='com.cube.arc.childcare:id/toolbar']//android.widget.TextView[@text='Create Record']")
@@ -118,6 +146,27 @@ public class RecordInputScreen extends BasePage {
             );
             removeAvatarButtonLocators = List.of(
                     By.xpath("//*[@resource-id='com.cube.arc.childcare:id/remove_avatar_btn']")
+            );
+            emergencyContactHeaderLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/header_emergency_contact']")
+            );
+            emergencyContactNameLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/title' and @text='John Doe']")
+            );
+            emergencyContactPhoneLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/subtitle' and @text='00000000000']")
+            );
+            allergiesHeaderLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/header_allergies']")
+            );
+            addAllergyButtonLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/add_new_allergy_btn']")
+            );
+            allergyTitleLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/title' and @text='Sample allergy']")
+            );
+            allergySubtitleLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/subtitle' and @text='Sample symptoms']")
             );
         }
     }
@@ -219,5 +268,44 @@ public class RecordInputScreen extends BasePage {
 
     public void wait(int waitInt){
         waitForSeconds(waitInt);
+    }
+
+    // Emergency Contact Header
+    public boolean isEmergencyContactHeaderVisible() {
+        return isVisible(emergencyContactHeaderLocators);
+    }
+
+    // Emergency Contact Name
+    public boolean isEmergencyContactNameVisible() {
+        return isVisible(emergencyContactNameLocators);
+    }
+
+    // Emergency Contact Phone
+    public boolean isEmergencyContactPhoneVisible() {
+        return isVisible(emergencyContactPhoneLocators);
+    }
+
+    // Allergies Header
+    public boolean isAllergiesHeaderVisible() {
+        return isVisible(allergiesHeaderLocators);
+    }
+
+    // Add Allergy Button
+    public boolean isAddAllergyButtonVisible() {
+        return isVisible(addAllergyButtonLocators);
+    }
+
+    public void tapAddAllergyButton() {
+        tap(addAllergyButtonLocators);
+    }
+
+    // Allergy Title
+    public boolean isAllergyTitleVisible() {
+        return isVisible(allergyTitleLocators);
+    }
+
+    // Allergy Subtitle
+    public boolean isAllergySubtitleVisible() {
+        return isVisible(allergySubtitleLocators);
     }
 }

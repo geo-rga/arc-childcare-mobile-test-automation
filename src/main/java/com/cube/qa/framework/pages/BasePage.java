@@ -178,7 +178,7 @@ public class BasePage {
                 throw new RuntimeException("Unsupported platform");
             }
 
-            waitForSeconds(1);
+            waitForSeconds(2);
             scrolled++;
         }
 

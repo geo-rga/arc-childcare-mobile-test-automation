@@ -360,9 +360,10 @@ public class BaseTest {
     }
 
     public void addChildRecord(){
-//        addChildRecordAvatar();
         recordInputScreen.enterName("test");
-        setDateOfBirth();
+        // FIXME: Date of birth on iOS
+//        setDateOfBirth();
+//        recordInputScreen.enterDateOfBirth("01/01/2020");
         addTestDataChildRecordContact();
         addChildRecordMedication();
         addChildRecordAllergy();
@@ -377,6 +378,67 @@ public class BaseTest {
         } else {
             recordInputScreen.enterDateOfBirth("01/01/2020");
         }
+    }
+
+    public void addCustomRecordContact(String name, String relation, String phone, String email, String notes){
+        recordInputScreen.scrollToFirstVisibleAddContactButton();
+        recordInputScreen.tapAddContactButton();
+        addContact.enterName(name);
+        addContact.enterRelationship(relation);
+        addContact.enterPhoneNumber(phone);
+        addContact.enterEmail(email);
+        addContact.enterNotes(notes);
+        addContact.tapSaveButton();
+        recordInputScreen.wait(2);
+    }
+    public void addCustomRecordAllergy(String allergy, String symptoms, String treatment, String notes){
+        recordInputScreen.scrollToFirstVisibleAddAllergiesButton();
+        recordInputScreen.tapAddAllergiesButton();
+        addAllergies.enterAllergy(allergy);
+        addAllergies.enterSymptoms(symptoms);
+        addAllergies.enterTreatment(treatment);
+        addAllergies.enterNotes(notes);
+        addAllergies.tapSaveButton();
+        recordInputScreen.wait(2);
+    }
+    public void addCustomRecordMedication(String meds, String dose, String frequency, String notes){
+        recordInputScreen.scrollToFirstVisibleAddMedicationButton();
+        recordInputScreen.tapAddMedicationButton();
+        addMedication.enterMedicationName(meds);
+        addMedication.enterDosage(dose);
+        addMedication.enterFrequency(frequency);
+        addMedication.enterNotes(notes);
+        addMedication.tapSaveButton();
+        recordInputScreen.wait(2);
+    }
+
+    public void editCustomRecordContact(String name, String relation, String phone, String email, String notes){
+        recordInputScreen.tapEditContact();
+        addContact.enterName(name);
+        addContact.enterRelationship(relation);
+        addContact.enterPhoneNumber(phone);
+        addContact.enterEmail(email);
+        addContact.enterNotes(notes);
+        addContact.tapSaveButton();
+        recordInputScreen.wait(2);
+    }
+    public void editCustomRecordAllergy(String allergy, String symptoms, String treatment, String notes){
+        recordInputScreen.tapEditAllergy();
+        addAllergies.enterAllergy(allergy);
+        addAllergies.enterSymptoms(symptoms);
+        addAllergies.enterTreatment(treatment);
+        addAllergies.enterNotes(notes);
+        addAllergies.tapSaveButton();
+        recordInputScreen.wait(2);
+    }
+    public void editCustomRecordMedication(String meds, String dose, String frequency, String notes){
+        recordInputScreen.tapEditMedication();
+        addMedication.enterMedicationName(meds);
+        addMedication.enterDosage(dose);
+        addMedication.enterFrequency(frequency);
+        addMedication.enterNotes(notes);
+        addMedication.tapSaveButton();
+        recordInputScreen.wait(2);
     }
 
     @Parameters({"platform", "build", "buildNumber", "deviceName", "udid", "fullReset", "env", "isSimulator", "platformVersion"})

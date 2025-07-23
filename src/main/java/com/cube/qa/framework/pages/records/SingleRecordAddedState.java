@@ -116,6 +116,7 @@ public class SingleRecordAddedState extends BasePage {
     public boolean isProfileChevronInvisible() {
         return isInvisible(profileChevronLocators);
     }
+    public void tapProfileChevron(){tap(profileChevronLocators);}
 
     // Privacy Message
     public boolean isPrivacyMessageVisible() {

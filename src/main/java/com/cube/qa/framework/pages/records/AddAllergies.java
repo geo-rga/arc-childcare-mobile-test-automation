@@ -80,6 +80,7 @@ public class AddAllergies extends BasePage {
         return isVisible(symptomsFieldLocators);
     }
     public void enterSymptoms(String symptoms) {
+        scrollToFirstVisible(symptomsFieldLocators);
         enterText(symptomsFieldLocators, symptoms);
     }
 
@@ -88,6 +89,7 @@ public class AddAllergies extends BasePage {
         return isVisible(treatmentFieldLocators);
     }
     public void enterTreatment(String treatment) {
+        scrollToFirstVisible(treatmentFieldLocators);
         enterText(treatmentFieldLocators, treatment);
     }
 
@@ -96,6 +98,7 @@ public class AddAllergies extends BasePage {
         return isVisible(notesFieldLocators);
     }
     public void enterNotes(String notes) {
+        scrollToFirstVisible(notesFieldLocators);
         enterText(notesFieldLocators, notes);
     }
 

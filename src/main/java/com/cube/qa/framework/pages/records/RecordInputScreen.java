@@ -31,6 +31,11 @@ public class RecordInputScreen extends BasePage {
     private List<By> addAllergyButtonLocators;
     private List<By> allergyTitleLocators;
     private List<By> allergySubtitleLocators;
+    private List<By> editContact;
+    private List<By> editMedication;
+    private List<By> editAllergy;
+    private List<By> medicationTitleLocators;
+    private List<By> medicationSubtitleLocators;
 
     public RecordInputScreen(AppiumDriver driver, String platform) {
         super(driver);
@@ -102,6 +107,21 @@ public class RecordInputScreen extends BasePage {
             allergySubtitleLocators = List.of(
                     By.xpath("//XCUIElementTypeStaticText[@name='Sample symptoms']")
             );
+            editContact= List.of(
+                    By.xpath("(//XCUIElementTypeImage[@name=\"Shared/rightChevron\"])[1]")
+            );
+            editMedication= List.of(
+                    By.xpath("(//XCUIElementTypeImage[@name=\"Shared/rightChevron\"])[2]")
+            );
+            editAllergy= List.of(
+                    By.xpath("(//XCUIElementTypeImage[@name=\"Shared/rightChevron\"])[3]")
+            );
+            medicationTitleLocators = List.of(
+                    By.xpath("//XCUIElementTypeStaticText[@name='Sample medication']")
+            );
+            medicationSubtitleLocators = List.of(
+                    By.xpath("//XCUIElementTypeStaticText[@name='50mg']")
+            );
         } else {
             createRecordTitleLocators = List.of(
                 By.xpath("//*[@resource-id='com.cube.arc.childcare:id/toolbar']//android.widget.TextView[@text='Create Record']")
@@ -169,6 +189,21 @@ public class RecordInputScreen extends BasePage {
             allergySubtitleLocators = List.of(
                     By.xpath("//*[@resource-id='com.cube.arc.childcare:id/subtitle' and @text='Sample symptoms']")
             );
+            editContact = List.of(
+                    By.xpath("(//*[@resource-id='com.cube.arc.childcare:id/ic_chevron')[1]")
+            );
+            editMedication = List.of(
+                    By.xpath("(//*[@resource-id='com.cube.arc.childcare:id/ic_chevron')[2]")
+            );
+            editAllergy = List.of(
+                    By.xpath("(//*[@resource-id='com.cube.arc.childcare:id/ic_chevron')[3]")
+            );
+            medicationTitleLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/title' and @text='Sample medication']")
+            );
+            medicationSubtitleLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/subtitle' and @text='50mg']")
+            );
         }
     }
 
@@ -225,7 +260,6 @@ public class RecordInputScreen extends BasePage {
     public void tapAddMedicationButton() {
         tap(addMedicationButtonLocators);
     }
-
 
     public void scrollToFirstVisibleAddAllergiesButton() {
         scrollToFirstVisible(addAllergiesButtonLocators);
@@ -320,5 +354,26 @@ public class RecordInputScreen extends BasePage {
     // Allergy Subtitle
     public boolean isAllergySubtitleVisible() {
         return isVisible(allergySubtitleLocators);
+    }
+
+    public void tapEditContact() {
+        scrollToFirstVisible(emergencyContactNameLocators);
+        waitForSeconds(2);
+        tap(emergencyContactNameLocators);
+        waitForSeconds(2);
+    }
+
+    public void tapEditMedication() {
+        scrollToFirstVisible(editMedication);
+        waitForSeconds(2);
+        tap(editMedication);
+        waitForSeconds(2);
+    }
+
+    public void tapEditAllergy() {
+        scrollToFirstVisible(allergyTitleLocators);
+        waitForSeconds(2);
+        tap(allergyTitleLocators);
+        waitForSeconds(2);
     }
 }

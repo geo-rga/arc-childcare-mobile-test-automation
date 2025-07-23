@@ -140,6 +140,7 @@ public class BasePage {
 
     @SuppressWarnings("unchecked")
     protected WebElement scrollToElement(By locator) {
+        // TODO: Make dynamic
         String platform = driver.getCapabilities().getPlatformName().toString().toLowerCase();
         int maxScrolls = 15;
         int scrolled = 0;
@@ -151,11 +152,17 @@ public class BasePage {
             } catch (Exception ignored) {}
 
             if (platform.equals("ios")) {
-                driver.executeScript("mobile: swipe", Map.of("direction", "up"));
+                System.out.println("Scrolling...");
+//                driver.executeScript("mobile: swipe", Map.of("direction", "up"));
+                driver.executeScript("mobile: dragFromToForDuration", Map.of(
+                        "duration", 0.4,
+                        "fromX", 200, "fromY", 400,
+                        "toX", 200, "toY", 200
+                ));
             } else if (platform.equals("android")) {
                 Dimension size = driver.manage().window().getSize();
-                int height = size.getHeight();
-                int width = size.getWidth();
+                int height = size.getHeight(); // 1200
+                int width = size.getWidth(); // 800
 
                 Map<String, Object> scrollArgs = Map.of(
                         "left", 100,
@@ -165,6 +172,7 @@ public class BasePage {
                         "direction", "down",
                         "percent", 0.4
                 );
+                System.out.println("Scrolling...");
                 driver.executeScript("mobile: scrollGesture", scrollArgs);
             } else {
                 throw new RuntimeException("Unsupported platform");

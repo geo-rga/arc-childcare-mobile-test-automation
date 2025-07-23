@@ -33,7 +33,7 @@ public class ChildRecordsTests extends BaseTest {
         recordInputScreen.isRandomizeAvatarButtonVisible();
         recordInputScreen.isRemoveAvatarButtonVisible();
     }
-    @Test(groups = {"wip"})
+    @Test(groups = {"smoke"})
     public void userCanAddContactTC19034(){
         continueAsGuest();
         openChildRecordsInput();
@@ -51,7 +51,7 @@ public class ChildRecordsTests extends BaseTest {
         recordInputScreen.isEmergencyContactNameVisible();
         recordInputScreen.isEmergencyContactPhoneVisible();
     }
-    @Test(groups = {"wip"})
+    @Test(groups = {"smoke"})
     public void userCanAddAllergyTC19050(){
         continueAsGuest();
         openChildRecordsInput();
@@ -68,4 +68,10 @@ public class ChildRecordsTests extends BaseTest {
         recordInputScreen.isAllergySubtitleVisible();
     }
 
+    @Test(groups = {"wip"})
+    public void userCanEditRecordInformationTC19058(){
+        continueAsGuest();
+        openChildRecordsInput();
+        addChildRecord();
+    }
 }

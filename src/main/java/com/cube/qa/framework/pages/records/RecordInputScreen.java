@@ -1,6 +1,7 @@
 package com.cube.qa.framework.pages.records;
 
 import com.cube.qa.framework.pages.BasePage;
+import com.cube.qa.framework.pages.deviceHelpers.IOSHelpersPage;
 import org.openqa.selenium.By;
 import io.appium.java_client.AppiumDriver;
 
@@ -186,11 +187,21 @@ public class RecordInputScreen extends BasePage {
     }
 
     public void enterDateOfBirth(String dob) {
+        scrollToFirstVisible(dobInputFieldLocators);
+        waitForSeconds(2);
         clear(dobInputFieldLocators);
         enterText(dobInputFieldLocators, dob);
     }
 
+    public void tapDateOfBirth() {
+        scrollToFirstVisible(dobInputFieldLocators);
+        waitForSeconds(2);
+        tap(dobInputFieldLocators);
+    }
+
     public void enterFamilyName(String familyName) {
+        scrollToFirstVisible(familyNameInputFieldLocators);
+        waitForSeconds(2);
         clear(familyNameInputFieldLocators);
         enterText(familyNameInputFieldLocators, familyName);
     }
@@ -225,6 +236,8 @@ public class RecordInputScreen extends BasePage {
     }
 
     public void enterNotes(String notes) {
+        scrollToFirstVisible(notesInputFieldLocators);
+        waitForSeconds(2);
         clear(notesInputFieldLocators);
         enterText(notesInputFieldLocators, notes);
     }

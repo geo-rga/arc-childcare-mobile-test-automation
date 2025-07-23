@@ -321,17 +321,62 @@ public class BaseTest {
     }
 
     public void addTestDataChildRecordContact(){
+        recordInputScreen.scrollToFirstVisibleAddContactButton();
+        recordInputScreen.tapAddContactButton();
         addContact.enterName("John Doe");
-        addContact.enterRelationship("Relative");
+        addContact.enterRelationship("Uncle");
         addContact.enterPhoneNumber("00000000000");
         addContact.enterEmail("testing@3sidedcube.com");
-        addContact.enterNotes("Automation notes");
+        addContact.enterNotes("Example notes");
+        addContact.tapSaveButton();
+        recordInputScreen.wait(2);
     }
     public void addChildRecordAllergy(){
-
+        recordInputScreen.scrollToFirstVisibleAddAllergiesButton();
+        recordInputScreen.tapAddAllergiesButton();
+        addAllergies.enterAllergy("Sample allergy");
+        addAllergies.enterSymptoms("Sample symptoms");
+        addAllergies.enterTreatment("Sample treatment");
+        addAllergies.enterNotes("Example notes");
+        addAllergies.tapSaveButton();
+        recordInputScreen.wait(2);
     }
     public void addChildRecordMedication(){
+        recordInputScreen.scrollToFirstVisibleAddMedicationButton();
+        recordInputScreen.tapAddMedicationButton();
+        addMedication.enterMedicationName("Sample medication");
+        addMedication.enterDosage("50mg");
+        addMedication.enterFrequency("Every 6 hours");
+        addMedication.enterNotes("Example notes");
+        addMedication.tapSaveButton();
+        recordInputScreen.wait(2);
+    }
 
+    public void addChildRecordAvatar(){
+        recordInputScreen.tapAddAvatarButton();
+        avatarModal.tapAvatarOption1();
+        avatarModal.tapSaveButton();
+        recordInputScreen.wait(2);
+    }
+
+    public void addChildRecord(){
+//        addChildRecordAvatar();
+        recordInputScreen.enterName("test");
+        setDateOfBirth();
+        addTestDataChildRecordContact();
+        addChildRecordMedication();
+        addChildRecordAllergy();
+        recordInputScreen.enterNotes("Sample Notes");
+        recordInputScreen.tapCreateButton();
+    }
+
+    public void setDateOfBirth(){
+        if(isIOS()){
+            recordInputScreen.tapDateOfBirth();
+            iosHelpersPage.enterDobDate("1", "1", "2020");
+        } else {
+            recordInputScreen.enterDateOfBirth("01/01/2020");
+        }
     }
 
     @Parameters({"platform", "build", "buildNumber", "deviceName", "udid", "fullReset", "env", "isSimulator", "platformVersion"})

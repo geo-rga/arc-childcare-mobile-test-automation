@@ -36,6 +36,9 @@ public class RecordInputScreen extends BasePage {
     private List<By> editAllergy;
     private List<By> medicationTitleLocators;
     private List<By> medicationSubtitleLocators;
+    private List<By> deleteChildRecordLocators;
+    private List<By> recordDeleteAlertCancel;
+    private List<By> recordDeleteAlertDelete;
 
     public RecordInputScreen(AppiumDriver driver, String platform) {
         super(driver);
@@ -124,6 +127,15 @@ public class RecordInputScreen extends BasePage {
             medicationSubtitleLocators = List.of(
                     By.xpath("//XCUIElementTypeStaticText[@name='50mg']")
             );
+            deleteChildRecordLocators = List.of(
+                    By.xpath("//XCUIElementTypeButton[@name='Delete Child Record']")
+            );
+            recordDeleteAlertCancel = List.of(
+                    By.xpath("//XCUIElementTypeButton[@name=\"Cancel\"]")
+            );
+            recordDeleteAlertDelete = List.of(
+                    By.xpath("//XCUIElementTypeButton[@name=\"Delete\"]")
+            );
         } else {
             createRecordTitleLocators = List.of(
                 By.xpath("//*[@resource-id='com.cube.arc.childcare:id/toolbar']//android.widget.TextView[@text='Create Record']")
@@ -205,6 +217,15 @@ public class RecordInputScreen extends BasePage {
             );
             medicationSubtitleLocators = List.of(
                     By.xpath("//*[@resource-id='com.cube.arc.childcare:id/subtitle' and @text='50mg']")
+            );
+            deleteChildRecordLocators = List.of(
+                    By.xpath("//*[@resource-id='com.cube.arc.childcare:id/delete_childrecord_btn']")
+            );
+            recordDeleteAlertCancel = List.of(
+                    By.xpath("//*[@resource-id='android:id/button2' and @text='CANCEL']")
+            );
+            recordDeleteAlertDelete = List.of(
+                    By.xpath("//*[@resource-id='android:id/button1' and @text='DELETE']")
             );
         }
     }
@@ -377,5 +398,33 @@ public class RecordInputScreen extends BasePage {
         waitForSeconds(2);
         tap(allergyTitleLocators);
         waitForSeconds(2);
+    }
+
+    public void scrollToFirstVisibleDeleteRecordButton() {
+        scrollToFirstVisible(deleteChildRecordLocators);
+        waitForSeconds(2);
+    }
+    public void tapDeleteRecordButton() {
+        tap(deleteChildRecordLocators);
+    }
+
+    public boolean isDeleteRecordButtonVisible() {
+        return isVisible(deleteChildRecordLocators);
+    }
+
+    public void tapRecordDeleteAlertCancelButton() {
+        tap(recordDeleteAlertCancel);
+    }
+
+    public boolean isRecordDeleteAlertCancelVisible() {
+        return isVisible(recordDeleteAlertCancel);
+    }
+
+    public void tapRecordDeleteAlertDeleteButton() {
+        tap(recordDeleteAlertDelete);
+    }
+
+    public boolean isRecordDeleteAlertDeleteVisible() {
+        return isVisible(recordDeleteAlertDelete);
     }
 }

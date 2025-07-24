@@ -68,7 +68,7 @@ public class ChildRecordsTests extends BaseTest {
         recordInputScreen.isAllergySubtitleVisible();
     }
 
-    @Test(groups = {"wip"})
+    @Test(groups = {"smoke"})
     public void userCanEditRecordInformationTC19058(){
         continueAsGuest();
         openChildRecordsInput();
@@ -104,11 +104,22 @@ public class ChildRecordsTests extends BaseTest {
         recordInputScreen.tapCreateButton();
     }
 
-    @Test(groups = {"wip2"})
+    @Test(groups = {"wip"})
     public void userCanDeleteRecordTC19064(){
         continueAsGuest();
         openChildRecordsInput();
         addChildRecord();
+        singleRecordAddedState.isProfileNameVisible();
+        singleRecordAddedState.tapProfileChevron();
+        recordInputScreen.wait(2);
+        recordInputScreen.scrollToFirstVisibleDeleteRecordButton();
+        recordInputScreen.tapDeleteRecordButton();
+        recordInputScreen.wait(2);
+        recordInputScreen.isRecordDeleteAlertCancelVisible();
+        recordInputScreen.isRecordDeleteAlertDeleteVisible();
+        recordInputScreen.tapRecordDeleteAlertDeleteButton();
+        recordInputScreen.wait(2);
+        recordsEmptyState.isAddChildRecordButtonVisible();
     }
 
 }

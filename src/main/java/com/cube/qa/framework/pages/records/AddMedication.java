@@ -34,7 +34,7 @@ public class AddMedication extends BasePage {
                 By.xpath("(//XCUIElementTypeTextField)[4]")
             );
             saveButtonLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Save']")
+                By.xpath("//XCUIElementTypeButton[@name='Save' or @name=\"Update\"]")
             );
 
         } else {
@@ -92,6 +92,8 @@ public class AddMedication extends BasePage {
         return isVisible(frequencyFieldLocators);
     }
     public void enterFrequency(String frequency) {
+        scrollToFirstVisible(frequencyFieldLocators );
+        waitForSeconds(2);
         enterText(frequencyFieldLocators, frequency);
     }
 
@@ -100,6 +102,8 @@ public class AddMedication extends BasePage {
         return isVisible(notesFieldLocators);
     }
     public void enterNotes(String notes) {
+        scrollToFirstVisible(notesFieldLocators);
+        waitForSeconds(2);
         enterText(notesFieldLocators, notes);
     }
 

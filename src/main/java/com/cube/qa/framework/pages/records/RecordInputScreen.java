@@ -48,7 +48,8 @@ public class RecordInputScreen extends BasePage {
                 By.xpath("//XCUIElementTypeButton[@name='Add Avatar']")
             );
             nameInputFieldLocators = List.of(
-                By.xpath("//XCUIElementTypeTextField[preceding-sibling::XCUIElementTypeStaticText[@name='Enter name']]")
+//                By.xpath("//XCUIElementTypeTextField[preceding-sibling::XCUIElementTypeStaticText[@name='Enter name']]")
+                    By.xpath("(//XCUIElementTypeStaticText[@name=\"Name*\"]/following::XCUIElementTypeTextField)[1]")
             );
             dobInputFieldLocators = List.of(
                 By.xpath("//XCUIElementTypeDatePicker//XCUIElementTypeButton[@name='Date Picker']")
@@ -66,13 +67,14 @@ public class RecordInputScreen extends BasePage {
                 By.xpath("//XCUIElementTypeButton[@name='Add Allergies']")
             );
             notesInputFieldLocators = List.of(
-                By.xpath("//XCUIElementTypeTextField[preceding-sibling::XCUIElementTypeStaticText[@name='Enter notes']]")
+//                By.xpath("//XCUIElementTypeTextField[preceding-sibling::XCUIElementTypeStaticText[@name='Enter notes']]")
+                    By.xpath("(//XCUIElementTypeStaticText[@name=\"Notes [Optional]\"]/following::XCUIElementTypeTextField)")
             );
             privacyMessageLocators = List.of(
                 By.xpath("//XCUIElementTypeStaticText[contains(@name,'Information about your child')]")
             );
             createButtonLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Create']")
+                By.xpath("//XCUIElementTypeButton[@name='Create' or @name=\"Update\"]")
             );
             avatarTitleLocators = List.of(
                     By.xpath("//XCUIElementTypeStaticText[@name='Choose an avatar']")
@@ -364,9 +366,9 @@ public class RecordInputScreen extends BasePage {
     }
 
     public void tapEditMedication() {
-        scrollToFirstVisible(editMedication);
+        scrollToFirstVisible(medicationTitleLocators);
         waitForSeconds(2);
-        tap(editMedication);
+        tap(medicationTitleLocators);
         waitForSeconds(2);
     }
 

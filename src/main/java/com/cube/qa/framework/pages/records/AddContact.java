@@ -38,7 +38,7 @@ public class AddContact extends BasePage {
                 By.xpath("(//XCUIElementTypeTextField)[5]")
             );
             saveButtonLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Save']")
+                By.xpath("//XCUIElementTypeButton[@name='Save' or @name=\"Update\"]")
             );
 
         } else {

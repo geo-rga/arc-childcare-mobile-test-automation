@@ -413,6 +413,7 @@ public class BaseTest {
     }
 
     public void editCustomRecordContact(String name, String relation, String phone, String email, String notes){
+        log("🔄 Editing contact record...");
         recordInputScreen.tapEditContact();
         addContact.enterName(name);
         addContact.enterRelationship(relation);
@@ -423,6 +424,7 @@ public class BaseTest {
         recordInputScreen.wait(2);
     }
     public void editCustomRecordAllergy(String allergy, String symptoms, String treatment, String notes){
+        log("🔄 Editing allergy record...");
         recordInputScreen.tapEditAllergy();
         addAllergies.enterAllergy(allergy);
         addAllergies.enterSymptoms(symptoms);
@@ -432,6 +434,7 @@ public class BaseTest {
         recordInputScreen.wait(2);
     }
     public void editCustomRecordMedication(String meds, String dose, String frequency, String notes){
+        log("🔄 Editing medication record...");
         recordInputScreen.tapEditMedication();
         addMedication.enterMedicationName(meds);
         addMedication.enterDosage(dose);

@@ -34,7 +34,7 @@ public class AddAllergies extends BasePage {
                 By.xpath("(//XCUIElementTypeTextField)[4]")
             );
             saveButtonLocators = List.of(
-                By.xpath("//XCUIElementTypeButton[@name='Save']")
+                By.xpath("//XCUIElementTypeButton[@name='Save' or @name=\"Update\"]")
             );
 
         } else {

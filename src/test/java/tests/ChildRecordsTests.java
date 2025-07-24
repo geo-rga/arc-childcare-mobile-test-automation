@@ -103,4 +103,12 @@ public class ChildRecordsTests extends BaseTest {
         recordInputScreen.enterNotes("Edited Notes");
         recordInputScreen.tapCreateButton();
     }
+
+    @Test(groups = {"wip2"})
+    public void userCanDeleteRecordTC19064(){
+        continueAsGuest();
+        openChildRecordsInput();
+        addChildRecord();
+    }
+
 }
